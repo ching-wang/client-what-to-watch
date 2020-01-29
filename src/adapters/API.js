@@ -1,8 +1,8 @@
-const API_ENDPOINT = "http://localhost:3000";
+const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const SIGNUP_URL = `${API_ENDPOINT}/users`;
-const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
+const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
 
 const jsonify = res => {
   if (res.ok) {
@@ -54,7 +54,7 @@ const validate = () =>
     .then(handleUserReponse);
 
 const postWishlist = wishList =>
-  fetch(POSTS_URL, {
+  fetch(WISHLISTS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -64,11 +64,21 @@ const postWishlist = wishList =>
     body: JSON.stringify({ wishList })
   }).then(jsonify);
 
+const deleteWishlist = wishListId =>
+  fetch(WISHLISTS_URL + wishListId, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorisation: localStorage.token
+    }
+  });
+
 export default {
   login,
   signup,
   validate,
   postWishlist,
+  deleteWishlist,
   hasToken: () => !!localStorage.token,
   clearToken: () => localStorage.removeItem("token")
 };
