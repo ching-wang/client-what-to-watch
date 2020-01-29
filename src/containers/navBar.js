@@ -19,17 +19,21 @@ const NavBar = props => {
       >
         <Container>
           <Menu.Item as="a" position="left">
-            {<ReactSVG className="logo" src="/movie-roll.svg" />}
+            {
+              <ReactSVG
+                className="logo"
+                src="/movie-roll.svg"
+                style={{ marginButton: "1em" }}
+              />
+            }
             <h1 className="app-name">What to Watch</h1>
           </Menu.Item>
 
           <Menu.Item position="right">
-            {/* <Button
+            <Button
               as="a"
               inverted={!fixed}
-              onClick={() => {
-                window.alert("login in here");
-              }}
+              style={{ marginLeft: "0.1em", color: "black" }}
             >
               Log in
             </Button>
@@ -37,10 +41,10 @@ const NavBar = props => {
               as="a"
               inverted={!fixed}
               primary={fixed}
-              style={{ marginLeft: "0.1em" }}
+              style={{ marginLeft: "0.1em", color: "black" }}
             >
               Sign Up
-            </Button> */}
+            </Button>
           </Menu.Item>
         </Container>
       </Menu>

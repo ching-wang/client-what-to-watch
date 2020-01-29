@@ -7,6 +7,7 @@ import SignupForm from "./components/SignupForm";
 import { Switch, Route } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
 import NavBar from "./containers/navBar";
+import MainPage from "./containers/main";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -46,13 +47,18 @@ function App() {
       <Responsive>
         <NavBar />
       </Responsive>
-      {/* <Switch>
+      <Switch>
         <Route
           path="/"
           exact
-          render={routerProps => <Login user={user} {...routerProps} />}
+          render={routerProps => <MainPage {...routerProps} />}
         />
-      </Switch> */}
+        {/* <Route
+          path="/"
+          exact
+          render={routerProps => <Login user={user} {...routerProps} />}
+        /> */}
+      </Switch>
     </>
   );
 }
