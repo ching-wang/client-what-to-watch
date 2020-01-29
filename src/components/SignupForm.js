@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../adapters/API";
 
-const SignupForm = ({ onSuccess }) => {
+const SignUpForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -52,4 +52,4 @@ const SignupForm = ({ onSuccess }) => {
   );
 };
 
-export default SignupForm;
+export default SignUpForm;

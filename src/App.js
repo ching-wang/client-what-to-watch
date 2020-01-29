@@ -6,6 +6,7 @@ import { Responsive } from "semantic-ui-react";
 import NavBar from "./containers/navBar";
 import MainPage from "./containers/main";
 import Login from "./containers/login";
+import SignUp from "./containers/signup";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -55,6 +56,11 @@ function App() {
           path="/login"
           exact
           render={routerProps => <Login user={user} {...routerProps} />}
+        />
+        <Route
+          path="/signup"
+          exact
+          render={routerProps => <SignUp {...routerProps} />}
         />
       </Switch>
     </>
