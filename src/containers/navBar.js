@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { ReactSVG } from "react-svg";
 import { Button, Container, Menu, Responsive } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const NavBar = props => {
   const [fixed, setFixed] = useState(false);
+  const [hiddenForm, setHiddenForm] = useState(true);
 
   const hideFixedMenu = () => setFixed(false);
   const showFixedMenu = () => setFixed(true);
@@ -30,21 +32,20 @@ const NavBar = props => {
           </Menu.Item>
 
           <Menu.Item position="right">
-            <Button
-              as="a"
-              inverted={!fixed}
+            <Link
+              className="ui button"
               style={{ marginLeft: "0.1em", color: "black" }}
+              to="/login"
             >
-              Log in
-            </Button>
-            <Button
-              as="a"
-              inverted={!fixed}
-              primary={fixed}
+              Login
+            </Link>
+            <Link
+              className="ui button"
               style={{ marginLeft: "0.1em", color: "black" }}
+              to="/signup"
             >
               Sign Up
-            </Button>
+            </Link>
           </Menu.Item>
         </Container>
       </Menu>

@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Homepage from "./components/homePage";
 import API from "./adapters/API";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
 import { Switch, Route } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
 import NavBar from "./containers/navBar";
 import MainPage from "./containers/main";
+import Login from "./containers/login";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -53,11 +51,11 @@ function App() {
           exact
           render={routerProps => <MainPage {...routerProps} />}
         />
-        {/* <Route
-          path="/"
+        <Route
+          path="/login"
           exact
           render={routerProps => <Login user={user} {...routerProps} />}
-        /> */}
+        />
       </Switch>
     </>
   );
