@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { ReactSVG } from "react-svg";
+import searchBar from "./searchBar";
 import {
   Button,
   Container,
@@ -11,6 +12,7 @@ import {
   Image,
   List,
   Menu,
+  Input,
   Responsive,
   Segment,
   Sidebar,
@@ -30,13 +32,18 @@ const HomepageHeading = ({ mobile }) => (
       content="What do you want to watch?"
       inverted
       style={{
-        fontSize: mobile ? "2em" : "4em",
+        fontSize: mobile ? "2em" : "6em",
         fontWeight: "normal",
         marginBottom: 0,
-        marginTop: mobile ? "1.5em" : "3em"
+        marginTop: mobile ? "1em" : "0.8em"
       }}
     />
-    <h3>Search and add to wish list</h3>
+    <Input
+      inverted
+      size="huge"
+      icon="search"
+      placeholder="add a film to wishlist..."
+    />
   </Container>
 );
 
@@ -75,7 +82,7 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as="a" active position="left">
+                <Menu.Item as="a" position="left">
                   {<ReactSVG className="logo" src="/movie-roll.svg" />}
                   <h1 className="app-name">What to Watch</h1>
                 </Menu.Item>
@@ -88,7 +95,7 @@ class DesktopContainer extends Component {
                     as="a"
                     inverted={!fixed}
                     primary={fixed}
-                    style={{ marginLeft: "0.5em" }}
+                    style={{ marginLeft: "0.1em" }}
                   >
                     Sign Up
                   </Button>
@@ -137,7 +144,6 @@ class MobileContainer extends Component {
           <Menu.Item as="a" active>
             Home
           </Menu.Item>
-          <Menu.Item as="a">Profile</Menu.Item>
           <Menu.Item as="a">Log in</Menu.Item>
           <Menu.Item as="a">Sign Up</Menu.Item>
         </Sidebar>
