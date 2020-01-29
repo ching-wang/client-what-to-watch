@@ -74,40 +74,6 @@ class DesktopContainer extends Component {
             style={{ minHeight: 700, padding: "1em 0em" }}
             vertical
           >
-            <Menu
-              fixed={fixed ? "top" : null}
-              inverted={!fixed}
-              pointing={!fixed}
-              secondary={!fixed}
-              size="large"
-            >
-              <Container>
-                <Menu.Item as="a" position="left">
-                  {<ReactSVG className="logo" src="/movie-roll.svg" />}
-                  <h1 className="app-name">What to Watch</h1>
-                </Menu.Item>
-
-                <Menu.Item position="right">
-                  <Button
-                    as="a"
-                    inverted={!fixed}
-                    onClick={() => {
-                      window.alert("login in here");
-                    }}
-                  >
-                    Log in
-                  </Button>
-                  <Button
-                    as="a"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.1em" }}
-                  >
-                    Sign Up
-                  </Button>
-                </Menu.Item>
-              </Container>
-            </Menu>
             <HomepageHeading />
           </Segment>
         </Visibility>
