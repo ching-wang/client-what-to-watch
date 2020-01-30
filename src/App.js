@@ -62,7 +62,9 @@ function App() {
           <Route
             exact
             path="/profile"
-            render={routerProps => <MainPage user={user} {...routerProps} />}
+            render={routerProps => (
+              <MainPage user={user} onLogout={logout} {...routerProps} />
+            )}
           />
           <Route
             exact

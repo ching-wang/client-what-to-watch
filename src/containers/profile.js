@@ -1,10 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { showProfile as profileDetails } from "../components/profileDetail";
 
-const Profile = ({ user }) => {
+const Profile = ({ user, handleLogOut }) => {
   return (
     <>
-      <Link to="/profile">{user.username}</Link>
+      <showProfile user={user} />
+      <Link to="/" onClick={() => handleLogOut()}>
+        logout
+      </Link>
     </>
   );
 };
