@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import LoginButton from "../components/loginButton";
 import SignupButton from "../components/sigupButton";
 import ProfileButton from "../components/profileButton";
+import button from "../components/button";
 
 const NavBar = ({ user, onLogout }) => {
   const [fixed, setFixed] = useState(false);
@@ -35,8 +36,13 @@ const NavBar = ({ user, onLogout }) => {
           </Menu.Item>
 
           <Menu.Item position="right">
-            {user ? <ProfileButton handleLogOut={onLogout} /> : <LoginButton />}
-            <SignupButton />
+            {user ? (
+              <ProfileButton handleLogOut={onLogout} />
+            ) : (
+              <>
+                <LoginButton /> <SignupButton />
+              </>
+            )}
           </Menu.Item>
         </Container>
       </Menu>

@@ -22,7 +22,6 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
-    console.log(user);
   };
 
   useEffect(() => {
