@@ -7,6 +7,7 @@ import NavBar from "./pages/navBar";
 import MainPage from "./pages/main";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
@@ -22,13 +23,12 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
-    console.log(user);
   };
 
   useEffect(() => {
     if (API.hasToken()) {
       API.validate()
-        .then(handleUser)
+        .then(res => handleUser(res.user))
         .then(() => setValidateUser(true))
         .catch(errorPromise => {
           errorPromise.then(data => {
@@ -39,13 +39,6 @@ function App() {
       setValidateUser(true);
     }
   }, []);
-
-  const showlogin = () => {
-    setLogin(true);
-  };
-
-  // if (!validateUser && !error)
-  //   return <div>Validation is in processing... Please wait...</div>;
 
   return (
     <>
@@ -77,7 +70,7 @@ function App() {
             {user ? (
               <Redirect to="/profile" />
             ) : (
-              <Login onSuccess={handleUser} user={user} />
+              <Login onLoginSuccess={handleUser} user={user} />
             )}
           </Route>
         </Switch>

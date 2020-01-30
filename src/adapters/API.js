@@ -12,24 +12,25 @@ const jsonify = res => {
   }
 };
 
-const handleUserReponse = user => {
-  if (user.token) {
-    localStorage.token = user.token;
+const handleLoginResponse = loginResponse => {
+  if (!loginResponse.token) {
+    throw new Error("Bad login response! " + JSON.stringify(loginResponse));
   }
-  return user;
+  localStorage.token = loginResponse.token;
+  return validate().then(res => res.user);
 };
 
-const login = user =>
+const login = loginDetails =>
   fetch(LOGIN_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
-    body: JSON.stringify({ user })
+    body: JSON.stringify({ user: loginDetails })
   })
     .then(jsonify)
-    .then(handleUserReponse);
+    .then(handleLoginResponse);
 
 const signup = user =>
   fetch(SIGNUP_URL, {
@@ -39,19 +40,15 @@ const signup = user =>
       Accept: "application/json"
     },
     body: JSON.stringify({ user })
-  })
-    .then(jsonify)
-    .then(handleUserReponse);
+  }).then(jsonify);
 
 const validate = () =>
   fetch(VALIDATE_URL, {
     method: "POST",
     headers: {
-      Authorisation: localStorage.token
+      Authorization: localStorage.token
     }
-  })
-    .then(jsonify)
-    .then(handleUserReponse);
+  }).then(jsonify);
 
 const postWishlist = wishList =>
   fetch(WISHLISTS_URL, {
@@ -59,7 +56,7 @@ const postWishlist = wishList =>
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorisation: localStorage.token
+      Authorization: localStorage.token
     },
     body: JSON.stringify({ wishList })
   }).then(jsonify);
@@ -69,7 +66,7 @@ const deleteWishlist = wishListId =>
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorisation: localStorage.token
+      Authorization: localStorage.token
     }
   });
 

@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../adapters/API";
-import { Button, Form } from "semantic-ui-react";
 
-const LoginForm = ({ onSuccess }) => {
+const LoginForm = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -17,7 +16,7 @@ const LoginForm = ({ onSuccess }) => {
 
   const handleSubmit = event => {
     event.preventDefault();
-    API.login(formData).then(user => onSuccess(user));
+    API.login(formData).then(onLoginSuccess);
   };
 
   return (
@@ -28,7 +27,7 @@ const LoginForm = ({ onSuccess }) => {
             type="email"
             name="email"
             placeholder="Email"
-            value={formData.email}
+            defaultValue={formData.email}
           />
         </div>
       </div>
@@ -38,7 +37,7 @@ const LoginForm = ({ onSuccess }) => {
             type="password"
             name="password"
             placeholder="Password"
-            value={formData.password}
+            defaultValue={formData.password}
           />
         </div>
       </div>
