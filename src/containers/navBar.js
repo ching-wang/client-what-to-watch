@@ -33,14 +33,14 @@ const NavBar = props => {
 
           <Menu.Item position="right">
             <Link
-              className="ui button"
+              className="ui olive button"
               style={{ marginLeft: "0.1em", color: "black" }}
               to="/login"
             >
               Login
             </Link>
             <Link
-              className="ui button"
+              className="ui olive button"
               style={{ marginLeft: "0.1em", color: "black" }}
               to="/signup"
             >

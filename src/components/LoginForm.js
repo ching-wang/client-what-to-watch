@@ -21,20 +21,28 @@ const LoginForm = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleChange}>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-      />
-      <input type="submit" value="Login" />
+    <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
+      <div className="filed">
+        <div className="ui input">
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+          />
+        </div>
+      </div>
+      <div className="filed">
+        <div className="ui input">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+          />
+        </div>
+      </div>
+      <input className="ui black button" type="submit" value="Login" />
     </form>
   );
 };
