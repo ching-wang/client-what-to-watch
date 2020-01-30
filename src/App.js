@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
-import Homepage from "./components/homePage";
 import API from "./adapters/API";
-import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
-import {
-  BrowserRouter as Router,
-  Redirect,
-  Switch,
-  Route,
-  NavLink,
-  Link
-} from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { Responsive } from "semantic-ui-react";
+import NavBar from "./containers/navBar";
+import MainPage from "./containers/main";
+import Login from "./containers/login";
+import SignUp from "./containers/signup";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({ username: "", email: "" });
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
+  const [login, setLogin] = useState(false);
 
   const logout = () => {
     setUser(null);
@@ -26,6 +22,7 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
+    console.log(user);
   };
 
   useEffect(() => {
@@ -43,58 +40,46 @@ function App() {
     }
   }, []);
 
-  if (!validateUser && !error)
-    return <div>Validation is in processing... Please wait...</div>;
+  const showlogin = () => {
+    setLogin(true);
+  };
+
+  // if (!validateUser && !error)
+  //   return <div>Validation is in processing... Please wait...</div>;
 
   return (
     <>
-      <div className="App">
-        {error && <div style={{ color: "red" }}>{JSON.stringify(error)}</div>}
-        <Router>
-          <Switch>
-            <Route exact path="/signup">
-              {!user ? (
-                <div>
-                  <SignupForm onSuccess={handleUser} user={user} />
-                  Already have an account? Please{" "}
-                  <Link to="/login">log in </Link>
-                  instead.
-                </div>
-              ) : (
-                <Redirect to="/" />
-              )}
-            </Route>
-            <Route exact path="/login">
-              {!user ? (
-                <div>
-                  <LoginForm onSuccess={handleUser} user={user} />
-                  Don't have an account? Please{" "}
-                  <Link to="/signup">sign up </Link>
-                  instead.
-                </div>
-              ) : (
-                <Redirect to="/" />
-              )}
-            </Route>
-            <Route exact path="/">
-              {user ? (
-                <div>
-                  <p>
-                    Logged in as {user.username}
-                    {" - "}
-                    <Link to="" onClick={() => logout()}>
-                      logout
-                    </Link>
-                  </p>
-                </div>
-              ) : (
-                <Redirect to="/signup" />
-              )}
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-      <Homepage />
+      <Responsive>
+        <NavBar user={user} onLogout={logout} />
+      </Responsive>
+      <Responsive>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={routerProps => <MainPage {...routerProps} />}
+          />
+          <Route
+            exact
+            path="/profile"
+            render={routerProps => (
+              <MainPage user={user} onLogout={logout} {...routerProps} />
+            )}
+          />
+          <Route
+            exact
+            path="/signup"
+            render={routerProps => <SignUp {...routerProps} />}
+          />
+          <Route exact path="/login">
+            {user ? (
+              <Redirect to="/profile" />
+            ) : (
+              <Login onSuccess={handleUser} user={user} />
+            )}
+          </Route>
+        </Switch>
+      </Responsive>
     </>
   );
 }

@@ -11,5 +11,10 @@
 .logo {
   height: 70px;
   width: 70px;
-  margin: 20px;
+  margin: 3px 3px 10px 3px;
+}
+
+.app-name {
+  font-size: 35px;
+  color: black;
 }

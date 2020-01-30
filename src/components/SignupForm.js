@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../adapters/API";
 
-const SignupForm = ({ onSuccess }) => {
+const SignUpForm = ({ onSuccess }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -27,29 +27,41 @@ const SignupForm = ({ onSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleChange}>
+    <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
       {errors.join(", ")}
-      <input
-        type="username"
-        name="username"
-        placeholder="username"
-        value={formData.username}
-      />
-      <input
-        type="email"
-        name="email"
-        placeholder="E mail"
-        value={formData.email}
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Pass word"
-        value={formData.password}
-      />
-      <input type="submit" value="Sign Up" />
+      <div className="filed">
+        <div className="ui input">
+          <input
+            type="username"
+            name="username"
+            placeholder="username"
+            value={formData.username}
+          />
+        </div>
+      </div>
+      <div className="filed">
+        <div className="ui input">
+          <input
+            type="email"
+            name="email"
+            placeholder="E mail"
+            value={formData.email}
+          />
+        </div>
+      </div>
+      <div className="filed">
+        <div className="ui input">
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+          />
+        </div>
+      </div>
+      <input type="submit" value="Sign Up" className="ui black button" />
     </form>
   );
 };
 
-export default SignupForm;
+export default SignUpForm;
