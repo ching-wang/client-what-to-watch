@@ -50,7 +50,7 @@ function App() {
   return (
     <>
       <Responsive>
-        <NavBar />
+        <NavBar user={user} onLogout={logout} />
       </Responsive>
       <Responsive>
         <Switch>

@@ -6,9 +6,6 @@ const Profile = ({ user, handleLogOut }) => {
   return (
     <>
       <showProfile user={user} />
-      <Link to="/" onClick={() => handleLogOut()}>
-        logout
-      </Link>
     </>
   );
 };

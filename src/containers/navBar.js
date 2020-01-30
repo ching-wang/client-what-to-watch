@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import { ReactSVG } from "react-svg";
 import { Button, Container, Menu, Responsive } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import LoginButton from "../components/loginButton";
+import SignupButton from "../components/sigupButton";
+import ProfileButton from "../components/profileButton";
 
-const NavBar = props => {
+const NavBar = ({ user, onLogout }) => {
   const [fixed, setFixed] = useState(false);
   const [hiddenForm, setHiddenForm] = useState(true);
 
@@ -32,20 +35,8 @@ const NavBar = props => {
           </Menu.Item>
 
           <Menu.Item position="right">
-            <Link
-              className="ui olive button"
-              style={{ marginLeft: "0.1em", color: "black" }}
-              to="/login"
-            >
-              Login
-            </Link>
-            <Link
-              className="ui olive button"
-              style={{ marginLeft: "0.1em", color: "black" }}
-              to="/signup"
-            >
-              Sign Up
-            </Link>
+            {user ? <ProfileButton handleLogOut={onLogout} /> : <LoginButton />}
+            <SignupButton />
           </Menu.Item>
         </Container>
       </Menu>
