@@ -4,7 +4,15 @@ import Profile from "./profile";
 import Link from "react-router-dom";
 
 const MainContainer = ({ user, onLogout }) => {
-  return <>{!user ? <Hero /> : <Profile user={user.username} handleLogOut={onLogout} />}</>;
+  return (
+    <span style={{ backgroundColor: "#f8fc03" }}>
+      {!user ? (
+        <Hero />
+      ) : (
+        <Profile user={user.username} handleLogOut={onLogout} />
+      )}
+    </span>
+  );
 };
 
 export default MainContainer;

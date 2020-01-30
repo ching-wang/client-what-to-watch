@@ -3,13 +3,13 @@ import "./App.css";
 import API from "./adapters/API";
 import { Switch, Route, Redirect } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
-import NavBar from "./containers/navBar";
-import MainPage from "./containers/main";
-import Login from "./containers/login";
-import SignUp from "./containers/signup";
+import NavBar from "./pages/navBar";
+import MainPage from "./pages/main";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
 
 function App() {
-  const [user, setUser] = useState({ username: "", email: "" });
+  const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
@@ -69,7 +69,9 @@ function App() {
           <Route
             exact
             path="/signup"
-            render={routerProps => <SignUp {...routerProps} />}
+            render={routerProps => (
+              <SignUp onSuccess={handleUser} {...routerProps} />
+            )}
           />
           <Route exact path="/login">
             {user ? (

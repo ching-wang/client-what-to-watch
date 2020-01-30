@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import API from "../adapters/API";
 
-const SignUpForm = ({ onSuccess }) => {
+const SignUpForm = ({ handleSignUp }) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -20,7 +20,7 @@ const SignUpForm = ({ onSuccess }) => {
   const handleSubmit = event => {
     event.preventDefault();
     API.signup(formData)
-      .then(user => onSuccess(user))
+      .then(user => handleSignUp(user))
       .catch(errorPromise => {
         errorPromise.then(errorData => setErrors(errorData.errors));
       });
