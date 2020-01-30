@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { showProfile as profileDetails } from "../components/profileDetail";
+import ProfileDetail from "../components/profileDetail";
 
 const Profile = ({ user, handleLogOut }) => {
   return (
     <>
-      <showProfile user={user} />
+      <ProfileDetail user={user} handleLogOut={handleLogOut} />
     </>
   );
 };

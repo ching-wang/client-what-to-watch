@@ -1,10 +1,10 @@
 import React from "react";
 import SignUpForm from "../components/SignupForm";
-const SignUp = () => {
+const SignUp = ({ onSuccess }) => {
   return (
     <>
       <div className="ui text container">
-        <SignUpForm />
+        <SignUpForm handleSignUp={onSuccess} />
       </div>
     </>
   );
