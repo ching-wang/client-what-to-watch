@@ -8,13 +8,16 @@
   }
 }
 
-.logo {
-  height: 70px;
-  width: 70px;
-  margin: 3px 3px 10px 3px;
+.page-container {
+  padding-top: 2em;
 }
 
-.app-name {
-  font-size: 35px;
-  color: black;
+.top-menu {
+  border-radius: 0 !important;
+}
+
+.hero-container {
+  padding-top: 2em;
+  margin: auto;
+  max-width: 30em !important;
 }

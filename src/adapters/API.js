@@ -81,6 +81,10 @@ const deleteWishlist = wishListId =>
     }
   });
 
+function clearToken() {
+  localStorage.removeItem("token");
+}
+
 export default {
   login,
   signup,
@@ -88,5 +92,5 @@ export default {
   postWishlist,
   deleteWishlist,
   hasToken: () => !!localStorage.token,
-  clearToken: () => localStorage.removeItem("token")
+  clearToken
 };

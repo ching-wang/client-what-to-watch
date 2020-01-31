@@ -1,29 +1,31 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import API from "./adapters/API";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
 import NavBar from "./pages/navBar";
 import MainPage from "./pages/main";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
-import { useHistory } from "react-router-dom";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 
 function App() {
-  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
+  const history = useHistory();
 
   const logout = () => {
     setUser(null);
     API.clearToken();
+    history.push("/");
   };
 
   const handleUser = user => {
     setUser(user);
+    history.push("/");
   };
 
   const handleChangeSubmit = event => {
@@ -80,11 +82,7 @@ function App() {
             )}
           />
           <Route exact path="/login">
-            {user ? (
-              <Redirect to="/profile" />
-            ) : (
-              <Login onLoginSuccess={handleUser} user={user} />
-            )}
+            <Login onLoginSuccess={handleUser} user={user} />
           </Route>
           <Route exact path="/wishlists">
             <WishLists user={user} />

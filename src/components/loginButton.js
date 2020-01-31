@@ -1,17 +1,12 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
 
 const LoginButton = () => {
   return (
-    <NavLink
-      className="ui olive button"
-      style={{ marginLeft: "0.1em", color: "black" }}
-      to="/login"
-    >
-      Login
-    </NavLink>
+    <Menu.Item link href="/login">
+      Log in
+    </Menu.Item>
   );
 };
 
 export default LoginButton;
-

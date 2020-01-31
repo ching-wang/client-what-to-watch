@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
 const LoginForm = ({ onLoginSuccess }) => {
@@ -20,29 +21,57 @@ const LoginForm = ({ onLoginSuccess }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
-      <div className="filed">
-        <div className="ui input">
+    <div className="hero-container">
+      <h2>Log in</h2>
+      <br></br>
+      <Form onSubmit={handleSubmit} onChange={handleChange}>
+        <Form.Field>
+          <label>Email</label>
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="you@example.com"
             defaultValue={formData.email}
           />
-        </div>
-      </div>
-      <div className="filed">
-        <div className="ui input">
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
           <input
             type="password"
             name="password"
-            placeholder="Password"
+            placeholder="password"
             defaultValue={formData.password}
           />
-        </div>
-      </div>
-      <input className="ui black button" type="submit" value="Login" />
-    </form>
+        </Form.Field>
+        <br></br>
+        <Button primary type="submit">
+          Log in
+        </Button>
+      </Form>
+    </div>
+    // <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
+    //   <div className="filed">
+    //     <div className="ui input">
+    //       <input
+    //         type="email"
+    //         name="email"
+    //         placeholder="Email"
+    //         defaultValue={formData.email}
+    //       />
+    //     </div>
+    //   </div>
+    //   <div className="filed">
+    //     <div className="ui input">
+    //       <input
+    //         type="password"
+    //         name="password"
+    //         placeholder="Password"
+    //         defaultValue={formData.password}
+    //       />
+    //     </div>
+    //   </div>
+    //   <input className="ui black button" type="submit" value="Login" />
+    // </form>
   );
 };
 
