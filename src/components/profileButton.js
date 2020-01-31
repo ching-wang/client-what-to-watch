@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const ProfileButton = ({ handleLogOut }) => {
   return (
-    <Link
+    <NavLink
       to="/"
       onClick={() => handleLogOut()}
       className="ui olive button"
       style={{ marginLeft: "0.1em", color: "black" }}
     >
       logout
-    </Link>
+    </NavLink>
   );
 };
 
