@@ -8,13 +8,14 @@ import MainPage from "./pages/main";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import { useHistory } from "react-router-dom";
+import WishLists from "./pages/wishLists";
+import Profile from "./pages/profile";
 
 function App() {
   const [user, setUser] = useState({ username: "", email: "", password: "" });
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
-  const [login, setLogin] = useState(false);
 
   const logout = () => {
     setUser(null);
@@ -24,6 +25,12 @@ function App() {
   const handleUser = user => {
     setUser(user);
   };
+
+  const handleChangeSubmit = event => {
+    event.preventDefault();
+  };
+
+  const handleChangeProfile = event => {};
 
   useEffect(() => {
     if (API.hasToken()) {
@@ -56,7 +63,13 @@ function App() {
             exact
             path="/profile"
             render={routerProps => (
-              <MainPage user={user} onLogout={logout} {...routerProps} />
+              <Profile
+                user={user}
+                onLogout={logout}
+                {...routerProps}
+                handleProfileOnChange={handleChangeProfile}
+                handleProfileSubmit={handleChangeSubmit}
+              />
             )}
           />
           <Route
@@ -72,6 +85,9 @@ function App() {
             ) : (
               <Login onLoginSuccess={handleUser} user={user} />
             )}
+          </Route>
+          <Route exact path="/wishlists">
+            <WishLists user={user} />
           </Route>
         </Switch>
       </Responsive>

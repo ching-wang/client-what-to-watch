@@ -6,6 +6,8 @@ import LoginButton from "../components/loginButton";
 import SignupButton from "../components/sigupButton";
 import ProfileButton from "../components/profileButton";
 import button from "../components/button";
+import LogoutButton from "../components/logoutButton";
+import WishListButton from "../components/wishListButton";
 
 const NavBar = ({ user, onLogout }) => {
   const [fixed, setFixed] = useState(false);
@@ -37,7 +39,10 @@ const NavBar = ({ user, onLogout }) => {
 
           <Menu.Item position="right">
             {user ? (
-              <ProfileButton handleLogOut={onLogout} />
+              <>
+                <LogoutButton handleLogOut={onLogout} /> <ProfileButton />
+                <WishListButton />
+              </>
             ) : (
               <>
                 <LoginButton /> <SignupButton />
