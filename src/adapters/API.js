@@ -32,15 +32,26 @@ const login = loginDetails =>
     .then(jsonify)
     .then(handleLoginResponse);
 
-const signup = user =>
+const signup = signUpData => {
   fetch(SIGNUP_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
-    body: JSON.stringify({ user })
-  }).then(jsonify);
+    body: JSON.stringify({ user: signUpData })
+  })
+    .then(jsonify)
+    .then(user => {
+      if (user) {
+        return login(signUpData.email, signUpData.password);
+      }
+    });
+};
+
+const handleSignupResponse = signupResponse => {
+  login(signupResponse);
+};
 
 const validate = () =>
   fetch(VALIDATE_URL, {
