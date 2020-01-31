@@ -1,19 +1,19 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-const ProfileButton = props => {
+const WishListButton = props => {
   return (
     <>
       <NavLink
-        to="/profile"
+        to="/wishlists"
         onClick={() => null}
         className="ui olive button"
         style={{ marginLeft: "0.1em", color: "black" }}
       >
-        profile
+        wishlists
       </NavLink>
     </>
   );
 };
 
-export default ProfileButton;
+export default WishListButton;

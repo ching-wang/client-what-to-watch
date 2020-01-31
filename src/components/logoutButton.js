@@ -1,19 +1,19 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
 
-const ProfileButton = props => {
+const LogoutButton = ({ handleLogOut }) => {
   return (
     <>
       <NavLink
-        to="/profile"
-        onClick={() => null}
+        to="/"
+        onClick={() => handleLogOut()}
         className="ui olive button"
         style={{ marginLeft: "0.1em", color: "black" }}
       >
-        profile
+        logout
       </NavLink>
     </>
   );
 };
 
-export default ProfileButton;
+export default LogoutButton;
