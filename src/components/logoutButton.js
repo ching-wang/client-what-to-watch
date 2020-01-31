@@ -1,19 +1,8 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
 
 const LogoutButton = ({ handleLogOut }) => {
-  return (
-    <>
-      <NavLink
-        to="/"
-        onClick={() => handleLogOut()}
-        className="ui olive button"
-        style={{ marginLeft: "0.1em", color: "black" }}
-      >
-        logout
-      </NavLink>
-    </>
-  );
+  return <Menu.Item onClick={() => handleLogOut()}>Log out</Menu.Item>;
 };
 
 export default LogoutButton;

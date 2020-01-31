@@ -1,18 +1,11 @@
 import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 const ProfileButton = props => {
+  const history = useHistory();
   return (
-    <>
-      <NavLink
-        to="/profile"
-        onClick={() => null}
-        className="ui olive button"
-        style={{ marginLeft: "0.1em", color: "black" }}
-      >
-        profile
-      </NavLink>
-    </>
+    <Menu.Item onClick={() => history.push("/profile")}>Profile</Menu.Item>
   );
 };
 

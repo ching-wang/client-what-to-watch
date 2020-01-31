@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import { Menu, Icon } from "semantic-ui-react";
-import LoginButton from "../components/loginButton";
-import SignupButton from "../components/sigupButton";
 import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
 import WishListButton from "../components/wishListButton";
@@ -25,10 +23,11 @@ const NavBar = ({ user, onLogout }) => {
       </Menu.Item>
 
       {user ? (
-        <Menu.Item position="right">
-          <LogoutButton handleLogOut={onLogout} /> <ProfileButton />
+        <Menu.Menu position="right">
+          <ProfileButton />
           <WishListButton />
-        </Menu.Item>
+          <LogoutButton handleLogOut={onLogout} />
+        </Menu.Menu>
       ) : (
         <Menu.Menu position="right">
           <Menu.Item link href="/login">

@@ -1,12 +1,14 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import WishListCategoryList from "../components/wishListCategoryList";
+import { Container } from "semantic-ui-react";
 
-const WishLists = props => {
+const WishLists = ({ user }) => {
   return (
-    <>
-      <WishListCategoryList />
-    </>
+    <Container>
+      <div className="page-container">
+        <WishListCategoryList user={user} />
+      </div>
+    </Container>
   );
 };
 
