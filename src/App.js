@@ -7,12 +7,11 @@ import NavBar from "./pages/navBar";
 import MainPage from "./pages/main";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
-import { useHistory } from "react-router-dom";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 
 function App() {
-  const [user, setUser] = useState({ username: "", email: "", password: "" });
+  const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
