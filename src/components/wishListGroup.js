@@ -1,6 +1,5 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
-import { Redirect } from "react-router-dom";
 import { WishListCard } from "./WishListCard";
 
 const WishListGroup = ({ user }) => {

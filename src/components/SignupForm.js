@@ -36,7 +36,7 @@ const SignUpForm = ({ handleSignUp }) => {
         <Form.Field>
           <label>Username</label>
           <input
-            type="username"
+            type="text"
             name="username"
             placeholder="username"
             defaulValue={formData.username}
@@ -59,6 +59,8 @@ const SignUpForm = ({ handleSignUp }) => {
             placeholder="Password"
             defaulValue={formData.password}
           />
+          <br></br>
+          <br></br>
           <br></br>
           <Button primary type="submit">
             Sign Up

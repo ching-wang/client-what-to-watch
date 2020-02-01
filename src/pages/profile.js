@@ -8,6 +8,9 @@ const Profile = ({
   handleProfileSubmit,
   handleProfileOnChange
 }) => {
+  if (!user) {
+    return <></>;
+  }
   return (
     <>
       <ProfileDetail
