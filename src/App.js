@@ -12,6 +12,7 @@ import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
 import MovieLists from "./pages/movieLists";
 import MovieCard from "./components/movieCard";
+import { SearchResults } from "./pages/searchResults";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -118,6 +119,9 @@ function App() {
           </Route>
           <Route exact path="/movieLists/1">
             <MovieCard />
+          </Route>
+          <Route path="/search">
+            <SearchResults />
           </Route>
         </Switch>
       </Responsive>

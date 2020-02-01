@@ -1,8 +1,11 @@
+import { sanitiseQuery } from "../common/util";
+
 const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const USER_URL = `${API_ENDPOINT}/users`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
 const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
+const SEARCH_URL = `${API_ENDPOINT}/search`;
 
 const jsonify = res => {
   if (res.ok) {
@@ -92,6 +95,11 @@ const deleteWishlist = wishListId =>
     }
   });
 
+const searchMovies = query => {
+  query = sanitiseQuery(query);
+  return fetch(`${SEARCH_URL}?s=${query}`).then(res => res.json());
+};
+
 function clearToken() {
   localStorage.removeItem("token");
 }
@@ -103,6 +111,7 @@ export default {
   postWishlist,
   deleteWishlist,
   updateProfile,
+  searchMovies,
   hasToken: () => !!localStorage.token,
   clearToken
 };
