@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import API from "../adapters/API";
+import { Form, Button } from "semantic-ui-react";
 
 const SignUpForm = ({ handleSignUp }) => {
   const [formData, setFormData] = useState({
@@ -27,40 +28,44 @@ const SignUpForm = ({ handleSignUp }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
-      {errors.join(", ")}
-      <div className="filed">
-        <div className="ui input">
+    <div className="hero-container">
+      <h2>Sign Up</h2>
+      <br></br>
+      <Form onSubmit={handleSubmit} onChange={handleChange}>
+        {/* {errors.join(", ")} */}
+        <Form.Field>
+          <label>Username</label>
           <input
             type="username"
             name="username"
             placeholder="username"
-            value={formData.username}
+            defaulValue={formData.username}
           />
-        </div>
-      </div>
-      <div className="filed">
-        <div className="ui input">
+        </Form.Field>
+        <Form.Field>
+          <label>Email</label>
           <input
             type="email"
             name="email"
-            placeholder="E mail"
-            value={formData.email}
+            placeholder="you@example.com"
+            defaulValue={formData.email}
           />
-        </div>
-      </div>
-      <div className="filed">
-        <div className="ui input">
+        </Form.Field>
+        <Form.Field>
+          <label>Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
-            value={formData.password}
+            defaulValue={formData.password}
           />
-        </div>
-      </div>
-      <input type="submit" value="Sign Up" className="ui black button" />
-    </form>
+          <br></br>
+          <Button primary type="submit">
+            Sign Up
+          </Button>
+        </Form.Field>
+      </Form>
+    </div>
   );
 };
 

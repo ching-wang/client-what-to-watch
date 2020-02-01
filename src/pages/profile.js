@@ -8,7 +8,6 @@ const Profile = ({
   handleProfileSubmit,
   handleProfileOnChange
 }) => {
-  console.log(user);
   return (
     <>
       <ProfileDetail

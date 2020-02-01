@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import API from "./adapters/API";
-import { Switch, Route, Redirect, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
 import NavBar from "./pages/navBar";
 import MainPage from "./pages/main";
@@ -9,6 +9,7 @@ import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
+import EditProfile from "./pages/EditProfile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,6 +17,11 @@ function App() {
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
   const history = useHistory();
+  const [profileFormData, setProfileFormData] = useState({
+    username: "",
+    email: "",
+    user_id: ""
+  });
 
   const logout = () => {
     setUser(null);
@@ -28,11 +34,19 @@ function App() {
     history.push("/");
   };
 
-  const handleChangeSubmit = event => {
-    event.preventDefault();
+  const handleProfileChange = event => {
+    setProfileFormData({
+      ...profileFormData,
+      [event.target.name]: event.target.value
+    });
   };
 
-  const handleChangeProfile = event => {};
+  console.log(profileFormData);
+
+  const handleProfileSubmit = event => {
+    event.preventDefault();
+    API.updateProfile(user.id, profileFormData).then(user => setUser(user));
+  };
 
   useEffect(() => {
     if (API.hasToken()) {
@@ -65,12 +79,19 @@ function App() {
             exact
             path="/profile"
             render={routerProps => (
-              <Profile
+              <Profile user={user} onLogout={logout} {...routerProps} />
+            )}
+          />
+          <Route
+            exact
+            path="/profile/edit"
+            render={routerProps => (
+              <EditProfile
+                profileFormData={profileFormData}
+                handleProfileChange={handleProfileChange}
+                handleProfileSubmit={handleProfileSubmit}
                 user={user}
-                onLogout={logout}
                 {...routerProps}
-                handleProfileOnChange={handleChangeProfile}
-                handleProfileSubmit={handleChangeSubmit}
               />
             )}
           />

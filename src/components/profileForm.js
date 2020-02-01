@@ -1,39 +1,48 @@
 import React from "react";
-import { Image, Container, Form } from "semantic-ui-react";
-import API from "../adapters/API";
+import { Form, Button } from "semantic-ui-react";
+import { useHistory, Redirect } from "react-router-dom";
 
-const ProfileForm = ({ user, handleSubmit, handleOnChange }) => {
+const ProfileForm = ({
+  user,
+  profileFormData,
+  handleOnSubmit,
+  handleOnChange
+}) => {
+  const history = useHistory();
   return (
     <>
-      <form
-        onSubmit={handleSubmit}
+      <Form
+        onSubmit={event => handleOnSubmit(event)}
         onChange={event => handleOnChange(event)}
         className="ui form"
       >
-        <div className="filed">
-          <div className="ui input">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              defaultValue={user.email}
-            />
-          </div>
-        </div>
-        <div className="filed">
-          <div className="ui input">
-            <label for="email">password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              defaultValue={null}
-            />
-          </div>
-        </div>
-        <input className="ui black button" type="submit" value="Submit" />
-      </form>
+        <Form.Field>
+          <label for="username">Username</label>
+          <input
+            type="username"
+            name="username"
+            placeholder="username"
+            value={profileFormData.username}
+          />
+        </Form.Field>
+        <Form.Field>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={profileFormData.email}
+          />
+        </Form.Field>
+        <br></br>
+        <Button.Group>
+          <Button onClick={() => history.push("/profile/")}>Cancel</Button>
+          <Button.Or />
+          <Button positive type="submit">
+            Save
+          </Button>
+        </Button.Group>
+      </Form>
     </>
   );
 };
