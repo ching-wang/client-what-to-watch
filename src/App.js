@@ -11,6 +11,7 @@ import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
 import MovieLists from "./pages/movieLists";
+import MovieCard from "./components/movieCard";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -111,6 +112,12 @@ function App() {
           </Route>
           <Route exact path="/wishlists">
             <WishLists user={user} />
+          </Route>
+          <Route exact path="/movieLists">
+            <MovieLists />
+          </Route>
+          <Route exact path="/movieLists/1">
+            <MovieCard />
           </Route>
         </Switch>
       </Responsive>
