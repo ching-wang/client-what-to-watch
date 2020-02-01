@@ -4,7 +4,6 @@ import { Image, Container, Form } from "semantic-ui-react";
 import ProfileForm from "./profileForm";
 
 const ProfileDetail = ({ user, handleSubmit, handleOnChange }) => {
-  console.log(user.username);
   const wishLists = user.wish_lists;
 
   const [clickEditForm, setClickEditForm] = useState(false);
