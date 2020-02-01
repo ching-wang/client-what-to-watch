@@ -44,8 +44,6 @@ function App() {
     });
   };
 
-  console.log(profileFormData);
-
   const handleProfileSubmit = event => {
     event.preventDefault();
     API.updateProfile(user.id, profileFormData).then(user => setUser(user));
