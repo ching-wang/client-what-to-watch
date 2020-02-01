@@ -19,7 +19,7 @@ const SearchBar = () => {
     >
       <Input
         name="s"
-        size="huge"
+        size="small"
         icon="search"
         placeholder="Search for films"
       />
