@@ -1,6 +1,6 @@
 const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
-const SIGNUP_URL = `${API_ENDPOINT}/users`;
+const USER_URL = `${API_ENDPOINT}/users`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
 const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
 
@@ -33,7 +33,7 @@ const login = loginDetails =>
     .then(handleLoginResponse);
 
 const signup = signUpData => {
-  fetch(SIGNUP_URL, {
+  fetch(USER_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -47,6 +47,17 @@ const signup = signUpData => {
         return login(signUpData.email, signUpData.password);
       }
     });
+};
+
+const updateProfile = (userId, newProfileFormData) => {
+  return fetch(USER_URL + userId, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify(newProfileFormData)
+  }).then(jsonify);
 };
 
 const handleSignupResponse = signupResponse => {
@@ -91,6 +102,7 @@ export default {
   validate,
   postWishlist,
   deleteWishlist,
+  updateProfile,
   hasToken: () => !!localStorage.token,
   clearToken
 };
