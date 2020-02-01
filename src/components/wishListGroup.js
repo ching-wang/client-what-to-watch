@@ -3,9 +3,10 @@ import { Card } from "semantic-ui-react";
 import { Redirect } from "react-router-dom";
 import { WishListCard } from "./WishListCard";
 
-const WishListCategoryList = ({ user }) => {
+const WishListGroup = ({ user }) => {
   if (!user) {
-    return <Redirect to="/login"></Redirect>;
+    return <></>;
+    // return <Redirect to="/login"></Redirect>;
   }
   if (!user.wish_lists) {
     console.warn(JSON.stringify({ user }));
@@ -28,4 +29,4 @@ const WishListCategoryList = ({ user }) => {
   );
 };
 
-export default WishListCategoryList;
+export default WishListGroup;

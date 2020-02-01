@@ -1,15 +1,15 @@
 import React from "react";
-import WishListGroup from "../components/wishListGroup";
+import MovieGroup from "../components/movieGroup";
 import { Container } from "semantic-ui-react";
 
-const WishLists = ({ user }) => {
+const MovieLists = () => {
   return (
     <Container>
       <div className="page-container">
-        <WishListGroup user={user} />
+        <MovieGroup />
       </div>
     </Container>
   );
 };
 
-export default WishLists;
+export default MovieLists;

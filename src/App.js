@@ -10,6 +10,7 @@ import SignUp from "./pages/signup";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
+import MovieLists from "./pages/movieLists";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -104,6 +105,9 @@ function App() {
           />
           <Route exact path="/login">
             <Login onLoginSuccess={handleUser} user={user} />
+          </Route>
+          <Route exact path="/wishlists/:id">
+            <MovieLists user={user} />
           </Route>
           <Route exact path="/wishlists">
             <WishLists user={user} />
