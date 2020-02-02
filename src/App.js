@@ -22,6 +22,8 @@ function App() {
   const history = useHistory();
   const [profileFormData, setProfileFormData] = useState({
     username: "",
+    avatar: "",
+    bio: "",
     email: "",
     user_id: ""
   });

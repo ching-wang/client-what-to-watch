@@ -10,15 +10,11 @@ const ProfileDetail = ({ user }) => {
       <div className="hero-container">
         <h1>My Profile Overview</h1>
         <Card>
-          <Image
-            src="https://react.semantic-ui.com/images/avatar/large/daniel.jpg"
-            wrapped
-            ui={false}
-          />
+          <Image src={user.avatar} wrapped ui={false} />
           <Card.Content>
             <Card.Header>{user.username}</Card.Header>
             <Card.Meta>Joined in 2016</Card.Meta>
-            <Card.Description>This is something about myself</Card.Description>
+            <Card.Description>{user.bio}</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <Button

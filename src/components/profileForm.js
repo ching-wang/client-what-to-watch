@@ -23,8 +23,26 @@ const ProfileForm = ({
             <input
               type="text"
               name="username"
-              placeholder="username"
+              placeholder={user.username}
               value={profileFormData.username}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label for="avatar">Avatar</label>
+            <input
+              type="text"
+              name="avatar"
+              placeholder="image link..."
+              value={profileFormData.avatar}
+            />
+          </Form.Field>
+          <Form.Field>
+            <label for="bio">Bio</label>
+            <input
+              type="text"
+              name="bio"
+              placeholder={user.bio}
+              value={profileFormData.bio}
             />
           </Form.Field>
           <Form.Field>
@@ -32,7 +50,7 @@ const ProfileForm = ({
             <input
               type="email"
               name="email"
-              placeholder="you@example.com"
+              placeholder={user.email}
               value={profileFormData.email}
             />
           </Form.Field>
