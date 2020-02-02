@@ -6,6 +6,7 @@ const USER_URL = `${API_ENDPOINT}/users`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
 const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
+const MOVIE_URL = `${API_ENDPOINT}/movies`;
 
 const jsonify = res => {
   if (res.ok) {
@@ -100,9 +101,13 @@ const searchMovies = query => {
   return fetch(`${SEARCH_URL}?s=${query}`).then(res => res.json());
 };
 
-function clearToken() {
+const getMovie = imdbID => {
+  return fetch(`${MOVIE_URL}/${imdbID}`).then(res => res.json());
+};
+
+const clearToken = () => {
   localStorage.removeItem("token");
-}
+};
 
 export default {
   login,
@@ -112,6 +117,7 @@ export default {
   deleteWishlist,
   updateProfile,
   searchMovies,
+  getMovie,
   hasToken: () => !!localStorage.token,
   clearToken
 };

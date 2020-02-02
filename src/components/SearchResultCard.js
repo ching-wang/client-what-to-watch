@@ -1,16 +1,22 @@
 import React from "react";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
-export const SearchResultCard = ({ searchResult }) => {
+export const SearchResultCard = ({ searchResult, handleShowMovieCard }) => {
+  const history = useHistory();
   return (
-    <Card>
+    <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
       <Image src={searchResult.Poster} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{searchResult.Title}</Card.Header>
         <Card.Meta>
           <span className="date">{searchResult.Year}</span>
         </Card.Meta>
-        <Card.Description>{searchResult.Type}</Card.Description>
+        <Card.Description>
+          <a>
+            <Icon name="eye" /> View Details
+          </a>
+        </Card.Description>
       </Card.Content>
     </Card>
   );

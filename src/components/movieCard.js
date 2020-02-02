@@ -1,33 +1,30 @@
-import React from "react";
-import { Card, Image, Icon, Container } from "semantic-ui-react";
+import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Container, Card, Image, Icon } from "semantic-ui-react";
+import API from "../adapters/API";
 
-const MovieCard = props => {
+const MovieCard = () => {
+  const { imdbId } = useParams();
+  const [movie, setMovie] = useState({});
+  useEffect(() => {
+    API.getMovie(imdbId).then(res => setMovie(res));
+  }, []);
   return (
-    <>
-      <Card.Group>
-        {null}{" "}
+    <Container>
+      <Card.Group centered={true}>
         <Card>
-          <Image
-            src="https://m.media-amazon.com/images/M/MV5BMGI4NjcwMzctM2FmNy00ZjQ0LTk0MTgtMWI1ODA2OTAyOTY2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
-            wrapped
-            ui={false}
-          />
+          <Image src={movie.Poster} wrapped ui={false} />
           <Card.Content>
-            <Card.Header>I Lost My Body</Card.Header>
-            <Card.Meta>Joined in 2016</Card.Meta>
-            <Card.Description>
-              Daniel is a comedian living in Nashville.
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a>
-              <Icon name="user" />
-              10 Friends
-            </a>
+            <Card.Header>{movie.Title}</Card.Header>
+            <Card.Meta>{movie.Year}</Card.Meta>
+            <Card.Content>
+              <small>Director:</small> {movie.Director}
+            </Card.Content>
+            <Card.Description>{movie.Plot}</Card.Description>
           </Card.Content>
         </Card>
       </Card.Group>
-    </>
+    </Container>
   );
 };
 

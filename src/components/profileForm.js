@@ -23,17 +23,21 @@ const ProfileForm = ({
             <input
               type="text"
               name="username"
-              placeholder={user.username}
-              value={profileFormData.username}
+              autoComplete="username"
+              placeholder={user ? user.username : ""}
+              defaultValue={
+                profileFormData.username || user ? user.username : ""
+              }
             />
           </Form.Field>
           <Form.Field>
             <label for="avatar">Avatar</label>
             <input
-              type="text"
+              type="url"
               name="avatar"
+              autoComplete="photo"
               placeholder="image link..."
-              value={profileFormData.avatar}
+              defaultValue={profileFormData.avatar || user ? user.avatar : ""}
             />
           </Form.Field>
           <Form.Field>
@@ -41,8 +45,8 @@ const ProfileForm = ({
             <input
               type="text"
               name="bio"
-              placeholder={user.bio}
-              value={profileFormData.bio}
+              placeholder={user ? user.bio : ""}
+              defaultValue={profileFormData.bio || user ? user.bio : ""}
             />
           </Form.Field>
           <Form.Field>
@@ -50,8 +54,9 @@ const ProfileForm = ({
             <input
               type="email"
               name="email"
-              placeholder={user.email}
-              value={profileFormData.email}
+              autoComplete="email"
+              placeholder={user ? user.email : ""}
+              defaultValue={profileFormData.email || user ? user.email : ""}
             />
           </Form.Field>
           <br></br>
