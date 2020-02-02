@@ -1,6 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
-import { Card, Image, Icon, Container } from "semantic-ui-react";
+import { Card, Image, Icon } from "semantic-ui-react";
 
 const MovieGroup = ({ user }) => {
   return (

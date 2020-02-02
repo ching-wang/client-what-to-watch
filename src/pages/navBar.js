@@ -3,6 +3,7 @@ import { Menu, Icon } from "semantic-ui-react";
 import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
 import WishListButton from "../components/wishListButton";
+import SearchBar from "../components/searchBar";
 
 const NavBar = ({ user, onLogout }) => {
   const [fixed, setFixed] = useState(false);
@@ -23,11 +24,16 @@ const NavBar = ({ user, onLogout }) => {
       </Menu.Item>
 
       {user ? (
-        <Menu.Menu position="right">
-          <ProfileButton />
-          <WishListButton />
-          <LogoutButton handleLogOut={onLogout} />
-        </Menu.Menu>
+        <>
+          <Menu.Item position="right">
+            <SearchBar />
+          </Menu.Item>
+          <Menu.Menu position="right">
+            <ProfileButton />
+            <WishListButton />
+            <LogoutButton handleLogOut={onLogout} />
+          </Menu.Menu>
+        </>
       ) : (
         <Menu.Menu position="right">
           <Menu.Item link href="/login">
