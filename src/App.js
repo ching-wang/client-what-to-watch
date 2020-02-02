@@ -19,6 +19,7 @@ function App() {
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const [wishLists, setWishlists] = useState([]);
+  const [movie, setMovie] = useState();
   const history = useHistory();
   const [profileFormData, setProfileFormData] = useState({
     username: "",
@@ -117,7 +118,7 @@ function App() {
           <Route exact path="/movieLists">
             <MovieLists />
           </Route>
-          <Route exact path="/movieLists/1">
+          <Route exact path="/movies/:imdbId">
             <MovieCard />
           </Route>
           <Route path="/search">
