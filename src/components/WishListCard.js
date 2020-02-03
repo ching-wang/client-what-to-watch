@@ -9,11 +9,7 @@ export const WishListCard = ({ wishList }) => {
 
   return (
     <Card>
-      <Image
-        src="https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
-        wrapped
-        ui={false}
-      />
+      <Image src={wishList.image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
         <Card.Meta>Testing header</Card.Meta>

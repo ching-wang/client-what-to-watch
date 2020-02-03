@@ -30,6 +30,10 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
+  };
+
+  const handleLogin = user => {
+    setUser(user);
     history.push("/");
   };
 
@@ -52,8 +56,6 @@ function App() {
             setError(data);
           });
         });
-    } else {
-      setValidateUser(true);
     }
   }, []);
 
@@ -97,7 +99,7 @@ function App() {
             )}
           />
           <Route exact path="/login">
-            <Login onLoginSuccess={handleUser} user={user} />
+            <Login onLoginSuccess={handleLogin} user={user} />
           </Route>
           <Route exact path="/wishlists/:id">
             <MovieLists user={user} />
@@ -109,7 +111,7 @@ function App() {
             <MovieLists />
           </Route>
           <Route exact path="/movies/:imdbId">
-            <MovieCard user={user}/>
+            <MovieCard user={user} />
           </Route>
           <Route path="/search">
             <SearchResults />

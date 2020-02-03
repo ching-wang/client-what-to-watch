@@ -9,9 +9,11 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   const [results, setResults] = useState([]);
   const location = useLocation();
   const query = queryString.parse(location.search).s;
+
   useEffect(() => {
     API.searchMovies(query).then(res => setResults(res.Search));
-  }, []);
+  }, [query]);
+
   if (!results) {
     return <></>;
   }
