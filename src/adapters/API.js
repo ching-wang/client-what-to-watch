@@ -2,7 +2,7 @@ import { sanitiseQuery } from "../common/util";
 
 const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
-const USER_URL = `${API_ENDPOINT}/users`;
+const USER_URL = `${API_ENDPOINT}/users/`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
 const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
@@ -58,7 +58,8 @@ const updateProfile = (userId, newProfileFormData) => {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept: "application/json",
+      Authorization: localStorage.token
     },
     body: JSON.stringify(newProfileFormData)
   }).then(jsonify);

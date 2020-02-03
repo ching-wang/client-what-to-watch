@@ -21,13 +21,6 @@ function App() {
   const [wishLists, setWishlists] = useState([]);
   const [movie, setMovie] = useState();
   const history = useHistory();
-  const [profileFormData, setProfileFormData] = useState({
-    username: "",
-    avatar: "",
-    bio: "",
-    email: "",
-    user_id: ""
-  });
 
   const logout = () => {
     setUser(null);
@@ -37,25 +30,28 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
-    history.push("/");
+    // history.push("/");
   };
 
-  const handleProfileChange = event => {
-    setProfileFormData({
-      ...profileFormData,
-      [event.target.name]: event.target.value
-    });
-  };
+  // const handleProfileChange = event => {
+  //   setProfileFormData({
+  //     ...profileFormData,
+  //     [event.target.name]: event.target.value
+  //   });
+  // };
 
-  const handleProfileSubmit = event => {
+  const handleProfileSubmit = (event, userId, profileFormData) => {
     event.preventDefault();
-    API.updateProfile(user.id, profileFormData).then(user => setUser(user));
+    API.updateProfile(userId, profileFormData).then(user => handleUser(user));
   };
 
   useEffect(() => {
     if (API.hasToken()) {
       API.validate()
-        .then(res => handleUser(res.user))
+        .then(res => {
+          handleUser(res.user);
+          // setProfileFormData(res.user);
+        })
         .then(() => setValidateUser(true))
         .catch(errorPromise => {
           errorPromise.then(data => {
@@ -91,9 +87,9 @@ function App() {
             path="/profile/edit"
             render={routerProps => (
               <EditProfile
-                profileFormData={profileFormData}
-                handleProfileChange={handleProfileChange}
-                handleProfileSubmit={handleProfileSubmit}
+                // profileFormData={profileFormData}
+                // handleProfileChange={handleProfileChange}
+                handleOnSubmit={handleProfileSubmit}
                 user={user}
                 {...routerProps}
               />

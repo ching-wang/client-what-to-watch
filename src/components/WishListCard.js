@@ -7,7 +7,7 @@ export const WishListCard = ({ wishList }) => {
   return (
     <Card>
       <Card.Content>
-        <Card.Header>{wishList.name}</Card.Header>
+        <Card.Header>{wishList.name.capitalize}</Card.Header>
         <Card.Meta>ye boi</Card.Meta>
         <Card.Description>Some good filums.</Card.Description>
       </Card.Content>

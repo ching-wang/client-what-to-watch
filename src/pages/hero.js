@@ -13,8 +13,7 @@ const Hero = () => {
           fontSize: "6em",
           fontWeight: "normal",
           marginBottom: 0,
-          marginTop: "0.8em",
-          color: "black"
+          marginTop: "0.8em"
         }}
       />
       <SearchBar />

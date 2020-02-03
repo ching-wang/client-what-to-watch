@@ -1,20 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button, Container } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
-const ProfileForm = ({
-  user,
-  profileFormData,
-  handleOnSubmit,
-  handleOnChange
-}) => {
+const ProfileForm = ({ user, handleOnSubmit }) => {
+  const [profileFormData, setProfileFormData] = useState({
+    username: user.username,
+    avatar: user.avatar,
+    bio: user.bio,
+    email: user.email
+  });
+
+  const handleOnChange = event => {
+    setProfileFormData({
+      ...profileFormData,
+      [event.target.name]: event.target.value
+    });
+  };
+
   const history = useHistory();
   return (
     <Container>
       <div className="hero-container">
         <h1>Edit your profile</h1>
         <Form
-          onSubmit={event => handleOnSubmit(event)}
+          onSubmit={event => handleOnSubmit(event, user.id, profileFormData)}
           onChange={event => handleOnChange(event)}
           className="ui form"
         >
