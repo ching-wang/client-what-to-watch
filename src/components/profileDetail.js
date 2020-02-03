@@ -23,10 +23,6 @@ const ProfileDetail = ({ user }) => {
             >
               Edit
             </Button>
-            {/* <a>
-              <Icon name="user" />
-              10 Friends
-            </a> */}
           </Card.Content>
         </Card>
       </div>

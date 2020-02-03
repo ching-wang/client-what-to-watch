@@ -4,7 +4,7 @@ import ProfileForm from "../components/profileForm";
 const EditProfile = ({
   user,
   profileFormData,
-  handleProfileSubmit,
+  handleOnSubmit,
   handleProfileChange
 }) => {
   return (
@@ -12,7 +12,7 @@ const EditProfile = ({
       user={user}
       profileFormData={profileFormData}
       handleOnChange={handleProfileChange}
-      handleOnSubmit={handleProfileSubmit}
+      handleOnSubmit={handleOnSubmit}
     />
   );
 };
