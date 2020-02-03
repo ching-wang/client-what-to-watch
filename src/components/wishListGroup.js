@@ -21,7 +21,7 @@ const WishListGroup = ({ user }) => {
     <>
       <h1>You have {wishlistSize} wishlists</h1>
       <br></br>
-      <Card.Group>
+      <Card.Group centered={true} itemsPerRow={3}>
         {user.wish_lists.map(wishList => (
           <WishListCard wishList={wishList} />
         ))}

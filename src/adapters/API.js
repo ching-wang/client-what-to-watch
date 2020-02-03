@@ -4,7 +4,7 @@ const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const USER_URL = `${API_ENDPOINT}/users/`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
-const WISHLISTS_URL = `${API_ENDPOINT}/wishlists`;
+const WISHLISTS_URL = `${API_ENDPOINT}/wish_lists`;
 const WISHLIST_ITEMS_URL = `${API_ENDPOINT}/wish_list_items`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
 const MOVIE_URL = `${API_ENDPOINT}/movies`;
@@ -122,6 +122,17 @@ const getMovie = imdbID => {
   return fetch(`${MOVIE_URL}/${imdbID}`).then(res => res.json());
 };
 
+const getWishList = wishListId => {
+  return fetch(`${WISHLISTS_URL}/${wishListId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(res => res.json());
+};
+
 const clearToken = () => {
   localStorage.removeItem("token");
 };
@@ -132,6 +143,7 @@ export default {
   validate,
   postWishlist,
   deleteWishlist,
+  getWishList,
   updateProfile,
   searchMovies,
   getMovie,
