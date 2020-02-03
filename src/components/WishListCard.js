@@ -10,7 +10,7 @@ export const WishListCard = ({ wishList }) => {
   return (
     <Card>
       <Image
-        src="https://poster.keepcalmandposters.com/2643661.png"
+        src="https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
         wrapped
         ui={false}
       />
