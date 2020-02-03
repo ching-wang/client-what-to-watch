@@ -24,7 +24,7 @@ const LoginForm = ({ onLoginSuccess }) => {
     <div className="hero-container">
       <h2>Log in</h2>
       <br></br>
-      <Form onSubmit={handleSubmit} onChange={handleChange}>
+      <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
           <label>Email</label>
           <input
