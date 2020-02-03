@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Image, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
+
 export const SearchResultCard = ({ searchResult, handleShowMovieCard }) => {
   const history = useHistory();
   return (

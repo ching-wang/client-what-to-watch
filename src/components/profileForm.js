@@ -26,6 +26,7 @@ const ProfileForm = ({ user, handleOnSubmit }) => {
           onSubmit={event => handleOnSubmit(event, user.id, profileFormData)}
           onChange={event => handleOnChange(event)}
           className="ui form"
+          inverted
         >
           <Form.Field>
             <label for="username">Username</label>

@@ -1,18 +1,16 @@
 import React from "react";
-import { Card, Image, Icon } from "semantic-ui-react";
+import { Card, Image, Icon, Container } from "semantic-ui-react";
 
 const MovieGroup = ({ user, wishlist }) => {
   return (
-    <>
-      <br></br>
-      <Card.Group>
-        {null}{" "}
+    <Container>
+      <div className="page-container">
         <Card>
-          {/* <Image
-            src="https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
+          <Image
+            src="https://m.media-amazon.com/images/M/MV5BMGI4NjcwMzctM2FmNy00ZjQ0LTk0MTgtMWI1ODA2OTAyOTY2XkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg"
             wrapped
             ui={false}
-          /> */}
+          />
           <Card.Content>
             <Card.Header>Movie Title </Card.Header>
             <Card.Meta>Movie Description</Card.Meta>
@@ -20,7 +18,7 @@ const MovieGroup = ({ user, wishlist }) => {
           </Card.Content>
           <Card.Content extra>
             <a>
-              <Icon name="user" />
+              <Icon name="share alternate" />
               Share with a firend
             </a>
             {/* <Button onClick={() => history.push(`/movies/${wishList.id}`)}>
@@ -28,8 +26,8 @@ const MovieGroup = ({ user, wishlist }) => {
             </Button> */}
           </Card.Content>
         </Card>
-      </Card.Group>
-    </>
+      </div>
+    </Container>
   );
 };
 
