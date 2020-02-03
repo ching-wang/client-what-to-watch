@@ -30,19 +30,14 @@ function App() {
 
   const handleUser = user => {
     setUser(user);
-    // history.push("/");
+    history.push("/");
   };
-
-  // const handleProfileChange = event => {
-  //   setProfileFormData({
-  //     ...profileFormData,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {
     event.preventDefault();
-    API.updateProfile(userId, profileFormData).then(user => handleUser(user));
+    API.updateProfile(userId, profileFormData)
+      .then(user => handleUser(user))
+      .then(history.push("/"));
   };
 
   useEffect(() => {
@@ -50,7 +45,6 @@ function App() {
       API.validate()
         .then(res => {
           handleUser(res.user);
-          // setProfileFormData(res.user);
         })
         .then(() => setValidateUser(true))
         .catch(errorPromise => {
@@ -115,7 +109,7 @@ function App() {
             <MovieLists />
           </Route>
           <Route exact path="/movies/:imdbId">
-            <MovieCard />
+            <MovieCard user={user}/>
           </Route>
           <Route path="/search">
             <SearchResults />
