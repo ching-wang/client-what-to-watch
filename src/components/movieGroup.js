@@ -1,25 +1,22 @@
 import React from "react";
 import { Card, Image, Icon } from "semantic-ui-react";
 
-const MovieGroup = ({ user }) => {
+const MovieGroup = ({ user, wishlist }) => {
   return (
     <>
-      <h1>Your movieLists</h1>
       <br></br>
       <Card.Group>
         {null}{" "}
         <Card>
-          <Image
+          {/* <Image
             src="https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
             wrapped
             ui={false}
-          />
+          /> */}
           <Card.Content>
-            <Card.Header>Weekend Movie List</Card.Header>
-            <Card.Meta>Created 2019</Card.Meta>
-            <Card.Description>
-              Movies that I wanted to watch with the person I love.
-            </Card.Description>
+            <Card.Header>Movie Title </Card.Header>
+            <Card.Meta>Movie Description</Card.Meta>
+            <Card.Description>Movie Plot</Card.Description>
           </Card.Content>
           <Card.Content extra>
             <a>

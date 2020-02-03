@@ -15,9 +15,11 @@ const WishListGroup = ({ user }) => {
       </>
     );
   }
+
+  const wishlistSize = user.wish_lists.length;
   return (
     <>
-      <h1>Your wishlists</h1>
+      <h1>You have {wishlistSize} wishlists</h1>
       <br></br>
       <Card.Group>
         {user.wish_lists.map(wishList => (
