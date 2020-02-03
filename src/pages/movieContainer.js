@@ -2,7 +2,7 @@ import React from "react";
 import MovieGroup from "../components/movieGroup";
 import { Container } from "semantic-ui-react";
 
-const MovieLists = ({ user }) => {
+const MovieContainer = ({ user }) => {
   const renderMovieList = wishLists =>
     wishLists.map(wishlist => {
       return <MovieGroup wishlist={wishlist} />;
@@ -29,6 +29,6 @@ const MovieLists = ({ user }) => {
   );
 };
 
-export default MovieLists;
+export default MovieContainer;
 
 // {for (const wishlist in wishLists) }

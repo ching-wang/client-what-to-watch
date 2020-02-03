@@ -10,8 +10,8 @@ import SignUp from "./pages/signup";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
-import MovieLists from "./pages/movieLists";
 import MovieCard from "./components/movieCard";
+import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
 
 function App() {
@@ -59,6 +59,11 @@ function App() {
     }
   }, []);
 
+  const addToWishlist = (wishListId, imdbID) => {
+    console.log({ wishListId, imdbID });
+    API.addToWishList(wishListId, imdbID).then(console.log);
+  };
+
   return (
     <>
       <Responsive>
@@ -101,17 +106,14 @@ function App() {
           <Route exact path="/login">
             <Login onLoginSuccess={handleLogin} user={user} />
           </Route>
-          <Route exact path="/wishlists/:id">
-            <MovieLists user={user} />
+          <Route exact path="/wishlists/:wishListId">
+            <WishList />
           </Route>
           <Route exact path="/wishlists">
             <WishLists user={user} />
           </Route>
-          <Route exact path="/movieLists">
-            <MovieLists />
-          </Route>
           <Route exact path="/movies/:imdbId">
-            <MovieCard user={user} />
+            <MovieCard user={user} addToWishlist={addToWishlist} />
           </Route>
           <Route path="/search">
             <SearchResults />
