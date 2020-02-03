@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
-const MovieCard = ({ user }) => {
+const MovieCard = ({ user, addToWishlist }) => {
   const { imdbId } = useParams();
   const [movie, setMovie] = useState({});
   useEffect(() => {
@@ -99,8 +99,12 @@ const MovieCard = ({ user }) => {
                 ) : (
                   <>
                     <Dropdown.Header content="Choose a wishList to add to" />
-                    {wishlistOption.map(w => (
-                      <Dropdown.Item key={w.value} {...w} />
+                    {wishlistOption.map(wishlist => (
+                      <Dropdown.Item
+                        key={wishlist.value}
+                        {...wishlist}
+                        onClick={() => addToWishlist(wishlist.id, movie.imdbID)}
+                      />
                     ))}
                   </>
                 )}

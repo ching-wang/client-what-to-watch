@@ -59,6 +59,10 @@ function App() {
     }
   }, []);
 
+  const addToWishlist = (wishListId, imdbID) => {
+    console.log({ wishListId, imdbID });
+  };
+
   return (
     <>
       <Responsive>
@@ -111,7 +115,7 @@ function App() {
             <MovieLists />
           </Route>
           <Route exact path="/movies/:imdbId">
-            <MovieCard user={user} />
+            <MovieCard user={user} addToWishlist={addToWishlist} />
           </Route>
           <Route path="/search">
             <SearchResults />
