@@ -61,6 +61,7 @@ function App() {
 
   const addToWishlist = (wishListId, imdbID) => {
     console.log({ wishListId, imdbID });
+    API.addToWishList(wishListId, imdbID).then(console.log);
   };
 
   return (

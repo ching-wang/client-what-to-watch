@@ -17,45 +17,45 @@ const MovieCard = ({ user, addToWishlist }) => {
     API.getMovie(imdbId).then(res => setMovie(res));
   }, []);
 
-  // let wishlist = [];
-  // wishlist.push(user.wish_lists);
+  // // let wishlist = [];
+  // // wishlist.push(user.wish_lists);
 
-  // console.log(wishlist);
-  // wishlists.map(wishlist => {<Dropdown.Item key={wishlist.value} {...wishlist} />}
-  //   )
-  // const renderWishLists = (user.wishLists) => {
+  // // console.log(wishlist);
+  // // wishlists.map(wishlist => {<Dropdown.Item key={wishlist.value} {...wishlist} />}
+  // //   )
+  // // const renderWishLists = (user.wishLists) => {
 
-  // }
+  // // }
 
-  const wishlistOption = [
-    {
-      key: "Weekend Wishlist",
-      text: "Weekend Wish List",
-      name: "Weekend Wish List",
-      image: {
-        src:
-          "https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
-      }
-    },
-    {
-      key: "Christmas Wishlist",
-      text: "Christmas Wishlist",
-      value: "Christmas Wishlist",
-      image: {
-        src:
-          "http://www.mrcleverman.com/wp-content/uploads/2019/09/mr_cleverman_color_christmas_poster_merry_christmas_tree.jpg"
-      }
-    },
-    {
-      key: "Stevie Feliciano",
-      text: "Stevie Feliciano",
-      value: "Stevie Feliciano",
-      image: {
-        src:
-          "https://d2k7k7fv4ro731.cloudfront.net/media/catalog/product/cache/x800/111/49/111-49-101P.jpg"
-      }
-    }
-  ];
+  // const wishlistOption = [
+  //   {
+  //     key: "Weekend Wishlist",
+  //     text: "Weekend Wish List",
+  //     name: "Weekend Wish List",
+  //     image: {
+  //       src:
+  //         "https://yada.org/wp-content/uploads/2018/11/just-in-the-time-for-the-weekend-our-list-of-5-classic-movies-for-a-relaxing-weekend-in.-these-movie.jpg"
+  //     }
+  //   },
+  //   {
+  //     key: "Christmas Wishlist",
+  //     text: "Christmas Wishlist",
+  //     value: "Christmas Wishlist",
+  //     image: {
+  //       src:
+  //         "http://www.mrcleverman.com/wp-content/uploads/2019/09/mr_cleverman_color_christmas_poster_merry_christmas_tree.jpg"
+  //     }
+  //   },
+  //   {
+  //     key: "Stevie Feliciano",
+  //     text: "Stevie Feliciano",
+  //     value: "Stevie Feliciano",
+  //     image: {
+  //       src:
+  //         "https://d2k7k7fv4ro731.cloudfront.net/media/catalog/product/cache/x800/111/49/111-49-101P.jpg"
+  //     }
+  //   }
+  // ];
 
   return (
     <Container className="page-container">
@@ -99,10 +99,12 @@ const MovieCard = ({ user, addToWishlist }) => {
                 ) : (
                   <>
                     <Dropdown.Header content="Choose a wishList to add to" />
-                    {wishlistOption.map(wishlist => (
+                    {user.wish_lists.map(wishlist => (
                       <Dropdown.Item
-                        key={wishlist.value}
-                        {...wishlist}
+                        key={wishlist.id}
+                        name={wishlist.name}
+                        text={wishlist.name}
+                        image={{ src: wishlist.image }}
                         onClick={() => addToWishlist(wishlist.id, movie.imdbID)}
                       />
                     ))}
