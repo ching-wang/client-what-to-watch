@@ -8,18 +8,22 @@ const MovieLists = ({ user }) => {
       return <MovieGroup wishlist={wishlist} />;
     });
 
+  // if (user.wish_lists < 1)
+  //   return <h1> It seems that you don't have a wishlist yet </h1>;
+
   return (
     <Container>
       {user ? (
         <div className="page-container">
           <h1>
-            You have {user.wish_lists.length} movies in your{" "}
+            You have {user.wish_lists.length} movies in your
+            {user.wish_lists.name}
             {user.wish_lists.name} list.
           </h1>
           {renderMovieList(user.wish_lists)}
         </div>
       ) : (
-        <h2>I'm waiting</h2>
+        <h2>The page is loading, please wait...</h2>
       )}
     </Container>
   );
