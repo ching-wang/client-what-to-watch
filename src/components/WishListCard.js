@@ -2,10 +2,8 @@ import React from "react";
 import { Card, Button, Image } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
-export const WishListCard = ({ wishList }) => {
+export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
   const history = useHistory();
-
-  console.log(wishList);
 
   return (
     <Card>
@@ -17,6 +15,9 @@ export const WishListCard = ({ wishList }) => {
         <Card.Content extra>
           <Button onClick={() => history.push(`/wishlists/${wishList.id}`)}>
             Go to wishlist
+          </Button>
+          <Button onClick={() => handleDeleteWishlist(wishList.id)}>
+            Delete wishlist
           </Button>
         </Card.Content>
       </Card.Content>

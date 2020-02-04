@@ -4,7 +4,7 @@ const API_ENDPOINT = "http://localhost:3000/api/v1";
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const USER_URL = `${API_ENDPOINT}/users/`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
-const WISHLISTS_URL = `${API_ENDPOINT}/wish_lists`;
+const WISHLISTS_URL = `${API_ENDPOINT}/wish_lists/`;
 const WISHLIST_ITEMS_URL = `${API_ENDPOINT}/wish_list_items`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
 const MOVIE_URL = `${API_ENDPOINT}/movies`;
@@ -89,6 +89,16 @@ const postWishlist = wishList =>
     body: JSON.stringify({ wishList })
   }).then(jsonify);
 
+function deleteWishlist(wishListId) {
+  return fetch(WISHLISTS_URL + wishListId, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: localStorage.token
+    }
+  });
+}
+
 const addToWishList = (wishListId, imdbID) => {
   return fetch(WISHLIST_ITEMS_URL, {
     method: "POST",
@@ -103,15 +113,6 @@ const addToWishList = (wishListId, imdbID) => {
     })
   }).then(jsonify);
 };
-
-const deleteWishlist = wishListId =>
-  fetch(WISHLISTS_URL + wishListId, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: localStorage.token
-    }
-  });
 
 const searchMovies = query => {
   query = sanitiseQuery(query);
