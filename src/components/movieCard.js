@@ -1,13 +1,6 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  Card,
-  Image,
-  Icon,
-  Dropdown,
-  Grid
-} from "semantic-ui-react";
+import { Container, Card, Image, Dropdown, Grid } from "semantic-ui-react";
 import API from "../adapters/API";
 
 const MovieCard = ({ user, addToWishlist }) => {

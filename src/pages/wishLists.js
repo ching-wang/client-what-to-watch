@@ -1,6 +1,7 @@
 import React from "react";
 import WishListGroup from "../components/wishListGroup";
 import { Container } from "semantic-ui-react";
+import API from "../adapters/API";
 
 const WishLists = ({ user }) => {
   return (
