@@ -86,11 +86,11 @@ const createWishlist = wishListForm =>
       Accept: "application/json",
       Authorization: localStorage.token
     },
-    body: JSON.stringify({ wishListForm })
+    body: JSON.stringify(wishListForm)
   }).then(jsonify);
 
 function deleteWishlist(wishListId) {
-  return fetch(WISHLISTS_URL + wishListId, {
+  return fetch(`${WISHLISTS_URL}/${wishListId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
@@ -99,8 +99,30 @@ function deleteWishlist(wishListId) {
   }).then(jsonify);
 }
 
+const getUserWishLists = () => {
+  return fetch(WISHLISTS_URL, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(res => res.json());
+};
+
 const getWishList = wishListId => {
   return fetch(`${WISHLISTS_URL}/${wishListId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(res => res.json());
+};
+
+const getUserWishListItems = () => {
+  return fetch(WISHLIST_ITEMS_URL, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -125,6 +147,17 @@ const addToWishList = (wishListId, imdbID) => {
   }).then(jsonify);
 };
 
+const deleteFromWishList = wishListItemId => {
+  return fetch(`${WISHLIST_ITEMS_URL}/${wishListItemId}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(res => console.log(res.status));
+};
+
 const searchMovies = query => {
   query = sanitiseQuery(query);
   return fetch(`${SEARCH_URL}?s=${query}`).then(res => res.json());
@@ -142,13 +175,16 @@ export default {
   login,
   signup,
   validate,
+  getUserWishLists,
   createWishlist,
   deleteWishlist,
   getWishList,
+  getUserWishListItems,
   updateProfile,
   searchMovies,
   getMovie,
   addToWishList,
+  deleteFromWishList,
   hasToken: () => !!localStorage.token,
   clearToken
 };
