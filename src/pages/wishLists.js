@@ -1,12 +1,13 @@
 import React from "react";
 import WishListGroup from "../components/wishListGroup";
 import { Container } from "semantic-ui-react";
+import API from "../adapters/API";
 
-const WishLists = ({ user, deleteWishlist }) => {
+const WishLists = ({ user }) => {
   return (
     <Container>
       <div className="page-container">
-        <WishListGroup user={user} deleteWishlist={deleteWishlist} />
+        <WishListGroup user={user} />
       </div>
     </Container>
   );

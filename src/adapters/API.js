@@ -96,8 +96,19 @@ function deleteWishlist(wishListId) {
       "Content-Type": "application/json",
       Authorization: localStorage.token
     }
-  });
+  }).then(jsonify);
 }
+
+const getWishList = wishListId => {
+  return fetch(`${WISHLISTS_URL}/${wishListId}`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(res => res.json());
+};
 
 const addToWishList = (wishListId, imdbID) => {
   return fetch(WISHLIST_ITEMS_URL, {
@@ -121,17 +132,6 @@ const searchMovies = query => {
 
 const getMovie = imdbID => {
   return fetch(`${MOVIE_URL}/${imdbID}`).then(res => res.json());
-};
-
-const getWishList = wishListId => {
-  return fetch(`${WISHLISTS_URL}/${wishListId}`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Authorization: localStorage.token
-    }
-  }).then(res => res.json());
 };
 
 const clearToken = () => {

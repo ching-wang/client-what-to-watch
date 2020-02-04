@@ -49,29 +49,6 @@ const LoginForm = ({ onLoginSuccess }) => {
         </Button>
       </Form>
     </div>
-    // <form onSubmit={handleSubmit} onChange={handleChange} className="ui form">
-    //   <div className="filed">
-    //     <div className="ui input">
-    //       <input
-    //         type="email"
-    //         name="email"
-    //         placeholder="Email"
-    //         defaultValue={formData.email}
-    //       />
-    //     </div>
-    //   </div>
-    //   <div className="filed">
-    //     <div className="ui input">
-    //       <input
-    //         type="password"
-    //         name="password"
-    //         placeholder="Password"
-    //         defaultValue={formData.password}
-    //       />
-    //     </div>
-    //   </div>
-    //   <input className="ui black button" type="submit" value="Login" />
-    // </form>
   );
 };
 

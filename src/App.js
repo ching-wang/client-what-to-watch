@@ -65,10 +65,6 @@ function App() {
     API.addToWishList(wishListId, imdbID).then(console.log);
   };
 
-  const deleteWishlist = wishlistId => {
-    API.deleteWishlist(wishlistId).then(console.log);
-  };
-
   return (
     <>
       <Responsive>
@@ -113,7 +109,7 @@ function App() {
             <WishList />
           </Route>
           <Route exact path="/wishlists">
-            <WishLists user={user} deleteWishlist={deleteWishlist} />
+            <WishLists user={user} />
           </Route>
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
