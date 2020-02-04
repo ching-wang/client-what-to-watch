@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Card, Button, Container, Grid } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
+import { useHistory, Link } from "react-router-dom";
 import API from "../adapters/API";
 
 const WishListGroup = ({ user }) => {
@@ -33,7 +34,7 @@ const WishListGroup = ({ user }) => {
         </Grid.Column>
         <Grid.Column>
           <Button color="olive" size="small">
-            Create a wishlist
+            <Link to="wishlist/new"> Create a wishlist </Link>
           </Button>
         </Grid.Column>
       </Grid>

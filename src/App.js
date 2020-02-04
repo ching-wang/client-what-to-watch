@@ -10,7 +10,7 @@ import SignUp from "./pages/signup";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
-import MovieCard from "./components/movieCard";
+import CreateWishlist from "./pages/createWishlist";
 import MovieContainer from "./pages/movieContainer";
 import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
@@ -110,6 +110,9 @@ function App() {
           </Route>
           <Route exact path="/wishlists">
             <WishLists user={user} />
+          </Route>
+          <Route exact path="/wishlist/new">
+            <CreateWishlist handleOnSubmit={null} user={user} />
           </Route>
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
