@@ -3,33 +3,33 @@ import { Form, Button, Container } from "semantic-ui-react";
 import { useHistory, Link } from "react-router-dom";
 
 const WishListForm = ({ user, handleOnSubmit }) => {
-  // const [wishListFormData, setWishListFormData] = useState({
-  //   name: "",
-  //   image: "",
-  //   description: ""
-  // });
+  const [wishListFormData, setWishListFormData] = useState({
+    name: "",
+    image: "",
+    description: ""
+  });
 
-  // const handleOnChange = event => {
-  //   setWishListFormData({
-  //     ...wishListFormData,
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
+  const handleOnChange = event => {
+    setWishListFormData({
+      ...wishListFormData,
+      [event.target.name]: event.target.value
+    });
+  };
 
-  // const history = useHistory();
+  const history = useHistory();
 
   return (
     <Container>
       <div className="hero-container">
         <h1>Create a wishlist </h1>
         <Form
-          // // onSubmit={event => handleOnSubmit(event, user.id, wishListFormData)}
-          // onChange={event => handleOnChange(event)}
+          onSubmit={event => handleOnSubmit(event, wishListFormData)}
+          onChange={event => handleOnChange(event)}
           className="ui form"
           inverted
         >
           <Form.Field>
-            <label for="name">Name</label>
+            <label for="name">NAME</label>
             <input
               type="text"
               name="name"
@@ -39,7 +39,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
             />
           </Form.Field>
           <Form.Field>
-            <label for="image">Image</label>
+            <label for="image">COVER</label>
             <input
               type="url"
               name="image"
@@ -49,7 +49,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
             />
           </Form.Field>
           <Form.Field>
-            <label for="bio">Description</label>
+            <label for="bio">DESCRIPTION</label>
             <input
               type="text"
               name="description"
@@ -74,5 +74,3 @@ const WishListForm = ({ user, handleOnSubmit }) => {
 };
 
 export default WishListForm;
-
-// () => history.push("/wishlists")

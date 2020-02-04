@@ -45,6 +45,13 @@ function App() {
       .then(history.push("/"));
   };
 
+  const handleWishListSubmit = (event, wishListFormData) => {
+    event.preventDefault();
+    API.createWishlist(wishListFormData).then(console.log);
+    // .then(user => handleUser(user))
+    // .then(history.push("/"));
+  };
+
   useEffect(() => {
     if (API.hasToken()) {
       API.validate()
@@ -112,7 +119,7 @@ function App() {
             <WishLists user={user} />
           </Route>
           <Route exact path="/wishlist/new">
-            <CreateWishlist handleOnSubmit={null} user={user} />
+            <CreateWishlist handleOnSubmit={handleWishListSubmit} user={user} />
           </Route>
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
