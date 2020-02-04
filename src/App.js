@@ -89,8 +89,6 @@ function App() {
             path="/profile/edit"
             render={routerProps => (
               <EditProfile
-                // profileFormData={profileFormData}
-                // handleProfileChange={handleProfileChange}
                 handleOnSubmit={handleProfileSubmit}
                 user={user}
                 {...routerProps}
@@ -114,7 +112,7 @@ function App() {
             <WishLists user={user} />
           </Route>
           <Route exact path="/movies/:imdbId">
-            <MovieCard user={user} addToWishlist={addToWishlist} />
+            <MovieContainer user={user} addToWishlist={addToWishlist} />
           </Route>
           <Route path="/search">
             <SearchResults />

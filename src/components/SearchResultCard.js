@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Image, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
-export const SearchResultCard = ({ searchResult, handleShowMovieCard }) => {
+export const SearchResultCard = ({ searchResult }) => {
   const history = useHistory();
   return (
     <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
