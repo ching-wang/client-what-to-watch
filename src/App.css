@@ -21,3 +21,12 @@
   margin: auto;
   max-width: 30em !important;
 }
+
+.poster {
+  border-radius: 12px;
+  border: cornsilk;
+}
+
+.poster:hover {
+  transform: scaleX(-1);
+}

@@ -4,21 +4,28 @@ import { useHistory } from "react-router-dom";
 
 export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
   const history = useHistory();
-
   return (
     <Card>
-      <Image src={wishList.image} wrapped ui={false} />
+      <Image className="poster" src={wishList.image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
         <Card.Meta>Testing header</Card.Meta>
-        <Card.Description>Some good filums.</Card.Description>
+        <Card.Description>{wishList.description}</Card.Description>
         <Card.Content extra>
-          <Button onClick={() => history.push(`/wishlists/${wishList.id}`)}>
-            Go to wishlist
-          </Button>
-          <Button onClick={() => handleDeleteWishlist(wishList.id)}>
-            Delete wishlist
-          </Button>
+          <div className="ui two buttons">
+            <Button
+              color="olive"
+              onClick={() => history.push(`/wishlists/${wishList.id}`)}
+            >
+              Go to wishlist
+            </Button>
+            <Button
+              color="orange"
+              onClick={() => handleDeleteWishlist(wishList.id)}
+            >
+              Delete
+            </Button>
+          </div>
         </Card.Content>
       </Card.Content>
     </Card>
