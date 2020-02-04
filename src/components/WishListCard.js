@@ -6,7 +6,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
   const history = useHistory();
   return (
     <Card>
-      <Image className="poster" src={wishList.image} wrapped ui={false} />
+      <Image src={wishList.image} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
         <Card.Meta>Testing header</Card.Meta>

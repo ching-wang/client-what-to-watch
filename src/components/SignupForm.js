@@ -31,8 +31,7 @@ const SignUpForm = ({ handleSignUp }) => {
     <div className="hero-container">
       <h2>Sign Up</h2>
       <br></br>
-      <Form onSubmit={handleSubmit} onChange={handleChange}>
-        {/* {errors.join(", ")} */}
+      <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
           <label>Username</label>
           <input
@@ -62,8 +61,8 @@ const SignUpForm = ({ handleSignUp }) => {
           <br></br>
           <br></br>
           <br></br>
-          <Button primary type="submit">
-            Sign Up
+          <Button color="olive" type="submit" inverted>
+            Submit
           </Button>
         </Form.Field>
       </Form>

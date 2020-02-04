@@ -44,7 +44,7 @@ const LoginForm = ({ onLoginSuccess }) => {
           />
         </Form.Field>
         <br></br>
-        <Button primary type="submit">
+        <Button color="olive" type="submit" inverted>
           Log in
         </Button>
       </Form>
