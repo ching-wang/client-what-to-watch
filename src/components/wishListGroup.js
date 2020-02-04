@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Grid } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
 import { useHistory, Link } from "react-router-dom";
 import API from "../adapters/API";
 
+/**
+ * A WishListGroup is a collection of wish lists belonging to the user.
+ */
 const WishListGroup = ({ user }) => {
-  function deleteWishlist(wishlistId) {
-    API.deleteWishlist(wishlistId).then(console.log);
-  }
-
-  // const [wishlist, setWishlist] = useState([...user.wish_lists]);
+  const [wishLists, setWishLists] = useState([]);
+  useEffect(() => {
+    API.getUserWishLists().then(res => setWishLists(res));
+  }, []);
 
   if (!user) {
     return <></>;
   }
-  if (!user.wish_lists) {
+
+  function deleteWishlist(wishlistId) {
+    API.deleteWishlist(wishlistId).then(() => {
+      setWishLists(wishLists.filter(wl => wl.id !== wishlistId));
+    });
+  }
+
+  if (!wishLists) {
     console.warn(JSON.stringify({ user }));
     return (
       <>
@@ -28,8 +37,8 @@ const WishListGroup = ({ user }) => {
       <Grid columns={2} padded>
         <Grid.Column>
           <h1>
-            You have {user.wish_lists.length} &nbsp;
-            {user.wish_lists.length > 1 ? "wishLists" : "wishlist"}
+            You have {wishLists.length} &nbsp;
+            {wishLists.length > 1 ? "wishLists" : "wishlist"}
           </h1>
         </Grid.Column>
         <Grid.Column>
@@ -39,9 +48,10 @@ const WishListGroup = ({ user }) => {
         </Grid.Column>
       </Grid>
       <br></br>
-      <Card.Group centered={true} itemsPerRow={3}>
-        {user.wish_lists.map(wishList => (
+      <Card.Group centered={true} itemsPerRow={4}>
+        {wishLists.map(wishList => (
           <WishListCard
+            key={wishList.id}
             wishList={wishList}
             use={user}
             handleDeleteWishlist={deleteWishlist}

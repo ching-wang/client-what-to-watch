@@ -3,12 +3,46 @@ import React, { useState, useEffect } from "react";
 import { Container, Card, Image, Dropdown, Grid } from "semantic-ui-react";
 import API from "../adapters/API";
 
-const MovieCard = ({ user, addToWishlist }) => {
+const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
+
   const [movie, setMovie] = useState({});
   useEffect(() => {
     API.getMovie(imdbId).then(res => setMovie(res));
   }, []);
+
+  const [wishListItems, setWishListItems] = useState([]);
+  useEffect(() => {
+    API.getUserWishListItems().then(res => setWishListItems(res));
+  }, []);
+
+  const findWishListItem = wishListId => {
+    return wishListItems.find(wli => {
+      return (
+        movie &&
+        wli.wish_list.id === wishListId &&
+        wli.movie.imdb_id === movie.imdbID
+      );
+    });
+  };
+
+  const toggleInWishlist = (wishListId, imdbID) => {
+    const wishListItem = findWishListItem(wishListId);
+    if (wishListItem) {
+      console.log("Removing wish list item", { wishListId, imdbID });
+      API.deleteFromWishList(wishListItem.id).then(() => {
+        setWishListItems(
+          wishListItems.filter(wli => wli.id !== wishListItem.id)
+        );
+      });
+      return;
+    }
+
+    console.log("Adding wish list item", { wishListId, imdbID });
+    API.addToWishList(wishListId, imdbID).then(res => {
+      setWishListItems([...wishListItems, res]);
+    });
+  };
 
   return (
     <Container className="page-container">
@@ -16,7 +50,7 @@ const MovieCard = ({ user, addToWishlist }) => {
         <Grid.Row>
           <Grid.Column width={2}></Grid.Column>
           <Grid.Column width={5}>
-              <img className="poster" src={movie.Poster} wrapped ui={false} />
+            <img className="poster" src={movie.Poster} wrapped ui={false} />
           </Grid.Column>
           <Grid.Column width={7}>
             <Card.Content>
@@ -27,13 +61,13 @@ const MovieCard = ({ user, addToWishlist }) => {
             <Card.Content>
               <medium>
                 <strong>Director:</strong>
-              </medium>{" "}
+              </medium>
               {movie.Director}
             </Card.Content>
             <Card.Content>
               <medium>
                 <strong>Actors:</strong>
-              </medium>{" "}
+              </medium>
               {movie.Actors}
             </Card.Content>
             <br></br>
@@ -61,7 +95,10 @@ const MovieCard = ({ user, addToWishlist }) => {
                         name={wishlist.name}
                         text={wishlist.name}
                         image={{ src: wishlist.image }}
-                        onClick={() => addToWishlist(wishlist.id, movie.imdbID)}
+                        icon={findWishListItem(wishlist.id) ? "check" : ""}
+                        onClick={() =>
+                          toggleInWishlist(wishlist.id, movie.imdbID)
+                        }
                       />
                     ))}
                   </>

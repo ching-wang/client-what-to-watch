@@ -47,9 +47,7 @@ function App() {
 
   const handleWishListSubmit = (event, wishListFormData) => {
     event.preventDefault();
-    API.createWishlist(wishListFormData).then(console.log);
-    // .then(user => handleUser(user))
-    // .then(history.push("/"));
+    API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
   };
 
   useEffect(() => {
