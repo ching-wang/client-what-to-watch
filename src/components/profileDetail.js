@@ -18,7 +18,7 @@ const ProfileDetail = ({ user }) => {
           </Card.Content>
           <Card.Content extra>
             <Button
-              className="ui red button"
+              className="ui orange button"
               onClick={() => history.push("/profile/edit")}
             >
               Edit

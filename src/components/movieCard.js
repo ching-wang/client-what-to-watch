@@ -14,8 +14,11 @@ const MovieCard = ({ user, addToWishlist }) => {
     <Container className="page-container">
       <Grid>
         <Grid.Row>
-          <Image src={movie.Poster} wrapped ui={false} />
-          <Grid.Column width={8}>
+          <Grid.Column width={2}></Grid.Column>
+          <Grid.Column width={5}>
+              <img className="poster" src={movie.Poster} wrapped ui={false} />
+          </Grid.Column>
+          <Grid.Column width={7}>
             <Card.Content>
               <medium>Genre:</medium> {movie.Genre}
             </Card.Content>
@@ -66,6 +69,7 @@ const MovieCard = ({ user, addToWishlist }) => {
               </Dropdown.Menu>
             </Dropdown>
           </Grid.Column>
+          <Grid.Column width={1}></Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>
