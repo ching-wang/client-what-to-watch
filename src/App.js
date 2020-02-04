@@ -11,6 +11,7 @@ import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
 import MovieCard from "./components/movieCard";
+import MovieContainer from "./pages/movieContainer";
 import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
 

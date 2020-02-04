@@ -5,7 +5,6 @@ import { WishListCard } from "./WishListCard";
 const WishListGroup = ({ user }) => {
   if (!user) {
     return <></>;
-    // return <Redirect to="/login"></Redirect>;
   }
   if (!user.wish_lists) {
     console.warn(JSON.stringify({ user }));

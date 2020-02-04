@@ -32,7 +32,9 @@ const WishList = () => {
               <WishListItem key={wli.id} wishListItem={wli} />
             ))
           ) : (
-            <></>
+            <>
+              <h1>Sorry, no wishList found</h1>
+            </>
           )}
         </Card.Group>
       </div>
