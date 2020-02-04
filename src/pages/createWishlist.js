@@ -1,14 +1,10 @@
 import React from "react";
 import WishlistForm from "../components/wishListForm";
 
-const CreateWishList = ({ user, handleOnSubmit, handleProfileChange }) => {
+const CreateWishList = ({ user, handleOnSubmit }) => {
   return (
     <>
-      <WishlistForm
-        user={user}
-        // handleOnChange={handleProfileChange}
-        // handleOnSubmit={handleOnSubmit}
-      />
+      <WishlistForm user={user} handleOnSubmit={handleOnSubmit} />
     </>
   );
 };
