@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { Link, usehistory, useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
-import SignUpForm from "./SignupForm";
 
 const LoginForm = ({ onLoginSuccess }) => {
-  let history = useHistory();
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -47,7 +45,7 @@ const LoginForm = ({ onLoginSuccess }) => {
           />
         </Form.Field>
         <br></br>
-        <Button color="orange" type="submit" inverted>
+        <Button color="white" type="submit" inverted>
           Log in
         </Button>
         <br></br>

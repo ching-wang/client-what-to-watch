@@ -1,6 +1,14 @@
 import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { Container, Card, Image, Dropdown, Grid } from "semantic-ui-react";
+import {
+  Container,
+  Card,
+  Image,
+  Dropdown,
+  Grid,
+  Button,
+  Icon
+} from "semantic-ui-react";
 import API from "../adapters/API";
 
 const MovieCard = ({ user }) => {
@@ -105,6 +113,13 @@ const MovieCard = ({ user }) => {
                 )}
               </Dropdown.Menu>
             </Dropdown>
+            <Icon
+              name="share alternate square"
+              inverted
+              color="orange"
+              size="big"
+            />
+            <Button circular icon="share" size="mini" color="orange" />
           </Grid.Column>
           <Grid.Column width={1}></Grid.Column>
         </Grid.Row>
