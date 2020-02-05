@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Card, Image, Button, Container } from "semantic-ui-react";
+import { Card, Image, Button, Container, Icon, Popup } from "semantic-ui-react";
 
 const ProfileDetail = ({ user, onDeleteAccount }) => {
   const history = useHistory();
@@ -15,19 +15,42 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             <Card.Header>{user.username}</Card.Header>
             <Card.Meta>Joined in 2016</Card.Meta>
             <Card.Description>{user.bio}</Card.Description>
+            <br></br>
+            <Card.Meta>
+              <Popup
+                content="Edit your profile"
+                size="large"
+                position="left center"
+                trigger={
+                  <Icon
+                    name="edit outline"
+                    size="large"
+                    color="orange"
+                    onClick={() => history.push("/profile/edit")}
+                  />
+                }
+              />
+            </Card.Meta>
           </Card.Content>
-          <Button
-            className="ui yellow button"
-            onClick={() => history.push("/profile/edit")}
-          >
-            EDIT PROFILE
-          </Button>
-          <Button
-            className="ui orange button"
-            onClick={() => onDeleteAccount(user.id)}
-          >
-            DELETE ACCOUNT
-          </Button>
+          <Popup
+            content="Delete your account"
+            position="right center"
+            size="large"
+            trigger={
+              // <Icon
+              //   name="edit outline"
+              //   size="large"
+              //   color="orange"
+              //   onClick={() => history.push("/profile/edit")}
+              // />
+              <Button
+                className="ui orange button"
+                onClick={() => onDeleteAccount(user.id)}
+              >
+                DELETE ACCOUNT
+              </Button>
+            }
+          />
         </Card>
       </div>
     </Container>
