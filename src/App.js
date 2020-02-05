@@ -47,7 +47,7 @@ function App() {
 
   const handleSingupSubmit = (event, signupformData) => {
     event.preventDefault();
-    console.log(signupformData);
+    API.signup(signupformData).then(console.log);
   };
 
   const handleWishListSubmit = (event, wishListFormData) => {

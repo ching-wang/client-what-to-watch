@@ -38,20 +38,19 @@ const login = loginDetails =>
     .then(handleLoginResponse);
 
 const signup = signUpData => {
-  fetch(USER_URL, {
+  return fetch(USER_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  })
-    .then(jsonify)
-    .then(user => {
-      if (user) {
-        return login(signUpData.email, signUpData.password);
-      }
-    });
+  }).then(jsonify);
+  // .then(user => {
+  //   if (user) {
+  //     return login(signUpData.email, signUpData.password);
+  //   }
+  // });
 };
 
 const updateProfile = (userId, newProfileFormData) => {
