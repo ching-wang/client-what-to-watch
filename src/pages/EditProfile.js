@@ -10,7 +10,7 @@ const EditProfile = ({
   return (
     <ProfileForm
       user={user}
-      profileFormData={profileFormData}
+      // profileFormData={profileFormData}
       handleOnChange={handleProfileChange}
       handleOnSubmit={handleOnSubmit}
     />

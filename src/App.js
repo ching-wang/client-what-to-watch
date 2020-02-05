@@ -45,6 +45,11 @@ function App() {
       .then(history.push("/"));
   };
 
+  const handleSingupSubmit = (event, signupformData) => {
+    event.preventDefault();
+    console.log(signupformData);
+  };
+
   const handleWishListSubmit = (event, wishListFormData) => {
     event.preventDefault();
     API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
@@ -104,7 +109,7 @@ function App() {
             exact
             path="/signup"
             render={routerProps => (
-              <SignUp onSuccess={handleUser} {...routerProps} />
+              <SignUp handleOnSubmit={handleSingupSubmit} {...routerProps} />
             )}
           />
           <Route exact path="/login">
