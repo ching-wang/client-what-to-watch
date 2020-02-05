@@ -21,9 +21,6 @@ const MovieGroup = ({ user, wishlist }) => {
               <Icon name="share alternate" />
               Share with a firend
             </a>
-            {/* <Button onClick={() => history.push(`/movies/${wishList.id}`)}>
-              Go to wishlist
-            </Button> */}
           </Card.Content>
         </Card>
       </div>

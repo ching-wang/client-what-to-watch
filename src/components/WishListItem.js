@@ -6,19 +6,22 @@ export const WishListItem = ({ wishListItem }) => {
   const history = useHistory();
 
   return (
-    <Card onClick={() => history.push(`/movies/${wishListItem.movie.imdb_id}`)}>
-      <Image src={wishListItem.movie.poster} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{wishListItem.movie.title}</Card.Header>
-        <Card.Meta>
-          <span className="date">{wishListItem.movie.year}</span>
-        </Card.Meta>
-        <Card.Description>
-          <a>
-            <Icon name="eye" /> View Details
-          </a>
-        </Card.Description>
-      </Card.Content>
-    </Card>
+      <Card
+        rasied
+        onClick={() => history.push(`/movies/${wishListItem.movie.imdb_id}`)}
+      >
+        <Image src={wishListItem.movie.poster} wrapped ui={false} />
+        <Card.Content>
+          <Card.Header>{wishListItem.movie.title}</Card.Header>
+          <Card.Meta>
+            <span className="date">{wishListItem.movie.year}</span>
+          </Card.Meta>
+          <Card.Description>
+            <a>
+              <Icon name="eye" /> View Details
+            </a>
+          </Card.Description>
+        </Card.Content>
+      </Card>
   );
 };

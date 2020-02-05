@@ -10,7 +10,19 @@ export const WishListCard = ({
   const history = useHistory();
   return (
     <Card>
-      <Image src={wishList.image} wrapped ui={false} />
+      <Popup
+        content="Click the picture see wishlist details"
+        position="top right"
+        size="medium"
+        trigger={
+          <Image
+            src={wishList.image}
+            wrapped
+            ui={false}
+            onClick={() => history.push(`/wishlists/${wishList.id}`)}
+          />
+        }
+      />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
         <Card.Meta>Testing header</Card.Meta>
@@ -26,7 +38,7 @@ export const WishListCard = ({
                 name="edit outline"
                 size="large"
                 color="orange"
-                onClick={() => history.push("/profile/edit")}
+                onClick={() => history.push("/wishlist/edit")}
               />
             }
           />
@@ -45,19 +57,6 @@ export const WishListCard = ({
           </Button>
         }
       />
-
-      {/* <Button
-        color="olive"
-        onClick={() => history.push(`/wishlists/${wishList.id}`)}
-      >
-        GO TO WISHLIST
-      </Button>
-      <Button color="red" onClick={() => handleEditWishList(wishList.id)}>
-        EDIT
-      </Button>
-      <Button color="orange" >
-        DELETE
-      </Button> */}
     </Card>
   );
 };

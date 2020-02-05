@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Container, Grid } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
-import { useHistory, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import API from "../adapters/API";
 
 /**
@@ -38,7 +38,7 @@ const WishListGroup = ({ user }) => {
 
   return (
     <>
-      <Grid columns={2} padded>
+      <Grid columns={2}>
         <Grid.Column>
           <h1>
             You have {wishLists.length} &nbsp;
@@ -46,11 +46,15 @@ const WishListGroup = ({ user }) => {
           </h1>
         </Grid.Column>
         <Grid.Column>
-          <Button basic color="olive" content="Olive" size="small">
-            <Link to="wishlist/new"> Create a wishlist </Link>
+          <Button color="olive" content="Olive" size="small">
+            <NavLink style={{ color: "black" }} to="wishlist/new">
+              {" "}
+              Create a wishlist{" "}
+            </NavLink>
           </Button>
         </Grid.Column>
       </Grid>
+
       <br></br>
       <Card.Group centered={true} itemsPerRow={4}>
         {wishLists.map(wishList => (
