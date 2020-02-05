@@ -42,21 +42,21 @@ export const WishListCard = ({
               />
             }
           />
+          <Popup
+            content="Delete this wishlist"
+            size="medium"
+            position="top center"
+            trigger={
+              <Icon
+                name="delete"
+                size="large"
+                color="orange"
+                onClick={() => handleDeleteWishlist(wishList.id)}
+              />
+            }
+          />
         </Card.Meta>
       </Card.Content>
-      <Popup
-        content="Delete this wishlist"
-        position="top center"
-        size="medium"
-        trigger={
-          <Button
-            className="ui orange button"
-            onClick={() => handleDeleteWishlist(wishList.id)}
-          >
-            DELETE
-          </Button>
-        }
-      />
     </Card>
   );
 };
