@@ -30,21 +30,21 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                   />
                 }
               />
+              <Popup
+                content="Delete your account"
+                size="medium"
+                position="left center"
+                trigger={
+                  <Icon
+                    name="user delete"
+                    size="large"
+                    color="orange"
+                    onClick={() => onDeleteAccount(user.id)}
+                  />
+                }
+              />
             </Card.Meta>
           </Card.Content>
-          <Popup
-            content="Delete your account"
-            position="right center"
-            size="large"
-            trigger={
-              <Button
-                className="ui orange button"
-                onClick={() => onDeleteAccount(user.id)}
-              >
-                DELETE ACCOUNT
-              </Button>
-            }
-          />
         </Card>
       </div>
     </Container>
