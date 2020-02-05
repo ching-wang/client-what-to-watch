@@ -7,7 +7,7 @@ const Login = ({ onLoginSuccess }) => {
     <>
       <div className="ui text container">
         <div className="hero-container">
-          <h2>Please login here </h2>
+          <h2>Please Login </h2>
           <LoginForm onLoginSuccess={onLoginSuccess} />
         </div>
       </div>

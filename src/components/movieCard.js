@@ -37,7 +37,7 @@ const MovieCard = ({ user }) => {
   const toggleInWishlist = (wishListId, imdbID) => {
     const wishListItem = findWishListItem(wishListId);
     if (wishListItem) {
-      console.log("Removing wish list item", { wishListId, imdbID });
+      // console.log("Removing wish list item", { wishListId, imdbID });
       API.deleteFromWishList(wishListItem.id).then(() => {
         setWishListItems(
           wishListItems.filter(wli => wli.id !== wishListItem.id)
@@ -46,7 +46,7 @@ const MovieCard = ({ user }) => {
       return;
     }
 
-    console.log("Adding wish list item", { wishListId, imdbID });
+    // console.log("Adding wish list item", { wishListId, imdbID });
     API.addToWishList(wishListId, imdbID).then(res => {
       setWishListItems([...wishListItems, res]);
     });
@@ -119,7 +119,6 @@ const MovieCard = ({ user }) => {
               color="orange"
               size="big"
             />
-            <Button circular icon="share" size="mini" color="orange" />
           </Grid.Column>
           <Grid.Column width={1}></Grid.Column>
         </Grid.Row>
