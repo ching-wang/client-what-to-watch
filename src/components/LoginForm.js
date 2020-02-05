@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, NavLink } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -8,6 +8,8 @@ const LoginForm = ({ onLoginSuccess }) => {
     email: "",
     password: ""
   });
+
+  const [error, setError] = useState("");
 
   const handleChange = event => {
     setFormData({
@@ -44,8 +46,7 @@ const LoginForm = ({ onLoginSuccess }) => {
             defaultValue={formData.password}
           />
         </Form.Field>
-        <br></br>
-        <Button color="white" type="submit" inverted>
+        <Button color="olive" type="submit">
           LOG IN
         </Button>
         <br></br>
@@ -54,8 +55,16 @@ const LoginForm = ({ onLoginSuccess }) => {
         <br></br>
         <br></br>
       </Form>
-      <h4>Don't have an account?</h4>
-      <Button size="small" onClick={() => history.push("/signup")}>SIGN UP</Button>
+      <h4>
+        Don't have an account?{" "}
+        <NavLink to="/signup" style={{ color: "#ebe534" }}>
+          {" "}
+          Sign up now{" "}
+        </NavLink>
+      </h4>
+      {/* <Button size="small" onClick={() => history.push("/signup")}>
+        SIGN UP
+      </Button> */}
     </>
   );
 };

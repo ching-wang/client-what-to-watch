@@ -10,6 +10,7 @@ import SignUp from "./pages/signup";
 import WishLists from "./pages/wishLists";
 import Profile from "./pages/profile";
 import EditProfile from "./pages/EditProfile";
+import EditWishlist from "./pages/editWishlist";
 import CreateWishlist from "./pages/createWishlist";
 import MovieContainer from "./pages/movieContainer";
 import WishList from "./pages/wishList";
@@ -59,6 +60,16 @@ function App() {
   const handleWishListSubmit = (event, wishListFormData) => {
     event.preventDefault();
     API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
+  };
+
+  const handleUpdateWishListSubmit = (event, userId, wishListFormData) => {
+    console.log(wishListFormData);
+    // event.preventDefault();
+    // API.updateWishlist(userId, wishListFormData)
+    //   .then(data => {
+    //     handleUser(data.user);
+    //   })
+    //   .then(history.push("/wishlist"));
   };
 
   useEffect(() => {
@@ -135,6 +146,17 @@ function App() {
           <Route exact path="/wishlist/new">
             <CreateWishlist handleOnSubmit={handleWishListSubmit} user={user} />
           </Route>
+          <Route
+            exact
+            path="/wishlist/edit"
+            render={routerProps => (
+              <EditWishlist
+                handleOnSubmit={handleUpdateWishListSubmit}
+                user={user}
+                {...routerProps}
+              />
+            )}
+          />
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
           </Route>

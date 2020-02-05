@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form, Button, Segment, Grid } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 
 const SignUpForm = ({ handleOnSubmit }) => {
   const [signupformData, setSignupformData] = useState({
@@ -43,6 +43,16 @@ const SignUpForm = ({ handleOnSubmit }) => {
           />
         </Form.Field>
         <Form.Field>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="example@test.com"
+            defaultValue={signupformData.email}
+          />
+        </Form.Field>
+        <Form.Field>
           <label>Password</label>
           <input
             type="password"
@@ -70,30 +80,26 @@ const SignUpForm = ({ handleOnSubmit }) => {
             defaultValue={signupformData.bio}
           />
         </Form.Field>
-        <Form.Field>
-          <label for="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            autoComplete="email"
-            placeholder="example@test.com"
-            defaultValue={signupformData.email}
-          />
-        </Form.Field>
         <Button className="signUpBtn" color="olive" type="submit">
           SIGN UP
         </Button>
       </Form>
       <br></br>
-      <h4>Already have an account?</h4>
-      <Button
+      <h4>
+        Already have an account?{" "}
+        <NavLink to="/login" style={{ color: "#ebe534" }}>
+          {" "}
+          Click here to Login{" "}
+        </NavLink>
+      </h4>
+      {/* <Button
         color="grey"
         inverted
         size="small"
         onClick={() => history.push("/login")}
       >
         LOGIN
-      </Button>
+      </Button> */}
     </div>
   );
 };

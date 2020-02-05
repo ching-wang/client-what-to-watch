@@ -35,7 +35,11 @@ const login = loginDetails =>
     body: JSON.stringify({ user: loginDetails })
   })
     .then(jsonify)
-    .then(handleLoginResponse);
+    .then(handleLoginResponse)
+    .catch(data => {
+      // debugger;
+      // data.then(data => {debugger});
+    });;
 
 const signup = signUpData => {
   return fetch(USER_URL, {
@@ -51,7 +55,6 @@ const signup = signUpData => {
 };
 
 const handleSignupResponse = data => {
-
   if (data.token) {
     localStorage.token = data.token;
     return data.user;
