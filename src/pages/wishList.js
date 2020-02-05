@@ -9,7 +9,10 @@ const WishList = () => {
   const [wishList, setWishList] = useState({});
 
   useEffect(() => {
-    API.getWishList(wishListId).then(res => {console.log(res);setWishList(res)});
+    API.getWishList(wishListId).then(res => {
+      console.log(res);
+      setWishList(res);
+    });
   }, []);
 
   return wishList.wish_list_items ? (
@@ -17,7 +20,8 @@ const WishList = () => {
       <div className="page-container">
         <h1>{wishList.name}</h1>
         <h2>
-          {wishList.wish_list_items.length}
+          {" "}
+          You have &nbsp; {wishList.wish_list_items.length}
           &nbsp;{wishList.wish_list_items.length > 1 ? "movies" : "movie"}
         </h2>
         <Card.Group

@@ -7,7 +7,8 @@ import {
   Dropdown,
   Grid,
   Button,
-  Icon
+  Icon,
+  Popup
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -113,11 +114,18 @@ const MovieCard = ({ user }) => {
                 )}
               </Dropdown.Menu>
             </Dropdown>
-            <Icon
-              name="share alternate square"
-              inverted
-              color="orange"
-              size="big"
+            <Popup
+              content="Share this film"
+              size="medium"
+              position="bottom right"
+              trigger={
+                <Icon
+                  name="share alternate square"
+                  size="big"
+                  color="orange"
+                  onClick={null}
+                />
+              }
             />
           </Grid.Column>
           <Grid.Column width={1}></Grid.Column>
