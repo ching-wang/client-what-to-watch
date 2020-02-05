@@ -146,6 +146,17 @@ const addToWishList = (wishListId, imdbID) => {
   }).then(jsonify);
 };
 
+const deleteUser = userId => {
+  return fetch(USER_URL + userId, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(clearToken());
+};
+
 const deleteFromWishList = wishListItemId => {
   return fetch(`${WISHLIST_ITEMS_URL}/${wishListItemId}`, {
     method: "DELETE",
@@ -172,6 +183,7 @@ const clearToken = () => {
 
 export default {
   login,
+  deleteUser,
   signup,
   validate,
   getUserWishLists,

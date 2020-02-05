@@ -21,15 +21,6 @@ const SignUpForm = ({ handleOnSubmit }) => {
     });
   };
 
-  // const handleSubmit = event => {
-  //   event.preventDefault();
-  //   API.signup(formData)
-  //     .then(user => handleSignUp(user))
-  //     .catch(errorPromise => {
-  //       errorPromise.then(errorData => setErrors(errorData.errors));
-  //     });
-  // };
-
   return (
     <div className="hero-container">
       <h2>Sign Up For Free </h2>
@@ -91,12 +82,12 @@ const SignUpForm = ({ handleOnSubmit }) => {
         <br></br>
         <br></br>
         <Button className="signUpBtn" color="olive" type="submit">
-          Sign up
+          SIGN UP
         </Button>
       </Form>
-      <h4>Already signed up?</h4>
+      <h4>Already have an account?</h4>
       <Button size="small">
-        <Link to="/login">Log me in </Link>
+        <Link to="/login">Log in </Link>
       </Button>
     </div>
   );

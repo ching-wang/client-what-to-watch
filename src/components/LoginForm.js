@@ -46,15 +46,17 @@ const LoginForm = ({ onLoginSuccess }) => {
         </Form.Field>
         <br></br>
         <Button color="white" type="submit" inverted>
-          Log in
+          LOG IN
         </Button>
         <br></br>
         <br></br>
+        <Link to="/">Forgot your password?</Link>
+        <br></br>
         <br></br>
       </Form>
-      <h4>Haven't signed up yet?</h4>
+      <h4>Don't have an account?</h4>
       <Button size="small">
-        <Link to="/signup">Sign up now </Link>
+        <Link to="/signup">SIGN UP NOW </Link>
       </Button>
     </div>
   );

@@ -6,7 +6,8 @@ const Profile = ({
   user,
   handleLogOut,
   handleProfileSubmit,
-  handleProfileOnChange
+  handleProfileOnChange,
+  handleDeleteAccount
 }) => {
   if (!user) {
     return <></>;
@@ -18,6 +19,7 @@ const Profile = ({
         handleLogOut={handleLogOut}
         handleSubmit={handleProfileSubmit}
         handleOnChange={handleProfileOnChange}
+        onDeleteAccount={handleDeleteAccount}
       />
     </>
   );

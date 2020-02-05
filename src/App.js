@@ -50,6 +50,12 @@ function App() {
     API.signup(signupformData).then(console.log);
   };
 
+  const handleDeleteAccount = userId => {
+    API.deleteUser(userId).then(() => {
+      history.push("/");
+    });
+  };
+
   const handleWishListSubmit = (event, wishListFormData) => {
     event.preventDefault();
     API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
@@ -91,7 +97,12 @@ function App() {
             exact
             path="/profile"
             render={routerProps => (
-              <Profile user={user} onLogout={logout} {...routerProps} />
+              <Profile
+                user={user}
+                onLogout={logout}
+                handleDeleteAccount={handleDeleteAccount}
+                {...routerProps}
+              />
             )}
           />
           <Route
