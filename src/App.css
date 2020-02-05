@@ -30,3 +30,8 @@
 .poster:hover {
   transform: scaleX(-1);
 }
+
+.signUpBtn {
+  display: flex;
+  justify-content: center;
+}

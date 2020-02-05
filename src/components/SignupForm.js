@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import API from "../adapters/API";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Segment, Grid } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const SignUpForm = ({ handleSignUp }) => {
   const [formData, setFormData] = useState({
@@ -29,7 +30,7 @@ const SignUpForm = ({ handleSignUp }) => {
 
   return (
     <div className="hero-container">
-      <h2>Sign Up</h2>
+      <h2>Sign Up For Free </h2>
       <br></br>
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
@@ -60,12 +61,15 @@ const SignUpForm = ({ handleSignUp }) => {
           />
           <br></br>
           <br></br>
-          <br></br>
-          <Button color="olive" type="submit" inverted>
-            Submit
-          </Button>
         </Form.Field>
+        <Button className="signUpBtn" color="olive" type="submit" inverted>
+          Sign up
+        </Button>
       </Form>
+      <h4>Already signed up</h4>
+      <Button size="small">
+        <Link to="/login">Log me in </Link>
+      </Button>
     </div>
   );
 };
