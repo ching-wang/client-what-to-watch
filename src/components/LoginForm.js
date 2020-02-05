@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -22,7 +23,7 @@ const LoginForm = ({ onLoginSuccess }) => {
 
   return (
     <div className="hero-container">
-      <h2>Log in</h2>
+      <h2>Please login here </h2>
       <br></br>
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
@@ -44,12 +45,23 @@ const LoginForm = ({ onLoginSuccess }) => {
           />
         </Form.Field>
         <br></br>
-        <Button primary type="submit">
-          Log in
+        <Button color="white" type="submit" inverted>
+          LOG IN
         </Button>
+        <br></br>
+        <br></br>
+        <Link to="/">Forgot your password?</Link>
+        <br></br>
+        <br></br>
       </Form>
+      <h4>Don't have an account?</h4>
+      <Button size="small">
+        <Link to="/signup">SIGN UP NOW </Link>
+      </Button>
     </div>
   );
 };
 
 export default LoginForm;
+
+// onClick={() => history.push("/signup")}

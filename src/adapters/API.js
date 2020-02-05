@@ -38,20 +38,19 @@ const login = loginDetails =>
     .then(handleLoginResponse);
 
 const signup = signUpData => {
-  fetch(USER_URL, {
+  return fetch(USER_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  })
-    .then(jsonify)
-    .then(user => {
-      if (user) {
-        return login(signUpData.email, signUpData.password);
-      }
-    });
+  }).then(jsonify);
+  // .then(user => {
+  //   if (user) {
+  //     return login(signUpData.email, signUpData.password);
+  //   }
+  // });
 };
 
 const updateProfile = (userId, newProfileFormData) => {
@@ -147,6 +146,17 @@ const addToWishList = (wishListId, imdbID) => {
   }).then(jsonify);
 };
 
+const deleteUser = userId => {
+  return fetch(USER_URL + userId, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    }
+  }).then(clearToken());
+};
+
 const deleteFromWishList = wishListItemId => {
   return fetch(`${WISHLIST_ITEMS_URL}/${wishListItemId}`, {
     method: "DELETE",
@@ -173,6 +183,7 @@ const clearToken = () => {
 
 export default {
   login,
+  deleteUser,
   signup,
   validate,
   getUserWishLists,

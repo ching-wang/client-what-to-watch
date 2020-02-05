@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { Card, Image, Button, Container } from "semantic-ui-react";
 
-const ProfileDetail = ({ user }) => {
+const ProfileDetail = ({ user, onDeleteAccount }) => {
   const history = useHistory();
 
   return (
@@ -16,14 +16,18 @@ const ProfileDetail = ({ user }) => {
             <Card.Meta>Joined in 2016</Card.Meta>
             <Card.Description>{user.bio}</Card.Description>
           </Card.Content>
-          <Card.Content extra>
-            <Button
-              className="ui orange button"
-              onClick={() => history.push("/profile/edit")}
-            >
-              Edit
-            </Button>
-          </Card.Content>
+          <Button
+            className="ui yellow button"
+            onClick={() => history.push("/profile/edit")}
+          >
+            EDIT PROFILE
+          </Button>
+          <Button
+            className="ui orange button"
+            onClick={() => onDeleteAccount(user.id)}
+          >
+            DELETE ACCOUNT
+          </Button>
         </Card>
       </div>
     </Container>

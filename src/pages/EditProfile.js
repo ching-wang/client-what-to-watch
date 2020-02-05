@@ -1,19 +1,22 @@
 import React from "react";
 import ProfileForm from "../components/profileForm";
 
+
 const EditProfile = ({
   user,
-  profileFormData,
   handleOnSubmit,
-  handleProfileChange
+  handleProfileChange,
+  handleDeleteAccount
 }) => {
   return (
-    <ProfileForm
-      user={user}
-      profileFormData={profileFormData}
-      handleOnChange={handleProfileChange}
-      handleOnSubmit={handleOnSubmit}
-    />
+    <>
+      <ProfileForm
+        user={user}
+        handleOnChange={handleProfileChange}
+        handleOnSubmit={handleOnSubmit}
+        handleDeleteAccount={handleDeleteAccount}
+      />
+    </>
   );
 };
 

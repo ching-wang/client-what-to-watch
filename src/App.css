@@ -23,10 +23,15 @@
 }
 
 .poster {
-  border-radius: 12px;
+  border-radius: 5px;
   border: cornsilk;
 }
 
 .poster:hover {
   transform: scaleX(-1);
+}
+
+.signUpBtn {
+  display: flex;
+  justify-content: center;
 }
