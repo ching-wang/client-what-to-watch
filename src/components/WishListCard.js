@@ -2,7 +2,11 @@ import React from "react";
 import { Card, Button, Image } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
-export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
+export const WishListCard = ({
+  wishList,
+  handleDeleteWishlist,
+  handleEditWishList
+}) => {
   const history = useHistory();
   return (
     <Card>
@@ -11,23 +15,19 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
         <Card.Header>{wishList.name}</Card.Header>
         <Card.Meta>Testing header</Card.Meta>
         <Card.Description>{wishList.description}</Card.Description>
-        <Card.Content extra>
-          <div className="ui two buttons">
-            <Button
-              color="olive"
-              onClick={() => history.push(`/wishlists/${wishList.id}`)}
-            >
-              Go to wishlist
-            </Button>
-            <Button
-              color="orange"
-              onClick={() => handleDeleteWishlist(wishList.id)}
-            >
-              Delete
-            </Button>
-          </div>
-        </Card.Content>
       </Card.Content>
+      <Button
+        color="olive"
+        onClick={() => history.push(`/wishlists/${wishList.id}`)}
+      >
+        GO TO WISHLIST
+      </Button>
+      <Button color="red" onClick={() => handleEditWishList(wishList.id)}>
+        EDIT
+      </Button>
+      <Button color="orange" onClick={() => handleDeleteWishlist(wishList.id)}>
+        DELETE
+      </Button>
     </Card>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import API from "../adapters/API";
 import { Form, Button, Segment, Grid } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const SignUpForm = ({ handleOnSubmit }) => {
   const [signupformData, setSignupformData] = useState({
@@ -11,6 +11,8 @@ const SignUpForm = ({ handleOnSubmit }) => {
     email: "",
     password: ""
   });
+
+  let history = useHistory();
 
   // const [errors, setErrors] = useState([]);
 
@@ -79,15 +81,19 @@ const SignUpForm = ({ handleOnSubmit }) => {
             defaultValue={signupformData.email}
           />
         </Form.Field>
-        <br></br>
-        <br></br>
         <Button className="signUpBtn" color="olive" type="submit">
           SIGN UP
         </Button>
       </Form>
+      <br></br>
       <h4>Already have an account?</h4>
-      <Button size="small">
-        <Link to="/login">Log in </Link>
+      <Button
+        color="grey"
+        inverted
+        size="small"
+        onClick={() => history.push("/login")}
+      >
+        LOGIN
       </Button>
     </div>
   );
