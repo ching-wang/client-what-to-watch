@@ -19,8 +19,6 @@ function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
-  const [wishLists, setWishlists] = useState([]);
-  const [movie, setMovie] = useState();
   const history = useHistory();
 
   const logout = () => {
@@ -47,12 +45,12 @@ function App() {
 
   const handleSingupSubmit = (event, signupformData) => {
     event.preventDefault();
-    API.signup(signupformData).then(console.log);
+    API.signup(signupformData).then(user => handleLogin(user));
   };
 
   const handleDeleteAccount = userId => {
     API.deleteUser(userId).then(() => {
-      history.push("/");
+      logout();
     });
   };
 

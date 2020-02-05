@@ -45,12 +45,16 @@ const signup = signUpData => {
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  }).then(jsonify);
-  // .then(user => {
-  //   if (user) {
-  //     return login(signUpData.email, signUpData.password);
-  //   }
-  // });
+  })
+    .then(jsonify)
+    .then(handleSignupResponse);
+};
+
+const handleSignupResponse = user => {
+  if (user.token) {
+    localStorage.token = user.token;
+  }
+  return user;
 };
 
 const updateProfile = (userId, newProfileFormData) => {
@@ -63,10 +67,6 @@ const updateProfile = (userId, newProfileFormData) => {
     },
     body: JSON.stringify(newProfileFormData)
   }).then(jsonify);
-};
-
-const handleSignupResponse = signupResponse => {
-  login(signupResponse);
 };
 
 const validate = () =>
@@ -154,7 +154,7 @@ const deleteUser = userId => {
       Accept: "application/json",
       Authorization: localStorage.token
     }
-  }).then(clearToken());
+  });
 };
 
 const deleteFromWishList = wishListItemId => {
@@ -191,6 +191,7 @@ export default {
   deleteWishlist,
   getWishList,
   getUserWishListItems,
+  handleSignupResponse,
   updateProfile,
   searchMovies,
   getMovie,
