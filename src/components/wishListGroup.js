@@ -23,6 +23,10 @@ const WishListGroup = ({ user }) => {
     });
   }
 
+  function editWishlist(wishListId) {
+    console.log(wishListId);
+  }
+
   if (!wishLists) {
     console.warn(JSON.stringify({ user }));
     return (
@@ -55,6 +59,7 @@ const WishListGroup = ({ user }) => {
             wishList={wishList}
             use={user}
             handleDeleteWishlist={deleteWishlist}
+            handleEditWishList={editWishlist}
           />
         ))}
       </Card.Group>

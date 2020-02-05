@@ -9,7 +9,7 @@ const WishList = () => {
   const [wishList, setWishList] = useState({});
 
   useEffect(() => {
-    API.getWishList(wishListId).then(res => setWishList(res));
+    API.getWishList(wishListId).then(res => {console.log(res);setWishList(res)});
   }, []);
 
   return wishList.wish_list_items ? (

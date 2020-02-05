@@ -50,11 +50,12 @@ const signup = signUpData => {
     .then(handleSignupResponse);
 };
 
-const handleSignupResponse = user => {
-  if (user.token) {
-    localStorage.token = user.token;
+const handleSignupResponse = data => {
+
+  if (data.token) {
+    localStorage.token = data.token;
+    return data.user;
   }
-  return user;
 };
 
 const updateProfile = (userId, newProfileFormData) => {
@@ -197,6 +198,6 @@ export default {
   getMovie,
   addToWishList,
   deleteFromWishList,
-  hasToken: () => !!localStorage.token,
+  hasToken: !!localStorage.token,
   clearToken
 };

@@ -16,15 +16,15 @@ const LoginForm = ({ onLoginSuccess }) => {
     });
   };
 
+  let history = useHistory();
+
   const handleSubmit = event => {
     event.preventDefault();
     API.login(formData).then(onLoginSuccess);
   };
 
   return (
-    <div className="hero-container">
-      <h2>Please login here </h2>
-      <br></br>
+    <>
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
           <label>Email</label>
@@ -55,13 +55,9 @@ const LoginForm = ({ onLoginSuccess }) => {
         <br></br>
       </Form>
       <h4>Don't have an account?</h4>
-      <Button size="small">
-        <Link to="/signup">SIGN UP NOW </Link>
-      </Button>
-    </div>
+      <Button size="small" onClick={() => history.push("/signup")}>SIGN UP</Button>
+    </>
   );
 };
 
 export default LoginForm;
-
-// onClick={() => history.push("/signup")}
