@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import API from "../adapters/API";
 import { Form, Button, Segment, Grid } from "semantic-ui-react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const SignUpForm = ({ handleOnSubmit }) => {
   const [signupformData, setSignupformData] = useState({
@@ -14,7 +13,7 @@ const SignUpForm = ({ handleOnSubmit }) => {
 
   let history = useHistory();
 
-  // const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState([]);
 
   const handleOnChange = event => {
     setSignupformData({

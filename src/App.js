@@ -39,8 +39,10 @@ function App() {
   const handleProfileSubmit = (event, userId, profileFormData) => {
     event.preventDefault();
     API.updateProfile(userId, profileFormData)
-      .then(user => handleUser(user))
-      .then(history.push("/"));
+      .then(data => {
+        handleUser(data.user);
+      })
+      .then(history.push("/profile"));
   };
 
   const handleSingupSubmit = (event, signupformData) => {
@@ -60,10 +62,10 @@ function App() {
   };
 
   useEffect(() => {
-    if (API.hasToken()) {
+    if (API.hasToken) {
       API.validate()
         .then(res => {
-          handleUser(res.user);
+          handleLogin(res.user);
         })
         .then(() => setValidateUser(true))
         .catch(errorPromise => {
@@ -72,7 +74,7 @@ function App() {
           });
         });
     }
-  }, []);
+  }, [API.hasToken]);
 
   const addToWishlist = (wishListId, imdbID) => {
     console.log({ wishListId, imdbID });
