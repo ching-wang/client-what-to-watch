@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon, Popup } from "semantic-ui-react";
 import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
 import WishListButton from "../components/wishListButton";
@@ -15,12 +15,19 @@ const NavBar = ({ user, onLogout }) => {
   return (
     <Menu inverted className="top-menu">
       <Menu.Item header>
-        <a href="/">
-          <h1>
-            <Icon name="film" />
-            &nbsp; What&nbsp;<small>to</small>&nbsp;Watch
-          </h1>
-        </a>
+        <Popup
+          content="Go back home page"
+          size="small"
+          position="bottom center"
+          trigger={
+            <a href="/">
+              <h1>
+                <Icon name="film" />
+                &nbsp; What&nbsp;<small>to</small>&nbsp;Watch
+              </h1>
+            </a>
+          }
+        />
       </Menu.Item>
 
       {user ? (

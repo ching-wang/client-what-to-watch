@@ -19,7 +19,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             <Card.Meta>
               <Popup
                 content="Edit your profile"
-                size="large"
+                size="medium"
                 position="left center"
                 trigger={
                   <Icon
@@ -37,12 +37,6 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             position="right center"
             size="large"
             trigger={
-              // <Icon
-              //   name="edit outline"
-              //   size="large"
-              //   color="orange"
-              //   onClick={() => history.push("/profile/edit")}
-              // />
               <Button
                 className="ui orange button"
                 onClick={() => onDeleteAccount(user.id)}
