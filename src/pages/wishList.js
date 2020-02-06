@@ -13,7 +13,7 @@ const WishList = () => {
       console.log(res);
       setWishList(res);
     });
-  }, []);
+  }, [wishListId]);
 
   return wishList.wish_list_items ? (
     <Container>

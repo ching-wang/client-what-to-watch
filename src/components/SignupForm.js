@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Segment, Grid } from "semantic-ui-react";
-import { useHistory, NavLink } from "react-router-dom";
+import { Form, Button } from "semantic-ui-react";
+import { NavLink } from "react-router-dom";
 import { ErrorMessage } from "./errorMessage";
 import API from "../adapters/API";
 

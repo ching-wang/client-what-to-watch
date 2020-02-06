@@ -138,7 +138,7 @@ function App() {
           </Route>
           <Route
             exact
-            path="/wishlist/:id/edit"
+            path="/wishlist/:wishListId/edit"
             render={routerProps => (
               <EditWishlist
                 {...routerProps}

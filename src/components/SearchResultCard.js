@@ -13,9 +13,9 @@ export const SearchResultCard = ({ searchResult }) => {
           <span className="date">{searchResult.Year}</span>
         </Card.Meta>
         <Card.Description>
-          <a>
+          <span>
             <Icon name="eye" /> View Details
-          </a>
+          </span>
         </Card.Description>
       </Card.Content>
     </Card>

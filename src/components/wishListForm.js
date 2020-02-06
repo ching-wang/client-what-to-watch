@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "semantic-ui-react";
-import { useHistory, Link } from "react-router-dom";
+import { Form, Button } from "semantic-ui-react";
+import { useHistory } from "react-router-dom";
 
 const WishListForm = ({ user, handleOnSubmit }) => {
   const [wishListFormData, setWishListFormData] = useState({
