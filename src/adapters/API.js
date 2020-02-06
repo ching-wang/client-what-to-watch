@@ -9,20 +9,13 @@ const WISHLIST_ITEMS_URL = `${API_ENDPOINT}/wish_list_items`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
 const MOVIE_URL = `${API_ENDPOINT}/movies`;
 
-const jsonify = res => {
+const jsonify = async res => {
   if (res.ok) {
     return res.json();
   } else {
-    throw res.json();
+    const errorBody = await res.json();
+    throw errorBody.errors[0];
   }
-};
-
-const handleLoginResponse = loginResponse => {
-  if (!loginResponse.token) {
-    throw new Error("Bad login response! " + JSON.stringify(loginResponse));
-  }
-  localStorage.token = loginResponse.token;
-  return validate().then(res => res.user);
 };
 
 const login = loginDetails =>
@@ -33,13 +26,7 @@ const login = loginDetails =>
       Accept: "application/json"
     },
     body: JSON.stringify({ user: loginDetails })
-  })
-    .then(jsonify)
-    .then(handleLoginResponse)
-    .catch(data => {
-      // debugger;
-      // data.then(data => {debugger});
-    });;
+  }).then(jsonify);
 
 const signup = signUpData => {
   return fetch(USER_URL, {

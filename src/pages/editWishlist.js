@@ -1,5 +1,5 @@
 import React from "react";
-import WishlistForm from "../components/wishListForm";
+import { EditWishlistForm } from "../components/editWishlistForm";
 import { Container } from "semantic-ui-react";
 
 const EditWishlist = ({ user, handleOnSubmit }) => {
@@ -8,7 +8,7 @@ const EditWishlist = ({ user, handleOnSubmit }) => {
       <Container>
         <div className="hero-container">
           <h1>Edit wishlist </h1>
-          <WishlistForm user={user} handleOnSubmit={handleOnSubmit} />
+          <EditWishlistForm user={user} handleOnSubmit={handleOnSubmit} />
         </div>
       </Container>
     </>

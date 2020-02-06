@@ -20,10 +20,24 @@ const LoginForm = ({ onLoginSuccess }) => {
 
   let history = useHistory();
 
+  const handleLoginResponse = loginResponse => {
+    if (!loginResponse.token) {
+      debugger;
+      throw new Error("Bad login response! " + JSON.stringify(loginResponse));
+    }
+    localStorage.token = loginResponse.token;
+    return API.validate().then(res => res.user);
+  };
+
   const handleSubmit = event => {
     event.preventDefault();
-    API.login(formData).then(onLoginSuccess);
+    API.login(formData)
+      .then(handleLoginResponse)
+      .then(onLoginSuccess)
+      .catch(setError);
   };
+
+  if (error) return <h1>Whoops: {error}</h1>;
 
   return (
     <>
