@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { Form, Button, Container } from "semantic-ui-react";
 import { useHistory, Link } from "react-router-dom";
+import API from "../adapters/API";
 
-export const EditWishlistForm = ({ user, handleOnSubmit }) => {
+export const EditWishlistForm = ({
+  user,
+  wishList,
+  onWishlistChangeSubmit
+}) => {
   const [wishListFormData, setWishListFormData] = useState({
-    name: "",
-    image: "",
-    description: ""
+    name: wishList.name,
+    image: wishList.image,
+    description: wishList.description
   });
 
   const handleOnChange = event => {
@@ -21,7 +26,7 @@ export const EditWishlistForm = ({ user, handleOnSubmit }) => {
   return (
     <>
       <Form
-        onSubmit={event => handleOnSubmit(event, wishListFormData)}
+        onSubmit={event => onWishlistChangeSubmit(event, wishList.id, wishListFormData)}
         onChange={event => handleOnChange(event)}
         className="ui form"
         inverted
@@ -32,8 +37,10 @@ export const EditWishlistForm = ({ user, handleOnSubmit }) => {
             type="text"
             name="name"
             autoComplete="name"
-            placeholder="name"
-            defaultValue={null}
+            placeholder={wishList ? wishList.name : ""}
+            defaultValue={
+              wishListFormData.name || wishList ? wishList.name : ""
+            }
           />
         </Form.Field>
         <Form.Field>
@@ -42,8 +49,10 @@ export const EditWishlistForm = ({ user, handleOnSubmit }) => {
             type="url"
             name="image"
             autoComplete="image"
-            placeholder="image link..."
-            defaultValue={null}
+            placeholder={wishList ? wishList.image : ""}
+            defaultValue={
+              wishListFormData.image || wishList ? wishList.image : ""
+            }
           />
         </Form.Field>
         <Form.Field>
@@ -51,8 +60,12 @@ export const EditWishlistForm = ({ user, handleOnSubmit }) => {
           <input
             type="text"
             name="description"
-            placeholder="Something about your wishlist"
-            defaultValue={null}
+            placeholder={wishList ? wishList.description : ""}
+            defaultValue={
+              wishListFormData.description || wishList
+                ? wishList.description
+                : ""
+            }
           />
         </Form.Field>
         <br></br>

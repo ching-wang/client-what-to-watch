@@ -36,16 +36,7 @@ const signup = signUpData => {
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  })
-    .then(jsonify)
-    .then(handleSignupResponse);
-};
-
-const handleSignupResponse = data => {
-  if (data.token) {
-    localStorage.token = data.token;
-    return data.user;
-  }
+  }).then(jsonify);
 };
 
 const updateProfile = (userId, newProfileFormData) => {
@@ -109,6 +100,18 @@ const getWishList = wishListId => {
       Authorization: localStorage.token
     }
   }).then(res => res.json());
+};
+
+const updateWishlist = (wishlistId, wishListFormData) => {
+  return fetch(`${WISHLISTS_URL}/${wishlistId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify(wishListFormData)
+  }).then(console.log);
 };
 
 const getUserWishListItems = () => {
@@ -181,8 +184,8 @@ export default {
   createWishlist,
   deleteWishlist,
   getWishList,
+  updateWishlist,
   getUserWishListItems,
-  handleSignupResponse,
   updateProfile,
   searchMovies,
   getMovie,

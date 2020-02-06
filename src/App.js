@@ -46,11 +46,6 @@ function App() {
       .then(history.push("/profile"));
   };
 
-  const handleSingupSubmit = (event, signupformData) => {
-    event.preventDefault();
-    API.signup(signupformData).then(user => handleLogin(user));
-  };
-
   const handleDeleteAccount = userId => {
     API.deleteUser(userId).then(() => {
       logout();
@@ -60,16 +55,6 @@ function App() {
   const handleWishListSubmit = (event, wishListFormData) => {
     event.preventDefault();
     API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
-  };
-
-  const handleUpdateWishListSubmit = (event, userId, wishListFormData) => {
-    console.log(wishListFormData);
-    // event.preventDefault();
-    // API.updateWishlist(userId, wishListFormData)
-    //   .then(data => {
-    //     handleUser(data.user);
-    //   })
-    //   .then(history.push("/wishlist"));
   };
 
   useEffect(() => {
@@ -91,6 +76,11 @@ function App() {
     console.log({ wishListId, imdbID });
     API.addToWishList(wishListId, imdbID).then(console.log);
   };
+
+  function handleUpdateWishListSubmit(event, wishListId, wishListFormData) {
+    event.preventDefault();
+    API.updateWishlist(wishListId, wishListFormData).then(console.log);
+  }
 
   return (
     <>
@@ -131,7 +121,7 @@ function App() {
             exact
             path="/signup"
             render={routerProps => (
-              <SignUp handleOnSubmit={handleSingupSubmit} {...routerProps} />
+              <SignUp handleLogin={handleLogin} {...routerProps} />
             )}
           />
           <Route exact path="/login">
@@ -148,12 +138,11 @@ function App() {
           </Route>
           <Route
             exact
-            path="/wishlist/edit"
+            path="/wishlist/:id/edit"
             render={routerProps => (
               <EditWishlist
-                handleOnSubmit={handleUpdateWishListSubmit}
-                user={user}
                 {...routerProps}
+                handleUpdateWishListSubmit={handleUpdateWishListSubmit}
               />
             )}
           />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Container, Grid } from "semantic-ui-react";
+import { Card, Button, Grid } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
 import { NavLink } from "react-router-dom";
 import API from "../adapters/API";
@@ -21,10 +21,6 @@ const WishListGroup = ({ user }) => {
     API.deleteWishlist(wishlistId).then(() => {
       setWishLists(wishLists.filter(wl => wl.id !== wishlistId));
     });
-  }
-
-  function editWishlist(wishListId) {
-    console.log(wishListId);
   }
 
   if (!wishLists) {
@@ -63,7 +59,6 @@ const WishListGroup = ({ user }) => {
             wishList={wishList}
             use={user}
             handleDeleteWishlist={deleteWishlist}
-            handleEditWishList={editWishlist}
           />
         ))}
       </Card.Group>
