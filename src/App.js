@@ -57,16 +57,6 @@ function App() {
     API.createWishlist(wishListFormData).then(() => history.push("/wishlists"));
   };
 
-  const handleUpdateWishListSubmit = (event, userId, wishListFormData) => {
-    console.log(wishListFormData);
-    // event.preventDefault();
-    // API.updateWishlist(userId, wishListFormData)
-    //   .then(data => {
-    //     handleUser(data.user);
-    //   })
-    //   .then(history.push("/wishlist"));
-  };
-
   useEffect(() => {
     if (API.hasToken) {
       API.validate()
@@ -86,6 +76,11 @@ function App() {
     console.log({ wishListId, imdbID });
     API.addToWishList(wishListId, imdbID).then(console.log);
   };
+
+  function handleUpdateWishListSubmit(event, wishListId, wishListFormData) {
+    event.preventDefault();
+    API.updateWishlist(wishListId, wishListFormData).then(console.log);
+  }
 
   return (
     <>
@@ -143,12 +138,11 @@ function App() {
           </Route>
           <Route
             exact
-            path="/wishlist/edit"
+            path="/wishlist/:id/edit"
             render={routerProps => (
               <EditWishlist
-                handleOnSubmit={handleUpdateWishListSubmit}
-                user={user}
                 {...routerProps}
+                handleUpdateWishListSubmit={handleUpdateWishListSubmit}
               />
             )}
           />

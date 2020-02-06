@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { Card, Image, Button, Container, Icon, Popup } from "semantic-ui-react";
+import { Card, Image, Container, Icon, Popup } from "semantic-ui-react";
 
 const ProfileDetail = ({ user, onDeleteAccount }) => {
   const history = useHistory();
@@ -26,6 +26,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                     name="edit outline"
                     size="large"
                     color="orange"
+                    position="right center"
                     onClick={() => history.push("/profile/edit")}
                   />
                 }

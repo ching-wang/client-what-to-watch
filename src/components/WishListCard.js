@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, Button, Image, Popup, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
+import API from "../adapters/API";
 
 export const WishListCard = ({
   wishList,
@@ -8,6 +9,7 @@ export const WishListCard = ({
   handleEditWishList
 }) => {
   const history = useHistory();
+
   return (
     <Card>
       <Popup
@@ -38,7 +40,7 @@ export const WishListCard = ({
                 name="edit outline"
                 size="large"
                 color="orange"
-                onClick={() => history.push("/wishlist/edit")}
+                onClick={() => history.push(`/wishlist/${wishList.id}/edit`)}
               />
             }
           />

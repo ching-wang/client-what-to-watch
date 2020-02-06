@@ -102,6 +102,18 @@ const getWishList = wishListId => {
   }).then(res => res.json());
 };
 
+const updateWishlist = (wishlistId, wishListFormData) => {
+  return fetch(`${WISHLISTS_URL}/${wishlistId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      Authorization: localStorage.token
+    },
+    body: JSON.stringify(wishListFormData)
+  }).then(console.log);
+};
+
 const getUserWishListItems = () => {
   return fetch(WISHLIST_ITEMS_URL, {
     method: "GET",
@@ -172,6 +184,7 @@ export default {
   createWishlist,
   deleteWishlist,
   getWishList,
+  updateWishlist,
   getUserWishListItems,
   updateProfile,
   searchMovies,
