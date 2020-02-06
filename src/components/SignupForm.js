@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Form, Button, Segment, Grid } from "semantic-ui-react";
 import { useHistory, NavLink } from "react-router-dom";
+import { ErrorMessage } from "./errorMessage";
+import API from "../adapters/API";
 
-const SignUpForm = ({ handleOnSubmit }) => {
+const SignUpForm = ({ handleLogin }) => {
   const [signupformData, setSignupformData] = useState({
     username: "",
     avatar: "",
@@ -11,9 +13,7 @@ const SignUpForm = ({ handleOnSubmit }) => {
     password: ""
   });
 
-  let history = useHistory();
-
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState("");
 
   const handleOnChange = event => {
     setSignupformData({
@@ -22,12 +22,29 @@ const SignUpForm = ({ handleOnSubmit }) => {
     });
   };
 
+  const handleSignupResponse = data => {
+    if (data.token) {
+      localStorage.token = data.token;
+      return data.user;
+    }
+  };
+
+  const handleSingupSubmit = (event, signupformData) => {
+    event.preventDefault();
+    API.signup(signupformData)
+      .then(handleSignupResponse)
+      .then(handleLogin)
+      .catch(setError);
+  };
+
+  if (error) return <ErrorMessage error={error} />;
+
   return (
     <div className="hero-container">
       <h2>Sign Up For Free </h2>
       <br></br>
       <Form
-        onSubmit={event => handleOnSubmit(event, signupformData)}
+        onSubmit={event => handleSingupSubmit(event, signupformData)}
         onChange={event => handleOnChange(event)}
         className="ui form"
         inverted
@@ -92,14 +109,6 @@ const SignUpForm = ({ handleOnSubmit }) => {
           Click here to Login{" "}
         </NavLink>
       </h4>
-      {/* <Button
-        color="grey"
-        inverted
-        size="small"
-        onClick={() => history.push("/login")}
-      >
-        LOGIN
-      </Button> */}
     </div>
   );
 };

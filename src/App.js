@@ -46,11 +46,6 @@ function App() {
       .then(history.push("/profile"));
   };
 
-  const handleSingupSubmit = (event, signupformData) => {
-    event.preventDefault();
-    API.signup(signupformData).then(user => handleLogin(user));
-  };
-
   const handleDeleteAccount = userId => {
     API.deleteUser(userId).then(() => {
       logout();
@@ -131,7 +126,7 @@ function App() {
             exact
             path="/signup"
             render={routerProps => (
-              <SignUp handleOnSubmit={handleSingupSubmit} {...routerProps} />
+              <SignUp handleLogin={handleLogin} {...routerProps} />
             )}
           />
           <Route exact path="/login">

@@ -36,16 +36,7 @@ const signup = signUpData => {
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  })
-    .then(jsonify)
-    .then(handleSignupResponse);
-};
-
-const handleSignupResponse = data => {
-  if (data.token) {
-    localStorage.token = data.token;
-    return data.user;
-  }
+  }).then(jsonify);
 };
 
 const updateProfile = (userId, newProfileFormData) => {
@@ -182,7 +173,6 @@ export default {
   deleteWishlist,
   getWishList,
   getUserWishListItems,
-  handleSignupResponse,
   updateProfile,
   searchMovies,
   getMovie,

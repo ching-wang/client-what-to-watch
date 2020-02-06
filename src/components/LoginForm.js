@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
+import { ErrorMessage } from "./errorMessage";
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({
@@ -18,11 +19,8 @@ const LoginForm = ({ onLoginSuccess }) => {
     });
   };
 
-  let history = useHistory();
-
   const handleLoginResponse = loginResponse => {
     if (!loginResponse.token) {
-      debugger;
       throw new Error("Bad login response! " + JSON.stringify(loginResponse));
     }
     localStorage.token = loginResponse.token;
@@ -37,10 +35,11 @@ const LoginForm = ({ onLoginSuccess }) => {
       .catch(setError);
   };
 
-  if (error) return <h1>Whoops: {error}</h1>;
+  if (error) return <ErrorMessage error={error} />;
 
   return (
     <>
+      <h2>Please Login </h2>
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
           <label>Email</label>
@@ -60,7 +59,8 @@ const LoginForm = ({ onLoginSuccess }) => {
             defaultValue={formData.password}
           />
         </Form.Field>
-        <Button color="olive" type="submit">
+        <Form.Checkbox inline label="Remember Me" />
+        <Button floated="right" color="olive" type="submit">
           LOG IN
         </Button>
         <br></br>
@@ -76,9 +76,6 @@ const LoginForm = ({ onLoginSuccess }) => {
           Sign up now{" "}
         </NavLink>
       </h4>
-      {/* <Button size="small" onClick={() => history.push("/signup")}>
-        SIGN UP
-      </Button> */}
     </>
   );
 };
