@@ -77,11 +77,6 @@ function App() {
     API.addToWishList(wishListId, imdbID).then(console.log);
   };
 
-  function handleUpdateWishListSubmit(event, wishListId, wishListFormData) {
-    event.preventDefault();
-    API.updateWishlist(wishListId, wishListFormData).then(console.log);
-  }
-
   return (
     <>
       <Responsive>
@@ -136,16 +131,9 @@ function App() {
           <Route exact path="/wishlist/new">
             <CreateWishlist handleOnSubmit={handleWishListSubmit} user={user} />
           </Route>
-          <Route
-            exact
-            path="/wishlist/:id/edit"
-            render={routerProps => (
-              <EditWishlist
-                {...routerProps}
-                handleUpdateWishListSubmit={handleUpdateWishListSubmit}
-              />
-            )}
-          />
+          <Route exact path="/wishlist/:wishListId/edit">
+            <EditWishlist />
+          </Route>
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
           </Route>

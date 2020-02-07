@@ -1,13 +1,8 @@
 import React from "react";
-import { Card, Button, Image, Popup, Icon } from "semantic-ui-react";
+import { Card, Image, Popup, Icon } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
-import API from "../adapters/API";
 
-export const WishListCard = ({
-  wishList,
-  handleDeleteWishlist,
-  handleEditWishList
-}) => {
+export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
   const history = useHistory();
 
   return (
@@ -15,7 +10,7 @@ export const WishListCard = ({
       <Popup
         content="Click the picture see wishlist details"
         position="top right"
-        size="medium"
+        size="small"
         trigger={
           <Image
             src={wishList.image}
@@ -33,7 +28,7 @@ export const WishListCard = ({
         <Card.Meta>
           <Popup
             content="Edit this Wishlist"
-            size="medium"
+            size="small"
             position="left center"
             trigger={
               <Icon
@@ -46,7 +41,7 @@ export const WishListCard = ({
           />
           <Popup
             content="Delete this wishlist"
-            size="medium"
+            size="small"
             position="top center"
             trigger={
               <Icon

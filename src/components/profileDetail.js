@@ -19,7 +19,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             <Card.Meta>
               <Popup
                 content="Edit your profile"
-                size="medium"
+                size="small"
                 position="left center"
                 trigger={
                   <Icon
@@ -33,7 +33,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
               />
               <Popup
                 content="Delete your account"
-                size="medium"
+                size="small"
                 position="left center"
                 trigger={
                   <Icon

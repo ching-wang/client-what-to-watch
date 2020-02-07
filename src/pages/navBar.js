@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Menu, Icon, Popup } from "semantic-ui-react";
 import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
@@ -6,12 +6,6 @@ import WishListButton from "../components/wishListButton";
 import SearchBar from "../components/searchBar";
 
 const NavBar = ({ user, onLogout }) => {
-  const [fixed, setFixed] = useState(false);
-  const [hiddenForm, setHiddenForm] = useState(true);
-
-  const hideFixedMenu = () => setFixed(false);
-  const showFixedMenu = () => setFixed(true);
-
   return (
     <Menu inverted className="top-menu">
       <Menu.Item header>

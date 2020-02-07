@@ -3,10 +3,8 @@ import React, { useState, useEffect } from "react";
 import {
   Container,
   Card,
-  Image,
   Dropdown,
   Grid,
-  Button,
   Icon,
   Popup
 } from "semantic-ui-react";
@@ -18,7 +16,7 @@ const MovieCard = ({ user }) => {
   const [movie, setMovie] = useState({});
   useEffect(() => {
     API.getMovie(imdbId).then(res => setMovie(res));
-  }, []);
+  }, [imdbId]);
 
   const [wishListItems, setWishListItems] = useState([]);
   useEffect(() => {
@@ -59,7 +57,13 @@ const MovieCard = ({ user }) => {
         <Grid.Row>
           <Grid.Column width={2}></Grid.Column>
           <Grid.Column width={5}>
-            <img className="poster" src={movie.Poster} wrapped ui={false} />
+            <img
+              className="poster"
+              alt={movie.Title}
+              src={movie.Poster}
+              wrapped
+              ui={false}
+            />
           </Grid.Column>
           <Grid.Column width={7}>
             <Card.Content>

@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import Hero from "./hero";
 import Profile from "./profile";
-import Link from "react-router-dom";
 
 const MainContainer = ({ user, onLogout }) => {
   return (
