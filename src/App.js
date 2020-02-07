@@ -34,7 +34,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
-    history.push("/");
+    // history.push("/");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {

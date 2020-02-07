@@ -10,10 +10,21 @@ const WishList = () => {
 
   useEffect(() => {
     API.getWishList(wishListId).then(res => {
-      console.log(res);
       setWishList(res);
     });
   }, [wishListId]);
+
+  function deleteWishlistItem(wishlistitemId) {
+    wishList.filter(w => w.wish_list_items.id != wishlistitemId);
+  }
+  // function filteredWishlistItem() {
+  //   deleteWishlistItem();
+  // }
+  // function deleteWishlist(wishlistId) {
+  //   API.deleteWishlist(wishlistId).then(() => {
+  //     setWishLists(wishLists.filter(wl => wl.id !== wishlistId));
+  //   });
+  // }
 
   return wishList.wish_list_items ? (
     <Container>
@@ -33,7 +44,11 @@ const WishList = () => {
         >
           {wishList.wish_list_items ? (
             wishList.wish_list_items.map(wli => (
-              <WishListItem key={wli.id} wishListItem={wli} />
+              <WishListItem
+                key={wli.id}
+                wishListItem={wli}
+                handleDeleteWishlistItem={deleteWishlistItem}
+              />
             ))
           ) : (
             <>

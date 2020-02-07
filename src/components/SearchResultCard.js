@@ -1,23 +1,29 @@
 import React from "react";
-import { Card, Image, Icon } from "semantic-ui-react";
+import { Card, Image, Icon, Popup } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const SearchResultCard = ({ searchResult }) => {
   const history = useHistory();
   return (
-    <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
-      <Image src={searchResult.Poster} wrapped ui={false} />
-      <Card.Content>
-        <Card.Header>{searchResult.Title}</Card.Header>
-        <Card.Meta>
-          <span className="date">{searchResult.Year}</span>
-        </Card.Meta>
-        <Card.Description>
-          <span>
-            <Icon name="eye" /> View Details
-          </span>
-        </Card.Description>
-      </Card.Content>
-    </Card>
+    <Popup
+      content="Click to view film details"
+      size="small"
+      position="left center"
+      trigger={
+        <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
+          <Image
+            className="card-img-size"
+            src={searchResult.Poster}
+            ui={false}
+          />
+          <Card.Content>
+            <Card.Header>{searchResult.Title}</Card.Header>
+            <Card.Meta>
+              <span className="date">{searchResult.Year}</span>
+            </Card.Meta>
+          </Card.Content>
+        </Card>
+      }
+    />
   );
 };

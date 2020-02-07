@@ -2,11 +2,11 @@ import React from "react";
 import { Card, Image, Icon, Popup } from "semantic-ui-react";
 import { useHistory, useParams } from "react-router-dom";
 
-export const WishListItem = ({ wishListItem }) => {
+export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
   const params = useParams();
 
-  console.log(params);
+  // console.log(params);
 
   return (
     <Card rasied>
@@ -39,7 +39,12 @@ export const WishListItem = ({ wishListItem }) => {
             size="small"
             position="left center"
             trigger={
-              <Icon name="delete" size="large" color="orange" onClick={null} />
+              <Icon
+                name="delete"
+                size="large"
+                color="orange"
+                onClick={() => handleDeleteWishlistItem(wishListItem.id)}
+              />
             }
           />
         </Card.Meta>
