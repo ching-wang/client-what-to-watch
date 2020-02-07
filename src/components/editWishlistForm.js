@@ -11,7 +11,6 @@ export const EditWishlistForm = () => {
   });
 
   const { wishListId } = useParams();
-
   useEffect(() => {
     API.getWishList(wishListId).then(data => setWishList(data));
   }, [wishListId]);

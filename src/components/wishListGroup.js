@@ -10,7 +10,7 @@ import API from "../adapters/API";
 const WishListGroup = ({ user }) => {
   const [wishLists, setWishLists] = useState([]);
   useEffect(() => {
-    API.getUserWishLists().then(res => setWishLists(res));
+    API.getUserWishLists().then(setWishLists);
   }, []);
 
   if (!user) {

@@ -1,26 +1,48 @@
 import React from "react";
-import { Card, Image, Icon } from "semantic-ui-react";
-import { useHistory } from "react-router-dom";
+import { Card, Image, Icon, Popup } from "semantic-ui-react";
+import { useHistory, useParams } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem }) => {
   const history = useHistory();
+  const params = useParams();
+
+  console.log(params);
 
   return (
-    <Card
-      rasied
-      onClick={() => history.push(`/movies/${wishListItem.movie.imdb_id}`)}
-    >
+    <Card rasied>
       <Image src={wishListItem.movie.poster} wrapped ui={false} />
       <Card.Content>
         <Card.Header>{wishListItem.movie.title}</Card.Header>
         <Card.Meta>
           <span className="date">{wishListItem.movie.year}</span>
         </Card.Meta>
-        <Card.Description>
+        <Card.Meta>
           <span>
-            <Icon name="eye" /> View Details
+            <Popup
+              content="View Details"
+              size="small"
+              position="left center"
+              trigger={
+                <Icon
+                  name="eye"
+                  size="large"
+                  color="olive"
+                  onClick={() =>
+                    history.push(`/movies/${wishListItem.movie.imdb_id}`)
+                  }
+                />
+              }
+            />
           </span>
-        </Card.Description>
+          <Popup
+            content="Remove this film from this wishlist"
+            size="small"
+            position="left center"
+            trigger={
+              <Icon name="delete" size="large" color="orange" onClick={null} />
+            }
+          />
+        </Card.Meta>
       </Card.Content>
     </Card>
   );

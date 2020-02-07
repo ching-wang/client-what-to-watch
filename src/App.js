@@ -63,12 +63,12 @@ function App() {
         .then(res => {
           handleLogin(res.user);
         })
-        .then(() => setValidateUser(true))
-        .catch(errorPromise => {
-          errorPromise.then(data => {
-            setError(data);
-          });
-        });
+        .then(() => setValidateUser(true));
+      // .catch(errorPromise => {
+      //   errorPromise.then(data => {
+      //     setError(data);
+      //   });
+      // });
     }
   }, [API.hasToken]);
 
