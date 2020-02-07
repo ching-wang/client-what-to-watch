@@ -34,7 +34,7 @@ const ProfileForm = ({ user, handleOnSubmit }) => {
               type="text"
               name="username"
               autoComplete="username"
-              placeholder={user ? user.username : ""}
+              placeholder="your username"
               defaultValue={
                 profileFormData.username || user ? user.username : ""
               }
@@ -55,7 +55,7 @@ const ProfileForm = ({ user, handleOnSubmit }) => {
             <input
               type="text"
               name="bio"
-              placeholder={user ? user.bio : ""}
+              placeholder="Write something about you..."
               defaultValue={profileFormData.bio || user ? user.bio : ""}
             />
           </Form.Field>
@@ -65,7 +65,7 @@ const ProfileForm = ({ user, handleOnSubmit }) => {
               type="email"
               name="email"
               autoComplete="email"
-              placeholder={user ? user.email : ""}
+              placeholder="example@test.com"
               defaultValue={profileFormData.email || user ? user.email : ""}
             />
           </Form.Field>
