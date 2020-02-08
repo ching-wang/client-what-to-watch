@@ -6,7 +6,8 @@ import {
   Dropdown,
   Grid,
   Icon,
-  Popup
+  Popup,
+  Image
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -56,14 +57,16 @@ const MovieCard = ({ user }) => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={2}></Grid.Column>
-          <Grid.Column width={5}>
-            <img
-              className="poster"
-              alt={movie.Title}
-              src={movie.Poster}
-              wrapped
-              ui={false}
-            />
+          <Grid.Column width={6}>
+            <Card>
+              <Image
+                className="poster"
+                alt={movie.Title}
+                src={movie.Poster}
+                wrapped
+                ui={false}
+              />
+            </Card>
           </Grid.Column>
           <Grid.Column width={7}>
             <Card.Content>
@@ -132,7 +135,7 @@ const MovieCard = ({ user }) => {
               }
             />
           </Grid.Column>
-          <Grid.Column width={1}></Grid.Column>
+          <Grid.Column width={2}></Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>

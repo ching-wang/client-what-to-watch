@@ -41,5 +41,9 @@
 }
 
 .card-img-size {
-  height: 230px;
+  height: 280px;
 }
+/* 
+.card-img-size:hover {
+  height: 305px;
+} */

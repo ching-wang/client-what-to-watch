@@ -15,12 +15,16 @@ import CreateWishlist from "./pages/createWishlist";
 import MovieContainer from "./pages/movieContainer";
 import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
+import { useDarkMode } from "./hooks/useDarkMode";
+import { Welcome } from "./pages/welcome";
 
 function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [validateUser, setValidateUser] = useState(false);
   const history = useHistory();
+  // const [darkMode, setDarkMode] = useDarkMode();
+  const [enabled, setEnabledState] = useDarkMode();
 
   const logout = () => {
     setUser(null);
@@ -34,7 +38,6 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
-    // history.push("/");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {
@@ -59,11 +62,10 @@ function App() {
 
   useEffect(() => {
     if (API.hasToken) {
-      API.validate()
-        .then(res => {
-          handleLogin(res.user);
-        })
-        .then(() => setValidateUser(true));
+      API.validate().then(res => {
+        handleLogin(res.user);
+      });
+      // .then(() => setValidateUser(true));
       // .catch(errorPromise => {
       //   errorPromise.then(data => {
       //     setError(data);
@@ -88,6 +90,11 @@ function App() {
             exact
             path="/"
             render={routerProps => <MainPage {...routerProps} />}
+          />
+          <Route
+            exact
+            path="/welcome"
+            render={routerProps => <Welcome user={user} {...routerProps} />}
           />
           <Route
             exact

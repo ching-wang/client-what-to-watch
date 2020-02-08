@@ -73,7 +73,7 @@ const LoginForm = ({ onLoginSuccess }) => {
         Don't have an account?{" "}
         <NavLink to="/signup" style={{ color: "#ebe534" }}>
           {" "}
-          Sign up now{" "}
+          Get Start Now{" "}
         </NavLink>
       </h4>
     </>

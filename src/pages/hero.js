@@ -16,7 +16,7 @@ const Hero = () => {
           marginTop: "0.8em"
         }}
       />
-      <SearchBar />
+      {/* <SearchBar /> */}
     </Container>
   );
 };

@@ -45,7 +45,7 @@ const WishListGroup = ({ user }) => {
           <Button color="olive" size="small">
             <NavLink style={{ color: "black" }} to="wishlist/new">
               {" "}
-              Create a wishlist{" "}
+              + New Wishlist{" "}
             </NavLink>
           </Button>
         </Grid.Column>
