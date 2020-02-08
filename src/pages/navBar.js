@@ -23,12 +23,13 @@ const NavBar = ({ user, onLogout }) => {
           }
         />
       </Menu.Item>
+      <Menu.Item floated="right">
+        <SearchBar />
+      </Menu.Item>
 
       {user ? (
         <>
-          <Menu.Item position="right">
-            <SearchBar />
-          </Menu.Item>
+          <Menu.Item position="right"></Menu.Item>
           <Menu.Menu position="right">
             <ProfileButton />
             <WishListButton />

@@ -28,7 +28,7 @@
 }
 
 .poster:hover {
-  transform: scaleX(-1);
+  transition: width 2s, height 4s;
 }
 
 .signUpBtn {
@@ -39,3 +39,11 @@
 .error {
   color: red;
 }
+
+.card-img-size {
+  height: 280px;
+}
+/* 
+.card-img-size:hover {
+  height: 305px;
+} */

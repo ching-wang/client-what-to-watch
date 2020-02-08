@@ -10,7 +10,7 @@ import API from "../adapters/API";
 const WishListGroup = ({ user }) => {
   const [wishLists, setWishLists] = useState([]);
   useEffect(() => {
-    API.getUserWishLists().then(res => setWishLists(res));
+    API.getUserWishLists().then(setWishLists);
   }, []);
 
   if (!user) {
@@ -45,7 +45,7 @@ const WishListGroup = ({ user }) => {
           <Button color="olive" size="small">
             <NavLink style={{ color: "black" }} to="wishlist/new">
               {" "}
-              Create a wishlist{" "}
+              + New Wishlist{" "}
             </NavLink>
           </Button>
         </Grid.Column>

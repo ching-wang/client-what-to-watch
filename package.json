@@ -15,6 +15,7 @@
     "react-router-dom": "^5.1.2",
     "react-scripts": "3.3.0",
     "react-svg": "^11.0.9",
+    "react-use-media-query-hook": "0.0.1",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.88.2",
     "zustand": "^2.2.2"
