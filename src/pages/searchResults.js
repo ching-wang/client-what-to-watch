@@ -4,6 +4,7 @@ import { Container, Card, Pagination } from "semantic-ui-react";
 import { SearchResultCard } from "../components/SearchResultCard";
 import { useLocation } from "react-router-dom";
 import * as queryString from "query-string";
+import { NotFoundMessage } from "./notFoundMessage";
 
 export const SearchResults = ({ handleShowMovieCard }) => {
   const [results, setResults] = useState([]);
@@ -15,7 +16,11 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   }, [query]);
 
   if (!results) {
-    return <></>;
+    return (
+      <>
+        <NotFoundMessage />
+      </>
+    );
   }
   return (
     <Container>
