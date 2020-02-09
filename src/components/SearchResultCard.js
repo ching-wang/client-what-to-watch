@@ -13,7 +13,11 @@ export const SearchResultCard = ({ searchResult }) => {
         <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
           <Image
             className="card-img-size"
-            src={searchResult.Poster}
+            src={
+              searchResult.Poster !== "N/A"
+                ? searchResult.Poster
+                : window.location.origin + `/default-movie-poster.jpg`
+            }
             ui={false}
           />
           <Card.Content>

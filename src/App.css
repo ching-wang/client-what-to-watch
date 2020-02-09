@@ -43,6 +43,11 @@
 .card-img-size {
   height: 280px;
 }
+
+.rating {
+  color: indianred;
+  font-size: 1.5em;
+}
 /* 
 .card-img-size:hover {
   height: 305px;

@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Card, Image, Container, Icon, Popup } from "semantic-ui-react";
+import {
+  Card,
+  Image,
+  Container,
+  Icon,
+  Popup,
+  Button,
+  Confirm
+} from "semantic-ui-react";
 
 const ProfileDetail = ({ user, onDeleteAccount }) => {
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const [result, setResult] = useState("Your account has been deleted");
+
+  const handleConfirm = () => {
+    setOpen(false);
+    setResult("confirmed");
+    onDeleteAccount(user.id);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+    setResult("cancelled");
+  };
+
+  const show = () => {
+    setOpen(true);
+  };
 
   return (
     <Container>
@@ -36,12 +61,26 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                 size="small"
                 position="left center"
                 trigger={
-                  <Icon
-                    name="user delete"
-                    size="large"
-                    color="orange"
-                    onClick={() => onDeleteAccount(user.id)}
-                  />
+                  <>
+                    <Icon
+                      name="user delete"
+                      size="large"
+                      color="orange"
+                      onClick={() => {
+                        show();
+                      }}
+                    />
+                    <Confirm
+                      open={open}
+                      color="white"
+                      header="DELETE ACCOUNT"
+                      content="Are you sure that you want to delete your account?"
+                      cancelButton="No, I would like to stay"
+                      confirmButton="Yes, please go ahead to delete it"
+                      onCancel={handleCancel}
+                      onConfirm={handleConfirm}
+                    />
+                  </>
                 }
               />
             </Card.Meta>
