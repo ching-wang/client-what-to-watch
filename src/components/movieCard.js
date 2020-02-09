@@ -78,7 +78,6 @@ const MovieCard = ({ user }) => {
             <Card.Content>
               <medium>Genre:</medium> {movie.Genre}
             </Card.Content>
-            <br></br>
             <h1>{movie.Title}</h1>
             <Card.Content>
               <medium>
