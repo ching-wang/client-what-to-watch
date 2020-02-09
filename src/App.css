@@ -48,6 +48,29 @@
   color: indianred;
   font-size: 1.5em;
 }
+
+.wishlist-name {
+  color: whitesmoke;
+  font-size: 1.5em;
+  font-weight: 200px;
+  font-style: oblique;
+}
+
+.footer {
+  margin-top: calc(5% + 60px);
+  bottom: 0;
+}
+
+.footer-container {
+  padding: 5em;
+}
+
+.search-bar {
+  background-color: teal;
+}
+/* .btn {
+  color: indianred;
+} */
 /* 
 .card-img-size:hover {
   height: 305px;

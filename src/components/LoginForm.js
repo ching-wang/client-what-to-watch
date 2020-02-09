@@ -35,7 +35,11 @@ const LoginForm = ({ onLoginSuccess }) => {
       .catch(setError);
   };
 
-  if (error) return <ErrorMessage error={error} />;
+  const redirectLink = () => {
+    return <Link to="/login" />;
+  };
+
+  if (error) return <ErrorMessage error={error} message={redirectLink} />;
 
   return (
     <>

@@ -7,43 +7,44 @@ import API from "../adapters/API";
 const WishList = () => {
   const { wishListId } = useParams();
   const [wishList, setWishList] = useState({});
+  const [wishListItems, setWishListItems] = useState([]);
 
   useEffect(() => {
     API.getWishList(wishListId).then(res => {
       setWishList(res);
+      setWishListItems(res.wish_list_items);
     });
   }, [wishListId]);
 
   function deleteWishlistItem(wishlistitemId) {
-    wishList.filter(w => w.wish_list_items.id != wishlistitemId);
+    API.deleteFromWishList(wishlistitemId).then(() => {
+      setWishListItems(wishListItems.filter(wli => wli.id !== wishlistitemId));
+    });
   }
-  // function filteredWishlistItem() {
-  //   deleteWishlistItem();
-  // }
-  // function deleteWishlist(wishlistId) {
-  //   API.deleteWishlist(wishlistId).then(() => {
-  //     setWishLists(wishLists.filter(wl => wl.id !== wishlistId));
-  //   });
-  // }
 
-  return wishList.wish_list_items ? (
+  return wishListItems ? (
     <Container>
       <div className="page-container">
-        <h1>{wishList.name}</h1>
-        <h2>
-          {" "}
-          You have &nbsp; {wishList.wish_list_items.length}
-          &nbsp;{wishList.wish_list_items.length > 1 ? "movies" : "movie"}
-        </h2>
+        <>
+          <h2>
+            You have &nbsp;{wishListItems.length}
+            &nbsp;
+            {wishListItems.length > 1 ? "movies" : "movie"}
+            &nbsp;in <span className="wishlist-name">{wishList.name}</span>
+          </h2>
+
+          {wishListItems.length > 1 ? (
+            <h3>search a film to add to the list</h3>
+          ) : (
+            ""
+          )}
+        </>
         <Card.Group
           centered={true}
-          itemsPerRow={Math.max(
-            Math.min(wishList.wish_list_items.length, 5),
-            3
-          )}
+          itemsPerRow={Math.max(Math.min(wishListItems.length, 5), 3)}
         >
-          {wishList.wish_list_items ? (
-            wishList.wish_list_items.map(wli => (
+          {wishListItems ? (
+            wishListItems.map(wli => (
               <WishListItem
                 key={wli.id}
                 wishListItem={wli}

@@ -4,13 +4,24 @@ import { useHistory, useParams } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
-  const params = useParams();
-
-  // console.log(params);
 
   return (
-    <Card rasied>
-      <Image src={wishListItem.movie.poster} wrapped ui={false} />
+    <Card>
+      <Popup
+        content="Click the image to view film details"
+        size="small"
+        position="left center"
+        trigger={
+          <Image
+            src={wishListItem.movie.poster}
+            wrapped
+            ui={false}
+            onClick={() =>
+              history.push(`/movies/${wishListItem.movie.imdb_id}`)
+            }
+          />
+        }
+      />
       <Card.Content>
         <Card.Header>{wishListItem.movie.title}</Card.Header>
         <Card.Meta>
@@ -35,7 +46,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
             />
           </span>
           <Popup
-            content="Remove this film from this wishlist"
+            content="Remove the film from current wishlist"
             size="small"
             position="left center"
             trigger={

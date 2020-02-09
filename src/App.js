@@ -17,6 +17,7 @@ import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
 import { useDarkMode } from "./hooks/useDarkMode";
 import { Welcome } from "./pages/welcome";
+import { Footer } from "./pages/footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,6 +39,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
+    history.push("/wishlists");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {
@@ -63,7 +65,7 @@ function App() {
   useEffect(() => {
     if (API.hasToken) {
       API.validate().then(res => {
-        handleLogin(res.user);
+        setUser(res.user);
       });
       // .then(() => setValidateUser(true));
       // .catch(errorPromise => {
@@ -148,6 +150,7 @@ function App() {
             <SearchResults />
           </Route>
         </Switch>
+        <Footer />
       </Responsive>
     </>
   );

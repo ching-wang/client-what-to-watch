@@ -162,9 +162,9 @@ const deleteFromWishList = wishListItemId => {
   }).then(res => console.log(res.status));
 };
 
-const searchMovies = query => {
+const searchMovies = (query, page = 1) => {
   query = sanitiseQuery(query);
-  return fetch(`${SEARCH_URL}?s=${query}`).then(res => res.json());
+  return fetch(`${SEARCH_URL}?s=${query}&page=${page}`).then(res => res.json());
 };
 
 const getMovie = imdbID => {
