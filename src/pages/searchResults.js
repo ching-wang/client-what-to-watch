@@ -20,7 +20,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   return (
     <Container>
       <div className="page-container">
-        <h1>Search results</h1>
+        <h1 style={{ color: "white" }}>Search results</h1>
         <Card.Group centered={true} itemsPerRow={5}>
           {results.map(result => (
             <SearchResultCard

@@ -75,7 +75,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
           <Confirm
             open={open}
             color="white"
-            header="Are you sure that you want to delete this wishlist?"
+            header="DELETE WISHLIST"
             content="Are you sure that you want to delete this wishlist?"
             cancelButton="No"
             confirmButton="Yes"

@@ -52,6 +52,8 @@ const MovieCard = ({ user }) => {
     });
   };
 
+  console.log(movie);
+
   return (
     <Container className="page-container">
       <Grid>
@@ -62,7 +64,11 @@ const MovieCard = ({ user }) => {
               <Image
                 className="poster"
                 alt={movie.Title}
-                src={movie.Poster}
+                src={
+                  movie.Poster !== "N/A"
+                    ? movie.Poster
+                    : window.location.origin + `/default-movie-poster.jpg`
+                }
                 wrapped
                 ui={false}
               />
@@ -76,15 +82,39 @@ const MovieCard = ({ user }) => {
             <h1>{movie.Title}</h1>
             <Card.Content>
               <medium>
-                <strong>Director:</strong>
+                <strong>Director: </strong>
               </medium>
               {movie.Director}
             </Card.Content>
             <Card.Content>
               <medium>
-                <strong>Actors:</strong>
+                <strong>Actors: </strong>
               </medium>
               {movie.Actors}
+            </Card.Content>
+            <Card.Content>
+              <medium>
+                <strong>IMDB Rating: </strong>
+              </medium>
+              <span className="rating">{movie.imdbRating}</span>
+            </Card.Content>
+            <Card.Content>
+              <medium>
+                <strong>Language: </strong>
+              </medium>
+              <span>{movie.Language}</span>
+            </Card.Content>
+            <Card.Content>
+              <medium>
+                <strong>Country: </strong>
+              </medium>
+              <span>{movie.Country}</span>
+            </Card.Content>
+            <Card.Content>
+              <medium>
+                <strong>Runtime: </strong>
+              </medium>
+              <span>{movie.Runtime}</span>
             </Card.Content>
             <br></br>
             <Card.Description>Plot: {movie.Plot}</Card.Description>
@@ -140,6 +170,10 @@ const MovieCard = ({ user }) => {
       </Grid>
     </Container>
   );
+};
+
+MovieCard.defaultProps = {
+  Poster: "http://i.imgur.com/bJw8ndW.png"
 };
 
 export default MovieCard;

@@ -73,7 +73,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                     <Confirm
                       open={open}
                       color="white"
-                      header="Are you sure that you want to delete your account?"
+                      header="DELETE ACCOUNT"
                       content="Are you sure that you want to delete your account?"
                       cancelButton="No, I would like to stay"
                       confirmButton="Yes, please go ahead to delete it"
