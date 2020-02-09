@@ -18,6 +18,8 @@ export const NavSearchBar = () => {
       onChange={handleChange}
     >
       <Input
+        className="search-bar"
+        inverted
         name="s"
         size="small"
         action={{ icon: "search" }}

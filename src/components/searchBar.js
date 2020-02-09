@@ -19,8 +19,9 @@ const SearchBar = () => {
     >
       <Input
         name="s"
+        color="#232b2b"
         size="huge"
-        action={{ icon: "search" }}
+        action={{ icon: "search", color: "black" }}
         placeholder="Search for films"
       />
     </Form>

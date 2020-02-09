@@ -1,5 +1,13 @@
 import React from "react";
+import { Container, Message } from "semantic-ui-react";
 
-export const ErrorMessage = ({ error }) => {
-  return <h1 className="error">{error}</h1>;
+export const ErrorMessage = ({ error, message }) => {
+  return (
+    <Container className="page-container">
+      <Message negative>
+        <Message.Header>{error}</Message.Header>
+        <p>{message}</p>
+      </Message>
+    </Container>
+  );
 };
