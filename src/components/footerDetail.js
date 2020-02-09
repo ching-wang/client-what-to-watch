@@ -1,0 +1,39 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
+import {
+  Segment,
+  Grid,
+  Header,
+  List,
+  Container,
+  Icon
+} from "semantic-ui-react";
+import { Route } from "react-router-dom";
+
+export const FooterDetail = () => {
+  return (
+    <>
+      {" "}
+      <Container className="footer-container" textAlign="center">
+        {/* <Grid divided inverted stackable>
+          <Grid.Row> */}
+        {/* <Grid.Column width={8}> */}
+        {/* <Header inverted as="h4" content="Find Me" /> */}
+        <Icon name="twitter" size="big" />
+        <Icon name="facebook" size="big" />
+        <Icon name="youtube" size="big" />
+        <Icon name="instagram" size="big" />
+        {/* </Grid.Column> */}
+
+        {/* <Grid.Column width={8}>
+              <Header as="h4" inverted>
+                About
+              </Header>
+              <p>Add a film to your wishlist</p>
+            </Grid.Column> */}
+        {/* </Grid.Row>
+        </Grid> */}
+      </Container>
+    </>
+  );
+};

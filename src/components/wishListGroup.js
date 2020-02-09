@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Grid } from "semantic-ui-react";
+import { Card, Button, Grid, Icon } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
 import { NavLink } from "react-router-dom";
 import API from "../adapters/API";
@@ -42,10 +42,10 @@ const WishListGroup = ({ user }) => {
           </h1>
         </Grid.Column>
         <Grid.Column>
-          <Button color="olive" size="small">
+          <Button className="btn" color="olive" size="small">
             <NavLink style={{ color: "black" }} to="wishlist/new">
               {" "}
-              + New Wishlist{" "}
+              <Icon name="add" /> New Wishlist{" "}
             </NavLink>
           </Button>
         </Grid.Column>

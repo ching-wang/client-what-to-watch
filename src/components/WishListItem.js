@@ -10,7 +10,21 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
 
   return (
     <Card rasied>
-      <Image src={wishListItem.movie.poster} wrapped ui={false} />
+      <Popup
+        content="Click the image to view film details"
+        size="small"
+        position="left center"
+        trigger={
+          <Image
+            src={wishListItem.movie.poster}
+            wrapped
+            ui={false}
+            onClick={() =>
+              history.push(`/movies/${wishListItem.movie.imdb_id}`)
+            }
+          />
+        }
+      />
       <Card.Content>
         <Card.Header>{wishListItem.movie.title}</Card.Header>
         <Card.Meta>
@@ -35,7 +49,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
             />
           </span>
           <Popup
-            content="Remove this film from this wishlist"
+            content="Remove the film from current wishlist"
             size="small"
             position="left center"
             trigger={

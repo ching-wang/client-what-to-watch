@@ -17,6 +17,7 @@ import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
 import { useDarkMode } from "./hooks/useDarkMode";
 import { Welcome } from "./pages/welcome";
+import { Footer } from "./pages/footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -148,6 +149,7 @@ function App() {
             <SearchResults />
           </Route>
         </Switch>
+        <Footer />
       </Responsive>
     </>
   );

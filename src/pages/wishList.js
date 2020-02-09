@@ -29,12 +29,20 @@ const WishList = () => {
   return wishList.wish_list_items ? (
     <Container>
       <div className="page-container">
-        <h1>{wishList.name}</h1>
-        <h2>
-          {" "}
-          You have &nbsp; {wishList.wish_list_items.length}
-          &nbsp;{wishList.wish_list_items.length > 1 ? "movies" : "movie"}
-        </h2>
+        <>
+          <h2>
+            You have &nbsp;{wishList.wish_list_items.length}
+            &nbsp;
+            {wishList.wish_list_items.length > 1 ? "movies" : "movie"}
+            &nbsp;in <span className="wishlist-name">{wishList.name}</span>
+          </h2>
+
+          {wishList.wish_list_items.length > 1 ? (
+            <h3>search a film to add to the list</h3>
+          ) : (
+            ""
+          )}
+        </>
         <Card.Group
           centered={true}
           itemsPerRow={Math.max(

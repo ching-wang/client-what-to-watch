@@ -4,7 +4,7 @@ import SearchBar from "../components/searchBar";
 
 const Hero = () => {
   return (
-    <Container text>
+    <Container textAlign="center" text>
       <Header
         as="h4"
         content="What do you want to watch?"
