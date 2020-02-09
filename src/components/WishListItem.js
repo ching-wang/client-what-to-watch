@@ -4,12 +4,9 @@ import { useHistory, useParams } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
-  const params = useParams();
-
-  // console.log(params);
 
   return (
-    <Card rasied>
+    <Card>
       <Popup
         content="Click the image to view film details"
         size="small"
