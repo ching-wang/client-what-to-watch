@@ -15,7 +15,7 @@ const WishList = () => {
   }, [wishListId]);
 
   function deleteWishlistItem(wishlistitemId) {
-    wishList.filter(w => w.wish_list_items.id != wishlistitemId);
+    wishList.filter(w => w.wish_list_items.id !== wishlistitemId);
   }
   // function filteredWishlistItem() {
   //   deleteWishlistItem();

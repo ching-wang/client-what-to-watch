@@ -17,7 +17,12 @@ const MovieCard = ({ user }) => {
   const [movie, setMovie] = useState({});
   useEffect(() => {
     API.getMovie(imdbId).then(res => setMovie(res));
-  }, [imdbId]);
+  }, []);
+
+  const [wishslists, setWishlists] = useState([]);
+  useEffect(() => {
+    API.getUserWishLists().then(res => setWishlists(res));
+  }, []);
 
   const [wishListItems, setWishListItems] = useState([]);
   useEffect(() => {
@@ -76,43 +81,31 @@ const MovieCard = ({ user }) => {
           </Grid.Column>
           <Grid.Column width={7}>
             <Card.Content>
-              <medium>Genre:</medium> {movie.Genre}
+              <strong>Genre:</strong> {movie.Genre}
             </Card.Content>
             <h1>{movie.Title}</h1>
             <Card.Content>
-              <medium>
-                <strong>Director: </strong>
-              </medium>
+              <strong>Director: </strong>
               {movie.Director}
             </Card.Content>
             <Card.Content>
-              <medium>
-                <strong>Actors: </strong>
-              </medium>
+              <strong>Actors: </strong>
               {movie.Actors}
             </Card.Content>
             <Card.Content>
-              <medium>
-                <strong>IMDB Rating: </strong>
-              </medium>
+              <strong>IMDB Rating: </strong>
               <span className="rating">{movie.imdbRating}</span>
             </Card.Content>
             <Card.Content>
-              <medium>
-                <strong>Language: </strong>
-              </medium>
+              <strong>Language: </strong>
               <span>{movie.Language}</span>
             </Card.Content>
             <Card.Content>
-              <medium>
-                <strong>Country: </strong>
-              </medium>
+              <strong>Country: </strong>
               <span>{movie.Country}</span>
             </Card.Content>
             <Card.Content>
-              <medium>
-                <strong>Runtime: </strong>
-              </medium>
+              <strong>Runtime: </strong>
               <span>{movie.Runtime}</span>
             </Card.Content>
             <br></br>
@@ -127,14 +120,10 @@ const MovieCard = ({ user }) => {
               className="icon"
             >
               <Dropdown.Menu>
-                {!user ? (
-                  <Card.Description>
-                    Please login in to add the film
-                  </Card.Description>
-                ) : (
+                {
                   <>
                     <Dropdown.Header content="Choose a wishList to add to" />
-                    {user.wish_lists.map(wishlist => (
+                    {wishslists.map(wishlist => (
                       <Dropdown.Item
                         key={wishlist.id}
                         name={wishlist.name}
@@ -147,12 +136,12 @@ const MovieCard = ({ user }) => {
                       />
                     ))}
                   </>
-                )}
+                }
               </Dropdown.Menu>
             </Dropdown>
             <Popup
               content="Share this film"
-              size="medium"
+              size="small"
               position="bottom right"
               trigger={
                 <Icon

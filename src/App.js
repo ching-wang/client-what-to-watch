@@ -39,6 +39,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
+    history.push("/wishlists");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {
@@ -64,7 +65,7 @@ function App() {
   useEffect(() => {
     if (API.hasToken) {
       API.validate().then(res => {
-        handleLogin(res.user);
+        setUser(res.user);
       });
       // .then(() => setValidateUser(true));
       // .catch(errorPromise => {

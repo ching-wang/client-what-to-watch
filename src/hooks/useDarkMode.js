@@ -1,4 +1,4 @@
-import { useEffect, useMedia } from "react";
+import { useEffect } from "react";
 import useMediaQuery from "react-use-media-query-hook";
 
 export function useDarkMode() {
