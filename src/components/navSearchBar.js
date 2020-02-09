@@ -3,7 +3,7 @@ import { Form, Input } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import { sanitiseQuery } from "../common/util";
 
-const SearchBar = () => {
+export const NavSearchBar = () => {
   const [formData, setFormData] = useState({ s: "" });
   const handleChange = event => {
     setFormData({
@@ -19,12 +19,10 @@ const SearchBar = () => {
     >
       <Input
         name="s"
-        size="huge"
+        size="small"
         action={{ icon: "search" }}
         placeholder="Search for films"
       />
     </Form>
   );
 };
-
-export default SearchBar;

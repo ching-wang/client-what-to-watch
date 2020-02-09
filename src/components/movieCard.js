@@ -63,23 +63,19 @@ const MovieCard = ({ user }) => {
     <Container className="page-container">
       <Grid>
         <Grid.Row>
-          <Grid.Column width={2}></Grid.Column>
           <Grid.Column width={6}>
-            <Card>
-              <Image
-                className="poster"
-                alt={movie.Title}
-                src={
-                  movie.Poster !== "N/A"
-                    ? movie.Poster
-                    : window.location.origin + `/default-movie-poster.jpg`
-                }
-                wrapped
-                ui={false}
-              />
-            </Card>
+            <Image
+              className="poster"
+              style={{ margin: "auto", width: "100%", height: "auto" }}
+              alt={movie.Title}
+              src={
+                movie.Poster !== "N/A"
+                  ? movie.Poster
+                  : window.location.origin + `/default-movie-poster.jpg`
+              }
+            />
           </Grid.Column>
-          <Grid.Column width={7}>
+          <Grid.Column width={10}>
             <Card.Content>
               <strong>Genre:</strong> {movie.Genre}
             </Card.Content>
@@ -153,7 +149,6 @@ const MovieCard = ({ user }) => {
               }
             />
           </Grid.Column>
-          <Grid.Column width={2}></Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>

@@ -3,7 +3,7 @@ import { Menu, Icon, Popup } from "semantic-ui-react";
 import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
 import WishListButton from "../components/wishListButton";
-import SearchBar from "../components/searchBar";
+import NavSearchBar from "../components/searchBar";
 
 const NavBar = ({ user, onLogout }) => {
   return (
@@ -23,13 +23,12 @@ const NavBar = ({ user, onLogout }) => {
           }
         />
       </Menu.Item>
-      <Menu.Item floated="right">
-        <SearchBar />
-      </Menu.Item>
 
       {user ? (
         <>
-          <Menu.Item position="right"></Menu.Item>
+          <Menu.Item position="right">
+            <NavSearchBar />
+          </Menu.Item>
           <Menu.Menu position="right">
             <ProfileButton />
             <WishListButton />
