@@ -13,7 +13,7 @@ import {
 const ProfileDetail = ({ user, onDeleteAccount }) => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState("Your account...");
+  const [result, setResult] = useState("Your account has been deleted");
 
   const handleConfirm = () => {
     setOpen(false);
@@ -69,13 +69,12 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                       onClick={() => {
                         show();
                       }}
-                      // onDeleteAccount(user.id)
                     />
                     <Confirm
                       open={open}
+                      color="white"
                       header="Are you sure that you want to delete your account?"
-                      content="This is a custom message"
-                      // content="Are you sure that you want to delete your account?"
+                      content="Are you sure that you want to delete your account?"
                       cancelButton="No, I would like to stay"
                       confirmButton="Yes, please go ahead to delete it"
                       onCancel={handleCancel}
