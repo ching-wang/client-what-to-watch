@@ -5,34 +5,23 @@ import { SearchResultCard } from "../components/SearchResultCard";
 import { useLocation, useHistory } from "react-router-dom";
 import * as queryString from "query-string";
 import { NotFoundMessage } from "./notFoundMessage";
-import { useAlert } from "react-alert";
-import SearchBar from "../components/searchBar";
 
 export const SearchResults = ({ handleShowMovieCard }) => {
   const location = useLocation();
   const params = queryString.parse(location.search);
-  const query = String(params.s || "").trim();
+  const query = params.s;
 
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(parseInt(params.page) || 1);
   const [totalResults, setTotalResults] = useState(0);
 
   const history = useHistory();
-  const [error, setError] = useState("");
 
   useEffect(() => {
-    if (!query) {
-      return;
-    }
-    API.searchMovies(query, page)
-      .then(res => {
-        setResults(res.Search);
-        setTotalResults(parseInt(res.totalResults));
-      })
-      .catch(e => {
-        setError(e);
-        setResults(undefined);
-      });
+    API.searchMovies(query, page).then(res => {
+      setResults(res.Search);
+      setTotalResults(parseInt(res.totalResults));
+    });
   }, [query, page]);
 
   const handlePaginationChange = (e, { activePage }) => {
@@ -42,45 +31,25 @@ export const SearchResults = ({ handleShowMovieCard }) => {
 
   if (!results) {
     return (
-      <Container textAlign="center">
-        <div className="page-container">
-          <h1>No movies found for that query. Sorry!</h1>
-        </div>
-        <Container textAlign="center" text>
-          <SearchBar />
-        </Container>
-      </Container>
+      <>
+        <NotFoundMessage />
+      </>
     );
   }
-
-  if (results.length < 1) {
-    return (
-      <Container>
-        <div className="page-container">
-          <h1>Searching...</h1>
-        </div>
-      </Container>
-    );
-  }
-
   return (
     <Container>
       <div className="page-container">
         <Container textAlign="center">
           <h1 className="search-result">SEARCH RESULTS</h1>
-          {totalResults > 10 ? (
-            <Pagination
-              defaultActivePage={page}
-              totalPages={Math.ceil(totalResults / 10)}
-              onPageChange={handlePaginationChange}
-            />
-          ) : (
-            <></>
-          )}
+          <Pagination
+            defaultActivePage={page}
+            totalPages={Math.ceil(totalResults / 10)}
+            onPageChange={handlePaginationChange}
+          />
         </Container>
         <br />
         <Card.Group centered={true} itemsPerRow={5}>
-          {(results || []).map(result => (
+          {results.map(result => (
             <SearchResultCard
               key={result.imdbID}
               searchResult={result}
@@ -91,15 +60,11 @@ export const SearchResults = ({ handleShowMovieCard }) => {
         <br />
         <br />
         <Container textAlign="center">
-          {totalResults > 1 ? (
-            <Pagination
-              defaultActivePage={page}
-              totalPages={Math.ceil(totalResults / 10)}
-              onPageChange={handlePaginationChange}
-            />
-          ) : (
-            <></>
-          )}
+          <Pagination
+            defaultActivePage={page}
+            totalPages={Math.ceil(totalResults / 10)}
+            onPageChange={handlePaginationChange}
+          />
         </Container>
       </div>
     </Container>
