@@ -44,8 +44,11 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
       />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
-        {/* <Card.Meta>Testing header</Card.Meta> */}
-        <Card.Description>{wishList.description ? wishList.description : "I haven't added any descriptin yet"}</Card.Description>
+        <Card.Description>
+          {wishList.description
+            ? wishList.description
+            : "I haven't added any descriptin yet"}
+        </Card.Description>
         <br></br>
         <Card.Meta>
           <Popup

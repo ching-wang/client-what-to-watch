@@ -1,5 +1,7 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavLink, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Clipboard from "react-clipboard.js";
+
 import {
   Container,
   Card,
@@ -7,12 +9,47 @@ import {
   Grid,
   Icon,
   Popup,
-  Image
+  Image,
+  Message,
+  Modal,
+  Button,
+  Header,
+  Input
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
+
+  // const [clipBoard, setclipBoard] = useState({
+  //   value: "",
+  //   copied: false
+  // });
+
+  // onChange = ({ target: { value } }) => {
+  //   this.setState({ value, copied: false });
+  // };
+
+  // onClick = ({ target: { innerHTML } }) => {
+  //   console.log(`Clicked on "${innerHTML}"!`);
+  // };
+
+  // onCopy = () => {
+  //   this.setState({ copied: true });
+  // };
+
+  const onSuccess = () => {
+    return window.alert(`successfuly copied! ${currentPath}`);
+  };
+
+  const getText = () => {
+    return currentPath;
+  };
+
+  const basedURL = "http://localhost:3001";
+
+  const location = useLocation();
+  const currentPath = basedURL + location.pathname;
 
   const [movie, setMovie] = useState({});
   useEffect(() => {
@@ -118,45 +155,65 @@ const MovieCard = ({ user }) => {
               <Dropdown.Menu>
                 {
                   <>
-                    <Dropdown.Header content="Choose a wishList to add to" />
-                    {wishslists.map(wishlist => (
-                      <Dropdown.Item
-                        key={wishlist.id}
-                        name={wishlist.name}
-                        text={wishlist.name}
-                        image={{ src: wishlist.image }}
-                        icon={findWishListItem(wishlist.id) ? "check" : ""}
-                        onClick={() =>
-                          toggleInWishlist(wishlist.id, movie.imdbID)
-                        }
-                      />
-                    ))}
+                    {user ? (
+                      <>
+                        <Dropdown.Header content="Choose a wishList to add to" />
+                        {wishslists.map(wishlist => (
+                          <Dropdown.Item
+                            key={wishlist.id}
+                            name={wishlist.name}
+                            text={wishlist.name}
+                            image={{ src: wishlist.image }}
+                            icon={findWishListItem(wishlist.id) ? "check" : ""}
+                            onClick={() =>
+                              toggleInWishlist(wishlist.id, movie.imdbID)
+                            }
+                          />
+                        ))}{" "}
+                      </>
+                    ) : (
+                      <>
+                        <Message
+                          error
+                          header="Error"
+                          content="You must log-in to add it to your wishlist"
+                        />
+                      </>
+                    )}
                   </>
                 }
               </Dropdown.Menu>
             </Dropdown>
-            <Popup
-              content="Share this film"
-              size="small"
-              position="bottom right"
+
+            <Modal
               trigger={
-                <Icon
-                  name="share alternate square"
-                  size="big"
-                  color="orange"
-                  onClick={null}
-                />
+                <Icon name="share alternate square" size="big" color="orange" />
               }
-            />
+            >
+              <Modal.Header>Share this film with a friend</Modal.Header>
+              <Modal.Content image>
+                <Image wrapped size="medium" src={movie.Poster} />
+                <Modal.Description>
+                  <Header>Copy the link below</Header>
+                  <Input
+                    type="url"
+                    name="path"
+                    placeholder="path"
+                    defaultValue={currentPath}
+                  />
+
+                  <Clipboard option-text={getText} onSuccess={onSuccess}>
+                    <Icon name="copy" size="big" color="orange" />
+                  </Clipboard>
+                  {/* <FacebookIcon url={currentPath} size={30} /> */}
+                </Modal.Description>
+              </Modal.Content>
+            </Modal>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>
   );
-};
-
-MovieCard.defaultProps = {
-  Poster: "http://i.imgur.com/bJw8ndW.png"
 };
 
 export default MovieCard;
