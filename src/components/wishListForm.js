@@ -33,7 +33,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
             name="name"
             autoComplete="name"
             placeholder="name"
-            defaultValue={null}
+            defaultValue={wishListFormData.name}
           />
         </Form.Field>
         <Form.Field>
@@ -43,7 +43,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
             name="image"
             autoComplete="image"
             placeholder="image link..."
-            defaultValue={null}
+            defaultValue={wishListFormData.image}
           />
         </Form.Field>
         <Form.Field>
@@ -52,7 +52,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
             type="text"
             name="description"
             placeholder="Something about your wishlist"
-            defaultValue={null}
+            defaultValue={wishListFormData.description}
           />
         </Form.Field>
         <br></br>
