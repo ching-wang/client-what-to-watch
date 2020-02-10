@@ -29,19 +29,18 @@ const SignUpForm = ({ handleLogin }) => {
     }
   };
 
+  const alert = useAlert();
+
   const handleSingupSubmit = (event, signupformData) => {
     event.preventDefault();
     API.signup(signupformData)
       .then(handleSignupResponse)
       .then(handleLogin)
-      .catch(setError);
+      .catch(setError)
+      .then(() => alert.show(error));
   };
 
-  const alert = useAlert();
-  if (error) {
-    alert.show(error);
-  }
-
+  
   return (
     <div className="hero-container">
       <h2>Sign Up For Free </h2>
@@ -73,7 +72,7 @@ const SignUpForm = ({ handleLogin }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label>Password</label>
+          <label>* Password</label>
           <input
             type="password"
             name="password"
@@ -87,7 +86,7 @@ const SignUpForm = ({ handleLogin }) => {
             type="url"
             name="avatar"
             autoComplete="photo"
-            placeholder="image link..."
+            placeholder="image link... (Optional)"
             defaultValue={signupformData.avatar}
           />
         </Form.Field>
@@ -96,20 +95,30 @@ const SignUpForm = ({ handleLogin }) => {
           <input
             type="text"
             name="bio"
-            placeholder={"Bio"}
+            placeholder={"Bio (Optional)"}
             defaultValue={signupformData.bio}
           />
         </Form.Field>
-        <Button className="signUpBtn" color="white" type="submit" inverted>
+        <br />
+        <Button
+          floated="right"
+          className="signUpBtn"
+          color="white"
+          type="submit"
+          inverted
+        >
           SIGN UP
         </Button>
       </Form>
-      <br></br>
+      <br />
+      <br />
+      <br />
+      <br />
       <h4>
-        Already have an account?{" "}
-        <NavLink to="/login" style={{ color: "#ebe534" }}>
+        Already have an account? &nbsp;
+        <NavLink to="/login" style={{ color: "#D4AC0D" }}>
           {" "}
-          Click here to Login{" "}
+          Click here to LOGIN{" "}
         </NavLink>
       </h4>
     </div>

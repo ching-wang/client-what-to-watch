@@ -18,12 +18,13 @@ const SearchBar = () => {
       onChange={handleChange}
     >
       <Input
+        className="search-bar"
         name="s"
         fluid
         color="olive"
         size="small"
         action={{ icon: "search", color: "black" }}
-        placeholder="Search for films or TV show"
+        placeholder="Search for films or TV shows"
       />
     </Form>
   );

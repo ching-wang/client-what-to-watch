@@ -5,6 +5,7 @@ import { SearchResultCard } from "../components/SearchResultCard";
 import { useLocation, useHistory } from "react-router-dom";
 import * as queryString from "query-string";
 import { NotFoundMessage } from "./notFoundMessage";
+import { useAlert } from "react-alert";
 
 export const SearchResults = ({ handleShowMovieCard }) => {
   const location = useLocation();
@@ -16,12 +17,15 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   const [totalResults, setTotalResults] = useState(0);
 
   const history = useHistory();
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    API.searchMovies(query, page).then(res => {
-      setResults(res.Search);
-      setTotalResults(parseInt(res.totalResults));
-    });
+    API.searchMovies(query, page)
+      .then(res => {
+        setResults(res.Search);
+        setTotalResults(parseInt(res.totalResults));
+      })
+      .catch(setError);
   }, [query, page]);
 
   const handlePaginationChange = (e, { activePage }) => {
@@ -29,13 +33,19 @@ export const SearchResults = ({ handleShowMovieCard }) => {
     history.push(`/search?s=${query}&page=${activePage}`);
   };
 
+  // if (!results) {
+  //   return (
+  //     <>
+  //       <NotFoundMessage />
+  //     </>
+  //   );
+  // }
+
+  const alert = useAlert();
   if (!results) {
-    return (
-      <>
-        <NotFoundMessage />
-      </>
-    );
+    alert.show(error);
   }
+
   return (
     <Container>
       <div className="page-container">
