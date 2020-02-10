@@ -21,11 +21,9 @@ import { Footer } from "./pages/footer";
 
 function App() {
   const [user, setUser] = useState(null);
-  const [error, setError] = useState(null);
-  const [validateUser, setValidateUser] = useState(false);
+  // const [error, setError] = useState(null);
+  // const [validateUser, setValidateUser] = useState(false);
   const history = useHistory();
-  // const [darkMode, setDarkMode] = useDarkMode();
-  const [enabled, setEnabledState] = useDarkMode();
 
   const logout = () => {
     setUser(null);
@@ -39,7 +37,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
-    history.push("/wishlists");
+    history.push("/welcome");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {

@@ -1,13 +1,15 @@
 import React from "react";
-import { Header, Container } from "semantic-ui-react";
-import SearchBar from "../components/searchBar";
+import { Container, Header } from "semantic-ui-react";
 
-const Hero = user => {
+export const WelcomeGreeting = ({ user }) => {
   return (
     <Container textAlign="center" text>
+      {/* <h1>Hello {user.username}</h1> */}
       <Header
         as="h4"
         content="What do you want to watch?"
+        // content={user.username}
+        // content={`Hello ${user.username}What do you want to watch?`}
         inverted
         style={{
           fontSize: "6em",
@@ -16,13 +18,6 @@ const Hero = user => {
           marginTop: "0.8em"
         }}
       />
-      <SearchBar />
     </Container>
   );
 };
-
-export default Hero;
-
-{
-  /**/
-}
