@@ -1,5 +1,7 @@
 import { useParams, NavLink, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import Clipboard from "react-clipboard.js";
+
 import {
   Container,
   Card,
@@ -18,6 +20,31 @@ import API from "../adapters/API";
 
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
+
+  // const [clipBoard, setclipBoard] = useState({
+  //   value: "",
+  //   copied: false
+  // });
+
+  // onChange = ({ target: { value } }) => {
+  //   this.setState({ value, copied: false });
+  // };
+
+  // onClick = ({ target: { innerHTML } }) => {
+  //   console.log(`Clicked on "${innerHTML}"!`);
+  // };
+
+  // onCopy = () => {
+  //   this.setState({ copied: true });
+  // };
+
+  const onSuccess = () => {
+    return window.alert(`successfuly copied! ${currentPath}`);
+  };
+
+  const getText = () => {
+    return currentPath;
+  };
 
   const basedURL = "http://localhost:3001";
 
@@ -158,22 +185,9 @@ const MovieCard = ({ user }) => {
               </Dropdown.Menu>
             </Dropdown>
 
-            <Popup
-              content="Share this film"
-              size="small"
-              position="bottom right"
-              trigger={
-                <Icon
-                  name="share alternate square"
-                  size="big"
-                  color="orange"
-                  onClick={null}
-                />
-              }
-            />
             <Modal
               trigger={
-                <Icon name="share alternate square" size="big" color="olive" />
+                <Icon name="share alternate square" size="big" color="orange" />
               }
             >
               <Modal.Header>Share this film with a friend</Modal.Header>
@@ -181,8 +195,17 @@ const MovieCard = ({ user }) => {
                 <Image wrapped size="medium" src={movie.Poster} />
                 <Modal.Description>
                   <Header>Copy the link below</Header>
-                  <Input>{currentPath}</Input>
-                  <Icon name="copy" size="big" color="black" />
+                  <Input
+                    type="url"
+                    name="path"
+                    placeholder="path"
+                    defaultValue={currentPath}
+                  />
+
+                  <Clipboard option-text={getText} onSuccess={onSuccess}>
+                    <Icon name="copy" size="big" color="orange" />
+                  </Clipboard>
+                  {/* <FacebookIcon url={currentPath} size={30} /> */}
                 </Modal.Description>
               </Modal.Content>
             </Modal>
