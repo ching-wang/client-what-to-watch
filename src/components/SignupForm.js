@@ -29,18 +29,18 @@ const SignUpForm = ({ handleLogin }) => {
     }
   };
 
-  const alert = useAlert();
-
   const handleSingupSubmit = (event, signupformData) => {
     event.preventDefault();
     API.signup(signupformData)
       .then(handleSignupResponse)
       .then(handleLogin)
-      .catch(err => {
-        setError(err);
-        alert.show(err.message);
-      });
+      .catch(setError);
   };
+
+  const alert = useAlert();
+  if (error) {
+    alert.show(error);
+  }
 
   return (
     <div className="hero-container">
@@ -53,76 +53,63 @@ const SignUpForm = ({ handleLogin }) => {
         inverted
       >
         <Form.Field>
-          <label htmlFor="username">Username</label>
+          <label for="username">Username</label>
           <input
             type="text"
             name="username"
             autoComplete="username"
             placeholder={"username"}
-            minLength={1}
             defaultValue={signupformData.username}
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="email">Email</label>
+          <label for="email">Email</label>
           <input
             type="email"
             name="email"
             autoComplete="email"
             placeholder="example@test.com"
-            minLength={5}
             defaultValue={signupformData.email}
           />
         </Form.Field>
         <Form.Field>
-          <label>* Password</label>
+          <label>Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
-            minLength={4}
-            defaultValue={signupformData.password}
+            defaulValue={signupformData.password}
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="avatar">Avatar</label>
+          <label for="avatar">Avatar</label>
           <input
             type="url"
             name="avatar"
             autoComplete="photo"
-            placeholder="image link... (Optional)"
+            placeholder="image link..."
             defaultValue={signupformData.avatar}
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="bio">Bio</label>
+          <label for="bio">Bio</label>
           <input
             type="text"
             name="bio"
-            placeholder={"Bio (Optional)"}
+            placeholder={"Bio"}
             defaultValue={signupformData.bio}
           />
         </Form.Field>
-        <br />
-        <Button
-          floated="right"
-          className="signUpBtn"
-          color="olive"
-          type="submit"
-          inverted
-        >
+        <Button className="signUpBtn" color="white" type="submit" inverted>
           SIGN UP
         </Button>
       </Form>
-      <br />
-      <br />
-      <br />
-      <br />
+      <br></br>
       <h4>
-        Already have an account? &nbsp;
-        <NavLink to="/login" style={{ color: "#D4AC0D" }}>
+        Already have an account?{" "}
+        <NavLink to="/login" style={{ color: "#ebe534" }}>
           {" "}
-          Click here to LOGIN{" "}
+          Click here to Login{" "}
         </NavLink>
       </h4>
     </div>

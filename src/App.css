@@ -62,11 +62,17 @@
 }
 
 .footer-container {
-  padding: 10em;
+  padding: 5em;
 }
 
 .search-bar {
-  padding: 3em;
+  background-color: teal;
+}
+
+.login-btn:hover {
+  /* margin: 10% auto;
+  text-align: center; */
+  color: "basic";
 }
 
 .text-color {

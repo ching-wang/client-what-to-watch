@@ -29,9 +29,7 @@ const WishList = () => {
           <h2>
             You have &nbsp;{wishListItems.length}
             &nbsp;
-            {wishListItems.length === 0 || wishListItems.length > 1
-              ? "movies"
-              : "movie"}
+            {wishListItems.length > 1 ? "movies" : "movie"}
             &nbsp;in <span className="wishlist-name">{wishList.name}</span>
           </h2>
 
