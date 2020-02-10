@@ -27,29 +27,25 @@ const LoginForm = ({ onLoginSuccess }) => {
     localStorage.token = loginResponse.token;
     return API.validate().then(res => res.user);
   };
+  const alert = useAlert();
 
   const handleSubmit = event => {
     event.preventDefault();
     API.login(formData)
       .then(handleLoginResponse)
       .then(onLoginSuccess)
-      .catch(setError);
+      .catch(setError)
+      .then(() => alert.show(error));
   };
 
-  const redirectLink = () => {
-    return <Link to="/login" />;
-  };
-
-  // if (error) return <ErrorMessage error={error} message={redirectLink} />;
-  const alert = useAlert();
-  if (error) {
-    alert.show(error);
-    // redirectLink();
-  }
+  // const redirectLink = () => {
+  //   return <Link to="/login" />;
+  // };
 
   return (
     <>
       <h2>Please Login </h2>
+      <br />
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
         <Form.Field>
           <label>Email</label>
@@ -69,7 +65,10 @@ const LoginForm = ({ onLoginSuccess }) => {
             defaultValue={formData.password}
           />
         </Form.Field>
-        <Form.Checkbox inline label="Remember Me" />
+        <div>
+          <Form.Checkbox inline label="Remember Me" />
+          <Link to="/">Forgot your password?</Link>
+        </div>
         <Button
           size="small"
           className="login-btn"
@@ -80,15 +79,16 @@ const LoginForm = ({ onLoginSuccess }) => {
         >
           LOG IN
         </Button>
-        <br></br>
-        <br></br>
-        <Link to="/">Forgot your password?</Link>
-        <br></br>
-        <br></br>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </Form>
       <h4>
         Don't have an account?{" "}
-        <NavLink to="/signup" style={{ color: "#ebe534" }}>
+        <NavLink to="/signup" style={{ color: "#D4AC0D" }}>
           {" "}
           Get Start Now{" "}
         </NavLink>
