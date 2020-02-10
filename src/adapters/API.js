@@ -13,8 +13,8 @@ const jsonify = async res => {
   if (res.ok) {
     return res.json();
   } else {
-    const errorBody = await res.json();
-    throw errorBody.errors[0];
+    const errorBody = res.json();
+    throw new Error(`Error in API.jsonify: ${JSON.stringify(errorBody)}`);
   }
 };
 
@@ -26,7 +26,17 @@ const login = loginDetails =>
       Accept: "application/json"
     },
     body: JSON.stringify({ user: loginDetails })
-  }).then(jsonify);
+  })
+    .then(res => {
+      console.log(res);
+      if (res.ok) {
+        return jsonify(res);
+      }
+      throw new Error("Login error");
+    })
+    .catch(err => {
+      throw new Error("Unexpected login error");
+    });
 
 const signup = signUpData => {
   return fetch(USER_URL, {
@@ -36,7 +46,12 @@ const signup = signUpData => {
       Accept: "application/json"
     },
     body: JSON.stringify({ user: signUpData })
-  }).then(jsonify);
+  }).then(res => {
+    if (res.ok) {
+      return jsonify(res);
+    }
+    throw new Error("Failed to sign up");
+  });
 };
 
 const updateProfile = (userId, newProfileFormData) => {
