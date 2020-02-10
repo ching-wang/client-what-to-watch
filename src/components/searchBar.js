@@ -12,18 +12,22 @@ const SearchBar = () => {
     });
   };
   const history = useHistory();
+  const handleSubmit = () => {
+    const query = String(formData.s || "").trim();
+    if (query) {
+      history.push(`/search?s=${sanitiseQuery(query)}`);
+    }
+  };
   return (
-    <Form
-      onSubmit={() => history.push(`/search?s=${sanitiseQuery(formData.s)}`)}
-      onChange={handleChange}
-    >
+    <Form onSubmit={handleSubmit} onChange={handleChange}>
       <Input
+        className="search-bar"
         name="s"
         fluid
         color="olive"
-        size="small"
+        size="big"
         action={{ icon: "search", color: "black" }}
-        placeholder="Search for films or TV show"
+        placeholder="Search for films or TV shows"
       />
     </Form>
   );
