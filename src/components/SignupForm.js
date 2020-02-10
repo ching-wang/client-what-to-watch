@@ -36,12 +36,11 @@ const SignUpForm = ({ handleLogin }) => {
     API.signup(signupformData)
       .then(handleSignupResponse)
       .then(handleLogin)
-      .catch(err => {
-        setError(err);
-        alert.show(err.message);
-      });
+      .catch(setError)
+      .then(() => alert.show(error));
   };
 
+  
   return (
     <div className="hero-container">
       <h2>Sign Up For Free </h2>
@@ -53,24 +52,22 @@ const SignUpForm = ({ handleLogin }) => {
         inverted
       >
         <Form.Field>
-          <label htmlFor="username">Username</label>
+          <label for="username">Username</label>
           <input
             type="text"
             name="username"
             autoComplete="username"
             placeholder={"username"}
-            minLength={1}
             defaultValue={signupformData.username}
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="email">Email</label>
+          <label for="email">Email</label>
           <input
             type="email"
             name="email"
             autoComplete="email"
             placeholder="example@test.com"
-            minLength={5}
             defaultValue={signupformData.email}
           />
         </Form.Field>
@@ -80,12 +77,11 @@ const SignUpForm = ({ handleLogin }) => {
             type="password"
             name="password"
             placeholder="Password"
-            minLength={4}
-            defaultValue={signupformData.password}
+            defaulValue={signupformData.password}
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="avatar">Avatar</label>
+          <label for="avatar">Avatar</label>
           <input
             type="url"
             name="avatar"
@@ -95,7 +91,7 @@ const SignUpForm = ({ handleLogin }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label htmlFor="bio">Bio</label>
+          <label for="bio">Bio</label>
           <input
             type="text"
             name="bio"
@@ -107,7 +103,7 @@ const SignUpForm = ({ handleLogin }) => {
         <Button
           floated="right"
           className="signUpBtn"
-          color="olive"
+          color="white"
           type="submit"
           inverted
         >
