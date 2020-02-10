@@ -39,8 +39,8 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   return (
     <Container>
       <div className="page-container">
-        <h1 style={{ color: "white" }}>Search results</h1>
         <Container textAlign="center">
+          <h1 className="search-result">SEARCH RESULTS</h1>
           <Pagination
             defaultActivePage={page}
             totalPages={Math.ceil(totalResults / 10)}

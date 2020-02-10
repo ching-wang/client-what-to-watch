@@ -68,6 +68,12 @@
 .search-bar {
   background-color: teal;
 }
+
+.login-btn {
+  margin: 10% auto;
+  text-align: center;
+  transform-style: perserve-3d;
+}
 /* .btn {
   color: indianred;
 } */

@@ -1,8 +1,8 @@
 import React from "react";
-import { Header, Container } from "semantic-ui-react";
+import { Header, Container, Icon } from "semantic-ui-react";
 import SearchBar from "../components/searchBar";
 
-const Hero = () => {
+const Hero = user => {
   return (
     <Container textAlign="center" text>
       <Header
@@ -22,3 +22,7 @@ const Hero = () => {
 };
 
 export default Hero;
+
+{
+  /**/
+}

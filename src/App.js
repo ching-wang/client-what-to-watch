@@ -91,7 +91,7 @@ function App() {
           <Route
             exact
             path="/"
-            render={routerProps => <MainPage {...routerProps} />}
+            render={routerProps => <MainPage {...routerProps} user={user}/>}
           />
           <Route
             exact
