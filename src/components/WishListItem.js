@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, Image, Icon, Popup } from "semantic-ui-react";
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();

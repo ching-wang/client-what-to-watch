@@ -23,7 +23,7 @@ export const NavSearchBar = () => {
         name="s"
         size="small"
         action={{ icon: "search" }}
-        placeholder="Search for films"
+        placeholder="Search for films or TV shows"
       />
     </Form>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Image, Icon, Popup } from "semantic-ui-react";
+import { Card, Image, Popup } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const SearchResultCard = ({ searchResult }) => {

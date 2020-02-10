@@ -36,6 +36,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
         <h1>My Profile Overview</h1>
         <Card>
           <Image
+            alt="profile avatar"
             src={
               user.avatar
                 ? user.avatar
@@ -43,6 +44,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             }
             wrapped
             ui={false}
+            rounded
           />
           <Card.Content>
             <Card.Header>{user.username}</Card.Header>

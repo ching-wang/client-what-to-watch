@@ -69,10 +69,10 @@
   background-color: teal;
 }
 
-.login-btn {
-  margin: 10% auto;
-  text-align: center;
-  transform-style: perserve-3d;
+.login-btn:hover {
+  /* margin: 10% auto;
+  text-align: center; */
+  color: "basic";
 }
 
 .text-color {

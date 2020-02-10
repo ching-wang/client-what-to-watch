@@ -1,4 +1,4 @@
-import { useParams, NavLink, useLocation } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Clipboard from "react-clipboard.js";
 
@@ -8,11 +8,9 @@ import {
   Dropdown,
   Grid,
   Icon,
-  Popup,
   Image,
   Message,
   Modal,
-  Button,
   Header,
   Input
 } from "semantic-ui-react";
@@ -39,7 +37,7 @@ const MovieCard = ({ user }) => {
   // };
 
   const onSuccess = () => {
-    return window.alert(`successfuly copied! ${currentPath}`);
+    return window.alert(`successfuly copied! ${currentPath} ${movie.Title}`);
   };
 
   const getText = () => {
@@ -93,8 +91,6 @@ const MovieCard = ({ user }) => {
       setWishListItems([...wishListItems, res]);
     });
   };
-
-  console.log(movie);
 
   return (
     <Container className="page-container">

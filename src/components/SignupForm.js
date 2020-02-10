@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { NavLink } from "react-router-dom";
-import { ErrorMessage } from "./errorMessage";
+import { useAlert } from "react-alert";
 import API from "../adapters/API";
 
 const SignUpForm = ({ handleLogin }) => {
@@ -37,7 +37,10 @@ const SignUpForm = ({ handleLogin }) => {
       .catch(setError);
   };
 
-  if (error) return <ErrorMessage error={error} />;
+  const alert = useAlert();
+  if (error) {
+    alert.show(error);
+  }
 
   return (
     <div className="hero-container">
@@ -97,7 +100,7 @@ const SignUpForm = ({ handleLogin }) => {
             defaultValue={signupformData.bio}
           />
         </Form.Field>
-        <Button className="signUpBtn" color="olive" type="submit">
+        <Button className="signUpBtn" color="white" type="submit" inverted>
           SIGN UP
         </Button>
       </Form>

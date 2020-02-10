@@ -1,14 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import {
-  Segment,
-  Grid,
-  Header,
-  List,
-  Container,
-  Icon
-} from "semantic-ui-react";
-import { Route } from "react-router-dom";
+import { Container, Icon } from "semantic-ui-react";
 
 export const FooterDetail = () => {
   return (

@@ -1,6 +1,10 @@
 import React from "react";
-import Main from "./main";
+import { WelcomeGreeting } from "../components/welcomeDetail";
 
 export const Welcome = ({ user }) => {
-  return <Main />;
+  return (
+    <>
+      <WelcomeGreeting user={user} />
+    </>
+  );
 };

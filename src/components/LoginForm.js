@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
+import { useAlert } from "react-alert";
 import { ErrorMessage } from "./errorMessage";
 
 const LoginForm = ({ onLoginSuccess }) => {
@@ -39,7 +40,12 @@ const LoginForm = ({ onLoginSuccess }) => {
     return <Link to="/login" />;
   };
 
-  if (error) return <ErrorMessage error={error} message={redirectLink} />;
+  // if (error) return <ErrorMessage error={error} message={redirectLink} />;
+  const alert = useAlert();
+  if (error) {
+    alert.show(error);
+    // redirectLink();
+  }
 
   return (
     <>
@@ -64,7 +70,14 @@ const LoginForm = ({ onLoginSuccess }) => {
           />
         </Form.Field>
         <Form.Checkbox inline label="Remember Me" />
-        <Button className="login-btn" floated="right" color="olive" type="submit">
+        <Button
+          size="small"
+          className="login-btn"
+          floated="right"
+          color="white"
+          type="submit"
+          inverted
+        >
           LOG IN
         </Button>
         <br></br>

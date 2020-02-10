@@ -3,12 +3,23 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import "./index.css";
+import AlertTemplate from "react-alert-template-oldschool-dark";
+import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+const options = {
+  position: positions.TOP_CENTER,
+  timeout: 4000,
+  offset: "20px",
+  transition: transitions.SCALE
+};
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <AlertProvider template={AlertTemplate} {...options}>
+      <App />
+    </AlertProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );
