@@ -68,7 +68,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
       <div className="page-container">
         <Container textAlign="center">
           <h1 className="search-result">SEARCH RESULTS</h1>
-          {results.length > 10 ? (
+          {totalResults > 10 ? (
             <Pagination
               defaultActivePage={page}
               totalPages={Math.ceil(totalResults / 10)}
@@ -91,7 +91,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
         <br />
         <br />
         <Container textAlign="center">
-          {results.length > 10 ? (
+          {totalResults > 1 ? (
             <Pagination
               defaultActivePage={page}
               totalPages={Math.ceil(totalResults / 10)}
