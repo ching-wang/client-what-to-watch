@@ -1,4 +1,4 @@
-import { useParams, NavLink } from "react-router-dom";
+import { useParams, NavLink, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -8,12 +8,21 @@ import {
   Icon,
   Popup,
   Image,
-  Message
+  Message,
+  Modal,
+  Button,
+  Header,
+  Input
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
+
+  const basedURL = "http://localhost:3001";
+
+  const location = useLocation();
+  const currentPath = basedURL + location.pathname;
 
   const [movie, setMovie] = useState({});
   useEffect(() => {
@@ -148,6 +157,7 @@ const MovieCard = ({ user }) => {
                 }
               </Dropdown.Menu>
             </Dropdown>
+
             <Popup
               content="Share this film"
               size="small"
@@ -161,15 +171,26 @@ const MovieCard = ({ user }) => {
                 />
               }
             />
+            <Modal
+              trigger={
+                <Icon name="share alternate square" size="big" color="olive" />
+              }
+            >
+              <Modal.Header>Share this film with a friend</Modal.Header>
+              <Modal.Content image>
+                <Image wrapped size="medium" src={movie.Poster} />
+                <Modal.Description>
+                  <Header>Copy the link below</Header>
+                  <Input>{currentPath}</Input>
+                  <Icon name="copy" size="big" color="black" />
+                </Modal.Description>
+              </Modal.Content>
+            </Modal>
           </Grid.Column>
         </Grid.Row>
       </Grid>
     </Container>
   );
-};
-
-MovieCard.defaultProps = {
-  Poster: "http://i.imgur.com/bJw8ndW.png"
 };
 
 export default MovieCard;

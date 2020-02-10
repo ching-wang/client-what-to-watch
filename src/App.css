@@ -74,6 +74,10 @@
   text-align: center;
   transform-style: perserve-3d;
 }
+
+.text-color {
+  color: whitesmoke !important;
+}
 /* .btn {
   color: indianred;
 } */
