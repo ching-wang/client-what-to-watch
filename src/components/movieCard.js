@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import {
   Container,
@@ -7,7 +7,8 @@ import {
   Grid,
   Icon,
   Popup,
-  Image
+  Image,
+  Message
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -118,19 +119,31 @@ const MovieCard = ({ user }) => {
               <Dropdown.Menu>
                 {
                   <>
-                    <Dropdown.Header content="Choose a wishList to add to" />
-                    {wishslists.map(wishlist => (
-                      <Dropdown.Item
-                        key={wishlist.id}
-                        name={wishlist.name}
-                        text={wishlist.name}
-                        image={{ src: wishlist.image }}
-                        icon={findWishListItem(wishlist.id) ? "check" : ""}
-                        onClick={() =>
-                          toggleInWishlist(wishlist.id, movie.imdbID)
-                        }
-                      />
-                    ))}
+                    {user ? (
+                      <>
+                        <Dropdown.Header content="Choose a wishList to add to" />
+                        {wishslists.map(wishlist => (
+                          <Dropdown.Item
+                            key={wishlist.id}
+                            name={wishlist.name}
+                            text={wishlist.name}
+                            image={{ src: wishlist.image }}
+                            icon={findWishListItem(wishlist.id) ? "check" : ""}
+                            onClick={() =>
+                              toggleInWishlist(wishlist.id, movie.imdbID)
+                            }
+                          />
+                        ))}{" "}
+                      </>
+                    ) : (
+                      <>
+                        <Message
+                          error
+                          header="Error"
+                          content="You must log-in to add it to your wishlist"
+                        />
+                      </>
+                    )}
                   </>
                 }
               </Dropdown.Menu>
