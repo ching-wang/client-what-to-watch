@@ -35,11 +35,23 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
       <div className="hero-container">
         <h1>My Profile Overview</h1>
         <Card>
-          <Image src={user.avatar} wrapped ui={false} />
+          <Image
+            src={
+              user.avatar
+                ? user.avatar
+                : "https://semantic-ui.com/images/wireframe/square-image.png"
+            }
+            wrapped
+            ui={false}
+          />
           <Card.Content>
             <Card.Header>{user.username}</Card.Header>
-            <Card.Meta>Joined in 2016</Card.Meta>
-            <Card.Description>{user.bio}</Card.Description>
+            <Card.Meta>Joined in 2020</Card.Meta>
+            <Card.Description>
+              {user.bio
+                ? user.bio
+                : "I haven't got a chance to write anything yet"}
+            </Card.Description>
             <br></br>
             <Card.Meta>
               <Popup

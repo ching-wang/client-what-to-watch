@@ -64,7 +64,7 @@ const LoginForm = ({ onLoginSuccess }) => {
           />
         </Form.Field>
         <Form.Checkbox inline label="Remember Me" />
-        <Button floated="right" color="olive" type="submit">
+        <Button className="login-btn" floated="right" color="olive" type="submit">
           LOG IN
         </Button>
         <br></br>

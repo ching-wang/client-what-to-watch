@@ -31,7 +31,11 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
         size="small"
         trigger={
           <Image
-            src={wishList.image}
+            src={
+              wishList.image
+                ? wishList.image
+                : "https://essentialpicks.com/wp-content/uploads/best-digital-art-projector-for-artist-and-mural-painting.jpg"
+            }
             wrapped
             ui={false}
             onClick={() => history.push(`/wishlists/${wishList.id}`)}
@@ -40,8 +44,8 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
       />
       <Card.Content>
         <Card.Header>{wishList.name}</Card.Header>
-        <Card.Meta>Testing header</Card.Meta>
-        <Card.Description>{wishList.description}</Card.Description>
+        {/* <Card.Meta>Testing header</Card.Meta> */}
+        <Card.Description>{wishList.description ? wishList.description : "I haven't added any descriptin yet"}</Card.Description>
         <br></br>
         <Card.Meta>
           <Popup

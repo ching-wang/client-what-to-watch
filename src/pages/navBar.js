@@ -1,17 +1,17 @@
 import React from "react";
 import { Menu, Icon, Popup } from "semantic-ui-react";
-import ProfileButton from "../components/profileButton";
 import LogoutButton from "../components/logoutButton";
-import WishListButton from "../components/wishListButton";
 import { NavSearchBar } from "../components/navSearchBar";
+import { useHistory } from "react-router-dom";
 
 const NavBar = ({ user, onLogout }) => {
+  const history = useHistory();
   return (
     <Menu inverted className="top-menu">
       <Menu.Item header>
         <Popup
           content="Go back home page"
-          size="small"
+          size="mini"
           position="bottom center"
           trigger={
             <a href="/">
@@ -30,8 +30,26 @@ const NavBar = ({ user, onLogout }) => {
             <NavSearchBar />
           </Menu.Item>
           <Menu.Menu position="right">
-            <ProfileButton />
-            <WishListButton />
+            <Popup
+              content="View Profile"
+              size="mini"
+              position="bottom center"
+              trigger={
+                <Menu.Item onClick={() => history.push("/profile")}>
+                  Profile
+                </Menu.Item>
+              }
+            />
+            <Popup
+              content="View Wishlists"
+              size="mini"
+              position="bottom center"
+              trigger={
+                <Menu.Item onClick={() => history.push("/wishlists")}>
+                  Wishlists
+                </Menu.Item>
+              }
+            />
             <LogoutButton handleLogOut={onLogout} />
           </Menu.Menu>
         </>
