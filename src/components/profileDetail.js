@@ -6,7 +6,6 @@ import {
   Container,
   Icon,
   Popup,
-  Button,
   Confirm
 } from "semantic-ui-react";
 

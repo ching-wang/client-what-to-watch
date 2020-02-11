@@ -38,7 +38,7 @@ export const EditWishlistForm = () => {
         className="ui form"
         inverted
       >
-        <Form.Field>
+        <Form.Field required>
           <label htmlFor="name">NAME</label>
           <input
             type="text"
@@ -74,7 +74,7 @@ export const EditWishlistForm = () => {
         <Button.Group>
           <Button onClick={() => history.push("/wishlists")}>Cancel</Button>
           <Button.Or />
-          <Button positive type="submit">
+          <Button color="olive" type="submit">
             Save
           </Button>
         </Button.Group>

@@ -34,7 +34,7 @@ const WishListGroup = ({ user }) => {
 
   return (
     <>
-      <Grid columns={2}>
+      <Grid columns={3}>
         <Grid.Column>
           <h1>
             You have {wishLists.length} &nbsp;

@@ -36,8 +36,6 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             className="card-img-size"
             onError={i => (i.target.src = defaultImage)}
             src={wishList.image ? wishList.image : defaultImage}
-            wrapped
-            ui={false}
             onClick={() => history.push(`/wishlists/${wishList.id}`)}
           />
         }
