@@ -119,3 +119,13 @@ a.ui.card {
 .date {
   color: indianred;
 }
+
+i.icon.edit.outline:before {
+  /* margin-left: 60px; */
+  display: flex;
+}
+
+i.icon.user.delete:before {
+  /* margin-left: 140px; */
+  display: flex;
+}

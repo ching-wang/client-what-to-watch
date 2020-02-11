@@ -55,10 +55,11 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
             </Card.Description>
             <br></br>
             <Card.Meta>
+              &nbsp;
               <Popup
                 content="Edit your profile"
                 size="small"
-                position="left center"
+                position="bottom center"
                 trigger={
                   <Icon
                     name="edit outline"
@@ -69,12 +70,13 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                   />
                 }
               />
-              <Popup
-                content="Delete your account"
-                size="small"
-                position="left center"
-                trigger={
-                  <>
+              &nbsp; &nbsp; &nbsp;
+              <>
+                <Popup
+                  content="Delete your account"
+                  size="small"
+                  position="bottom center"
+                  trigger={
                     <Icon
                       name="user delete"
                       size="large"
@@ -83,19 +85,19 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                         show();
                       }}
                     />
-                    <Confirm
-                      open={open}
-                      className="confirm-message"
-                      header="DELETE ACCOUNT"
-                      content="Are you sure that you want to delete your account?"
-                      cancelButton="No, I would like to stay"
-                      confirmButton="Yes, please go ahead"
-                      onCancel={handleCancel}
-                      onConfirm={handleConfirm}
-                    />
-                  </>
-                }
-              />
+                  }
+                />
+                <Confirm
+                  open={open}
+                  className="confirm-message"
+                  header="DELETE ACCOUNT"
+                  content="Are you sure that you want to delete your account?"
+                  cancelButton="No, I would like to stay"
+                  confirmButton="Yes, please go ahead"
+                  onCancel={handleCancel}
+                  onConfirm={handleConfirm}
+                />
+              </>
             </Card.Meta>
           </Card.Content>
         </Card>
