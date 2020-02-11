@@ -11,8 +11,6 @@ const LoginForm = ({ onLoginSuccess }) => {
     password: ""
   });
 
-  const [error, setError] = useState("");
-
   const handleChange = event => {
     setFormData({
       ...formData,
@@ -34,8 +32,9 @@ const LoginForm = ({ onLoginSuccess }) => {
     API.login(formData)
       .then(handleLoginResponse)
       .then(onLoginSuccess)
-      .catch(setError)
-      .then(() => alert.show(error));
+      .catch(error => {
+        alert.show(error);
+      });
   };
 
   // const redirectLink = () => {
