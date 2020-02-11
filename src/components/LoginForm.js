@@ -46,7 +46,7 @@ const LoginForm = ({ onLoginSuccess }) => {
       <h2>Please Login </h2>
       <br />
       <Form onSubmit={handleSubmit} onChange={handleChange} inverted>
-        <Form.Field>
+        <Form.Field required>
           <label>Email</label>
           <input
             type="email"
@@ -55,7 +55,7 @@ const LoginForm = ({ onLoginSuccess }) => {
             defaultValue={formData.email}
           />
         </Form.Field>
-        <Form.Field>
+        <Form.Field required>
           <label>Password</label>
           <input
             type="password"

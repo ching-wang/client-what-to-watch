@@ -51,8 +51,8 @@ const SignUpForm = ({ handleLogin }) => {
         className="ui form"
         inverted
       >
-        <Form.Field>
-          <label for="username">Username</label>
+        <Form.Field required>
+          <label htmlFor="username">Username</label>
           <input
             type="text"
             name="username"
@@ -61,8 +61,8 @@ const SignUpForm = ({ handleLogin }) => {
             defaultValue={signupformData.username}
           />
         </Form.Field>
-        <Form.Field>
-          <label for="email">Email</label>
+        <Form.Field required>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             name="email"
@@ -71,13 +71,13 @@ const SignUpForm = ({ handleLogin }) => {
             defaultValue={signupformData.email}
           />
         </Form.Field>
-        <Form.Field>
-          <label>* Password</label>
+        <Form.Field required>
+          <label>Password</label>
           <input
             type="password"
             name="password"
             placeholder="Password"
-            defaulValue={signupformData.password}
+            defaultValue={signupformData.password}
           />
         </Form.Field>
         <Form.Field>
@@ -91,7 +91,7 @@ const SignUpForm = ({ handleLogin }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label for="bio">Bio</label>
+          <label htmlFor="bio">Bio</label>
           <input
             type="text"
             name="bio"

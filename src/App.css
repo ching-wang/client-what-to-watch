@@ -72,6 +72,10 @@
 .text-color {
   color: whitesmoke !important;
 }
+
+.confirm-message {
+  color: black !important;
+}
 /* .btn {
   color: indianred;
 } */
