@@ -86,11 +86,13 @@ function App() {
       </Responsive>
       <Responsive>
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={routerProps => <MainPage {...routerProps} user={user}/>}
-          />
+          <Responsive>
+            <Route
+              exact
+              path="/"
+              render={routerProps => <MainPage {...routerProps} user={user} />}
+            />
+          </Responsive>
           <Route
             exact
             path="/welcome"
