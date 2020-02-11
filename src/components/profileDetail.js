@@ -33,7 +33,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
   const defaultImage =
     "https://semantic-ui.com/images/wireframe/square-image.png";
   return (
-    <Container>
+    <Container text>
       <div className="hero-container-profile">
         <h1>My Profile Overview</h1>
         <Card>
@@ -54,8 +54,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                 : "I haven't got a chance to write anything yet"}
             </Card.Description>
             <br></br>
-            <Card.Meta>
-              &nbsp;
+            <Card.Meta textAlign="right">
               <Popup
                 content="Edit your profile"
                 size="small"
@@ -70,7 +69,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                   />
                 }
               />
-              &nbsp; &nbsp; &nbsp;
+              &nbsp; &nbsp;
               <>
                 <Popup
                   content="Delete your account"

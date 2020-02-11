@@ -129,3 +129,7 @@ i.icon.user.delete:before {
   /* margin-left: 140px; */
   display: flex;
 }
+
+.ui.text.container {
+  height: 600px;
+}
