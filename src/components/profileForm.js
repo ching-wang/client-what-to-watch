@@ -73,7 +73,7 @@ const ProfileForm = ({ user, handleOnSubmit }) => {
           <Button.Group>
             <Button onClick={() => history.push("/profile/")}>Cancel</Button>
             <Button.Or />
-            <Button positive type="submit">
+            <Button color="olive" type="submit">
               Save
             </Button>
           </Button.Group>
