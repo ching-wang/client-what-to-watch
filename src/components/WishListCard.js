@@ -23,6 +23,8 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
     setOpen(true);
   };
 
+  const defaultImage =
+    "https://essentialpicks.com/wp-content/uploads/best-digital-art-projector-for-artist-and-mural-painting.jpg";
   return (
     <Card>
       <Popup
@@ -31,11 +33,9 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
         size="small"
         trigger={
           <Image
-            src={
-              wishList.image
-                ? wishList.image
-                : "https://essentialpicks.com/wp-content/uploads/best-digital-art-projector-for-artist-and-mural-painting.jpg"
-            }
+            className="card-img-size"
+            onError={i => (i.target.src = defaultImage)}
+            src={wishList.image ? wishList.image : defaultImage}
             wrapped
             ui={false}
             onClick={() => history.push(`/wishlists/${wishList.id}`)}

@@ -30,18 +30,17 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
     setOpen(true);
   };
 
+  const defaultImage =
+    "https://semantic-ui.com/images/wireframe/square-image.png";
   return (
-    <Container>
-      <div className="hero-container">
+    <Container text>
+      <div className="hero-container-profile">
         <h1>My Profile Overview</h1>
         <Card>
           <Image
+            onError={i => (i.target.src = defaultImage)}
             alt="profile avatar"
-            src={
-              user.avatar
-                ? user.avatar
-                : "https://semantic-ui.com/images/wireframe/square-image.png"
-            }
+            src={user.avatar ? user.avatar : defaultImage}
             wrapped
             ui={false}
             rounded
@@ -55,11 +54,11 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                 : "I haven't got a chance to write anything yet"}
             </Card.Description>
             <br></br>
-            <Card.Meta>
+            <Card.Meta textAlign="right">
               <Popup
                 content="Edit your profile"
                 size="small"
-                position="left center"
+                position="bottom center"
                 trigger={
                   <Icon
                     name="edit outline"
@@ -70,12 +69,13 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                   />
                 }
               />
-              <Popup
-                content="Delete your account"
-                size="small"
-                position="left center"
-                trigger={
-                  <>
+              &nbsp; &nbsp;
+              <>
+                <Popup
+                  content="Delete your account"
+                  size="small"
+                  position="bottom center"
+                  trigger={
                     <Icon
                       name="user delete"
                       size="large"
@@ -84,19 +84,19 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                         show();
                       }}
                     />
-                    <Confirm
-                      open={open}
-                      className="confirm-message"
-                      header="DELETE ACCOUNT"
-                      content="Are you sure that you want to delete your account?"
-                      cancelButton="No, I would like to stay"
-                      confirmButton="Yes, please go ahead"
-                      onCancel={handleCancel}
-                      onConfirm={handleConfirm}
-                    />
-                  </>
-                }
-              />
+                  }
+                />
+                <Confirm
+                  open={open}
+                  className="confirm-message"
+                  header="DELETE ACCOUNT"
+                  content="Are you sure that you want to delete your account?"
+                  cancelButton="No, I would like to stay"
+                  confirmButton="Yes, please go ahead"
+                  onCancel={handleCancel}
+                  onConfirm={handleConfirm}
+                />
+              </>
             </Card.Meta>
           </Card.Content>
         </Card>

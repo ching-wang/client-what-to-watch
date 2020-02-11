@@ -22,6 +22,15 @@
   max-width: 30em !important;
 }
 
+.hero-container-profile {
+  padding-top: 2em;
+  margin: auto;
+  max-width: 30em !important;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
 .poster {
   border-radius: 5px;
   border: cornsilk;
@@ -62,7 +71,8 @@
 }
 
 .footer-container {
-  padding: 10em;
+  display: flex;
+  margin-top: 25px;
 }
 
 .search-bar {
@@ -108,4 +118,18 @@ a.ui.card {
 
 .date {
   color: indianred;
+}
+
+i.icon.edit.outline:before {
+  /* margin-left: 60px; */
+  display: flex;
+}
+
+i.icon.user.delete:before {
+  /* margin-left: 140px; */
+  display: flex;
+}
+
+.ui.text.container {
+  height: 600px;
 }
