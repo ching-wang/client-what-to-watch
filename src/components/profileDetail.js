@@ -32,7 +32,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
 
   return (
     <Container>
-      <div className="hero-container">
+      <div className="hero-container-profile">
         <h1>My Profile Overview</h1>
         <Card>
           <Image

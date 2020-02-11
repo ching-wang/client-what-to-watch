@@ -22,6 +22,16 @@
   max-width: 30em !important;
 }
 
+
+.hero-container-profile {
+  padding-top: 2em;
+  margin: auto;
+  max-width: 30em !important;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
 .poster {
   border-radius: 5px;
   border: cornsilk;
