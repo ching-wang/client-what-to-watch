@@ -32,9 +32,14 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
         position="left center"
         trigger={
           <Image
-            src={wishListItem.movie.poster}
+            src={
+              wishListItem.movie.poster === "N/A"
+                ? "/default-movie-poster.jpg"
+                : wishListItem.movie.poster
+            }
             wrapped
             ui={false}
+            onError={i => (i.src = "/default-movie-poster.jpg")}
             onClick={() =>
               history.push(`/movies/${wishListItem.movie.imdb_id}`)
             }
