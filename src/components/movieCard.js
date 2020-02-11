@@ -28,7 +28,8 @@ const MovieCard = ({ user }) => {
     return currentPath;
   };
 
-  const basedURL = "http://localhost:3001";
+  const basedURL =
+    "http://localhost:https://what-to-watch-tonight.herokuapp.com/api/v1";
 
   const location = useLocation();
   const currentPath = basedURL + location.pathname;
@@ -61,7 +62,6 @@ const MovieCard = ({ user }) => {
   const toggleInWishlist = (wishListId, imdbID) => {
     const wishListItem = findWishListItem(wishListId);
     if (wishListItem) {
-
       API.deleteFromWishList(wishListItem.id).then(() => {
         setWishListItems(
           wishListItems.filter(wli => wli.id !== wishListItem.id)
