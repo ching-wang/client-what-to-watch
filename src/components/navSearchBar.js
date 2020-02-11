@@ -12,11 +12,14 @@ export const NavSearchBar = () => {
     });
   };
   const history = useHistory();
+  const handleSubmit = () => {
+    const query = String(formData.s || "").trim();
+    if (query) {
+      history.push(`/search?s=${sanitiseQuery(query)}`);
+    }
+  };
   return (
-    <Form
-      onSubmit={() => history.push(`/search?s=${sanitiseQuery(formData.s)}`)}
-      onChange={handleChange}
-    >
+    <Form onSubmit={handleSubmit} onChange={handleChange}>
       <Input
         inverted
         name="s"

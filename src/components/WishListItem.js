@@ -43,11 +43,8 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
       />
       <Card.Content>
         <Card.Header>
-          {wishListItem.movie.title}{" "}
-          <span className="movie-year">
-            {" "}
-            &nbsp; &nbsp; &nbsp;{wishListItem.movie.year}
-          </span>
+          <span className="movie-title">{wishListItem.movie.title} </span>
+          <span className="movie-year"> &nbsp; {wishListItem.movie.year}</span>
         </Card.Header>
         <br />
         <Card.Meta>
