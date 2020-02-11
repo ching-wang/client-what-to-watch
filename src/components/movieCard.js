@@ -21,7 +21,7 @@ const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
 
   const onSuccess = () => {
-    return window.alert(`successfuly copied! ${currentPath} ${movie.Title}`);
+    return window.alert("Copied!");
   };
 
   const getText = () => {
@@ -175,32 +175,25 @@ const MovieCard = ({ user }) => {
             </Dropdown>
 
             <Modal
+              size="tiny"
               trigger={
                 <Icon name="share alternate square" size="big" color="orange" />
               }
             >
-              <Modal.Header>Share this film with a friend</Modal.Header>
-              <Modal.Content image>
-                <Image wrapped size="medium" src={movie.Poster} />
+              <Modal.Header>Share this film</Modal.Header>
+              <Modal.Content>
                 <Modal.Description>
-                  <Modal.Description>
-                    <NavLink to="/">
-                      <Button inverted color="orange">
-                        Go Back to the Homepage
-                      </Button>
-                    </NavLink>
-                  </Modal.Description>
-                  <Header>Copy the link below</Header>
+                  <Clipboard option-text={getText} onSuccess={onSuccess}>
+                    <Icon name="copy" size="big" color="orange" />
+                  </Clipboard>
                   <Input
                     type="url"
                     name="path"
                     placeholder="path"
-                    defaultValue={currentPath}
+                    disabled={true}
+                    style={{ width: "25em", "max-width": "80%" }}
+                    defaultValue={window.location}
                   />
-
-                  <Clipboard option-text={getText} onSuccess={onSuccess}>
-                    <Icon name="copy" size="big" color="orange" />
-                  </Clipboard>
 
                   {/* <FacebookIcon url={currentPath} size={30} /> */}
                 </Modal.Description>
