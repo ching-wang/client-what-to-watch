@@ -22,7 +22,6 @@
   max-width: 30em !important;
 }
 
-
 .hero-container-profile {
   padding-top: 2em;
   margin: auto;
@@ -72,7 +71,8 @@
 }
 
 .footer-container {
-  padding: 10em;
+  display: flex;
+  margin-top: 25px;
 }
 
 .search-bar {
