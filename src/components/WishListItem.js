@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Image, Icon, Popup, Confirm } from "semantic-ui-react";
+import { Card, Image, Icon, Popup, Confirm, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
@@ -42,10 +42,14 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
         }
       />
       <Card.Content>
-        <Card.Header>{wishListItem.movie.title}</Card.Header>
-        <Card.Meta>
-          <span className="date">{wishListItem.movie.year}</span>
-        </Card.Meta>
+        <Card.Header>
+          {wishListItem.movie.title}{" "}
+          <span className="movie-year">
+            {" "}
+            &nbsp; &nbsp; &nbsp;{wishListItem.movie.year}
+          </span>
+        </Card.Header>
+        <br />
         <Card.Meta>
           <span>
             <Popup
@@ -56,7 +60,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
                 <Icon
                   name="eye"
                   size="large"
-                  color="olive"
+                  color="brown"
                   onClick={() =>
                     history.push(`/movies/${wishListItem.movie.imdb_id}`)
                   }
@@ -71,7 +75,8 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
             trigger={
               <Icon
                 name="delete"
-                size="large"
+                size="big"
+                inverted
                 color="orange"
                 onClick={() => {
                   show();
