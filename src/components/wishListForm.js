@@ -26,7 +26,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
         className="ui form"
         inverted
       >
-        <Form.Field>
+        <Form.Field required>
           <label for="name">NAME</label>
           <input
             type="text"

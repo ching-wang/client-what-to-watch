@@ -30,18 +30,17 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
     setOpen(true);
   };
 
+  const defaultImage =
+    "https://semantic-ui.com/images/wireframe/square-image.png";
   return (
     <Container>
       <div className="hero-container-profile">
         <h1>My Profile Overview</h1>
         <Card>
           <Image
+            onError={i => (i.target.src = defaultImage)}
             alt="profile avatar"
-            src={
-              user.avatar
-                ? user.avatar
-                : "https://semantic-ui.com/images/wireframe/square-image.png"
-            }
+            src={user.avatar ? user.avatar : defaultImage}
             wrapped
             ui={false}
             rounded

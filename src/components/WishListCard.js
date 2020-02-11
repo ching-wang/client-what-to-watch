@@ -33,6 +33,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
         size="small"
         trigger={
           <Image
+            className="card-img-size"
             onError={i => (i.target.src = defaultImage)}
             src={wishList.image ? wishList.image : defaultImage}
             wrapped
