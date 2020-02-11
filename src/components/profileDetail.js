@@ -90,7 +90,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                       header="DELETE ACCOUNT"
                       content="Are you sure that you want to delete your account?"
                       cancelButton="No, I would like to stay"
-                      confirmButton="Yes, please go ahead to delete it"
+                      confirmButton="Yes, please go ahead"
                       onCancel={handleCancel}
                       onConfirm={handleConfirm}
                     />

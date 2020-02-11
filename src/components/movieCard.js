@@ -20,23 +20,6 @@ import API from "../adapters/API";
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
 
-  // const [clipBoard, setclipBoard] = useState({
-  //   value: "",
-  //   copied: false
-  // });
-
-  // onChange = ({ target: { value } }) => {
-  //   this.setState({ value, copied: false });
-  // };
-
-  // onClick = ({ target: { innerHTML } }) => {
-  //   console.log(`Clicked on "${innerHTML}"!`);
-  // };
-
-  // onCopy = () => {
-  //   this.setState({ copied: true });
-  // };
-
   const onSuccess = () => {
     return window.alert(`successfuly copied! ${currentPath} ${movie.Title}`);
   };
@@ -78,7 +61,7 @@ const MovieCard = ({ user }) => {
   const toggleInWishlist = (wishListId, imdbID) => {
     const wishListItem = findWishListItem(wishListId);
     if (wishListItem) {
-      // console.log("Removing wish list item", { wishListId, imdbID });
+
       API.deleteFromWishList(wishListItem.id).then(() => {
         setWishListItems(
           wishListItems.filter(wli => wli.id !== wishListItem.id)
@@ -87,7 +70,6 @@ const MovieCard = ({ user }) => {
       return;
     }
 
-    // console.log("Adding wish list item", { wishListId, imdbID });
     API.addToWishList(wishListId, imdbID).then(res => {
       setWishListItems([...wishListItems, res]);
     });

@@ -1,9 +1,28 @@
-import React from "react";
-import { Card, Image, Icon, Popup } from "semantic-ui-react";
+import React, { useState } from "react";
+import { Card, Image, Icon, Popup, Confirm } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+  const [result, setResult] = useState(
+    "The item has been removed from your wishlist"
+  );
+
+  const handleConfirm = () => {
+    setOpen(false);
+    setResult("confirmed");
+    handleDeleteWishlistItem(wishListItem.id);
+  };
+
+  const handleCancel = () => {
+    setOpen(false);
+    setResult("cancelled");
+  };
+
+  const show = () => {
+    setOpen(true);
+  };
 
   return (
     <Card>
@@ -54,9 +73,21 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
                 name="delete"
                 size="large"
                 color="orange"
-                onClick={() => handleDeleteWishlistItem(wishListItem.id)}
+                onClick={() => {
+                  show();
+                }}
               />
             }
+          />
+          <Confirm
+            className="confirm-message"
+            open={open}
+            header="DELETE WISHLIST"
+            content="Are you sure that you want to delete this item from your wishlist?"
+            cancelButton="No"
+            confirmButton="Yes"
+            onCancel={handleCancel}
+            onConfirm={handleConfirm}
           />
         </Card.Meta>
       </Card.Content>
