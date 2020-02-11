@@ -20,11 +20,13 @@ export const SearchResultCard = ({ searchResult }) => {
         }
       />
       <Card.Content>
-        <Card.Header>{searchResult.Title}</Card.Header>
-        <Card.Meta>
-          <span className="date">{searchResult.Year}</span>
-        </Card.Meta>
-        <Card.Meta>
+        <Card.Header>
+          <span className="movie-title">{searchResult.Title}</span>
+          &nbsp; &nbsp;
+          <span className="movie-released">{searchResult.Year}</span>
+        </Card.Header>
+        <br />
+        {/* <Card.Meta>
           <span>
             <Popup
               content="View Details"
@@ -34,13 +36,13 @@ export const SearchResultCard = ({ searchResult }) => {
                 <Icon
                   name="eye"
                   size="large"
-                  color="black"
+                  color="brown"
                   onClick={() => history.push(`/movies/${searchResult.imdbID}`)}
                 />
               }
             />
           </span>
-        </Card.Meta>
+        </Card.Meta> */}
       </Card.Content>
     </Card>
     //   }

@@ -77,6 +77,20 @@
   color: orangered !important;
   font-size: large;
 }
+
+.movie-year {
+  color: grey;
+  font-size: 16px;
+}
+
+.movie-released {
+  color: gray;
+  font-size: 12px;
+}
+
+.movie-title {
+  font-size: medium;
+}
 /* .btn {
   color: indianred;
 } */
