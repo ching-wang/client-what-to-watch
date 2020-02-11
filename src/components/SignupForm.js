@@ -36,11 +36,11 @@ const SignUpForm = ({ handleLogin }) => {
     API.signup(signupformData)
       .then(handleSignupResponse)
       .then(handleLogin)
-      .catch(setError)
-      .then(() => alert.show(error));
+      .catch(error => {
+        alert.show(error);
+      });
   };
 
-  
   return (
     <div className="hero-container">
       <h2>Sign Up For Free </h2>
