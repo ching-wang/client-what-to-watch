@@ -74,7 +74,7 @@
 }
 
 .confirm-message {
-  color: black !important;
+  color: orangered !important;
   font-size: large;
 }
 /* .btn {
@@ -85,6 +85,13 @@
   height: 305px;
 } */
 
-.ui.cards a.card, .ui.link.card, .ui.link.cards .card, a.ui.card {
+.ui.cards a.card,
+.ui.link.card,
+.ui.link.cards .card,
+a.ui.card {
   width: 200px;
+}
+
+.date {
+  color: indianred;
 }
