@@ -75,6 +75,8 @@ const MovieCard = ({ user }) => {
     });
   };
 
+  const defaultImage = "/default-cover.jpg";
+
   return (
     <Container className="page-container">
       <Grid>
@@ -87,7 +89,7 @@ const MovieCard = ({ user }) => {
               src={
                 movie.Poster !== "N/A"
                   ? movie.Poster
-                  : window.location.origin + `/default-movie-poster.jpg`
+                  : "/default-movie-poster.jpg"
               }
             />
           </Grid.Column>
@@ -142,7 +144,15 @@ const MovieCard = ({ user }) => {
                             key={wishlist.id}
                             name={wishlist.name}
                             text={wishlist.name}
-                            image={{ src: wishlist.image }}
+                            image={{
+                              src: wishlist.image
+                                ? wishlist.image
+                                : defaultImage,
+                              style: {
+                                "max-width": "28px",
+                                height: "auto"
+                              }
+                            }}
                             icon={findWishListItem(wishlist.id) ? "check" : ""}
                             onClick={() =>
                               toggleInWishlist(wishlist.id, movie.imdbID)

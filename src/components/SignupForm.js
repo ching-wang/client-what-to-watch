@@ -111,9 +111,6 @@ const SignUpForm = ({ handleLogin }) => {
         </Button>
       </Form>
       <br />
-      <br />
-      <br />
-      <br />
       <h4>
         Already have an account? &nbsp;
         <NavLink to="/login" style={{ color: "#D4AC0D" }}>

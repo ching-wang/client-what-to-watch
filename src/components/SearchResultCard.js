@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Image} from "semantic-ui-react";
+import { Card, Image } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const SearchResultCard = ({ searchResult }) => {
@@ -12,11 +12,12 @@ export const SearchResultCard = ({ searchResult }) => {
     //   trigger={
     <Card onClick={() => history.push(`/movies/${searchResult.imdbID}`)}>
       <Image
+        style={{ cursor: "pointer" }}
         className="card-img-size"
         src={
           searchResult.Poster !== "N/A"
             ? searchResult.Poster
-            : window.location.origin + `/default-movie-poster.jpg`
+            : "/default-movie-poster.jpg"
         }
       />
       <Card.Content>

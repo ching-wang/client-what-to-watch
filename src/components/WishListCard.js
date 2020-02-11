@@ -33,6 +33,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
         size="small"
         trigger={
           <Image
+            style={{ cursor: "pointer" }}
             className="card-img-size"
             onError={i => (i.target.src = defaultImage)}
             src={wishList.image ? wishList.image : defaultImage}
@@ -55,6 +56,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             position="left center"
             trigger={
               <Icon
+                textAlign="right"
                 name="edit outline"
                 size="large"
                 color="orange"
@@ -68,6 +70,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             position="top center"
             trigger={
               <Icon
+                textAlign="right"
                 name="delete"
                 size="large"
                 color="orange"

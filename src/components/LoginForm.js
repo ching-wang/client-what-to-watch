@@ -80,10 +80,6 @@ const LoginForm = ({ onLoginSuccess }) => {
         </Button>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
       </Form>
       <h4>
         Don't have an account?{" "}
