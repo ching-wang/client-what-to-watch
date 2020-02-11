@@ -80,8 +80,8 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             }
           />
           <Confirm
+            className="confirm-message"
             open={open}
-            color="white"
             header="DELETE WISHLIST"
             content="Are you sure that you want to delete this wishlist?"
             cancelButton="No"

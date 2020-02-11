@@ -72,6 +72,11 @@
 .text-color {
   color: whitesmoke !important;
 }
+
+.confirm-message {
+  color: black !important;
+  font-size: large;
+}
 /* .btn {
   color: indianred;
 } */
@@ -79,3 +84,7 @@
 .card-img-size:hover {
   height: 305px;
 } */
+
+.ui.cards a.card, .ui.link.card, .ui.link.cards .card, a.ui.card {
+  width: 200px;
+}

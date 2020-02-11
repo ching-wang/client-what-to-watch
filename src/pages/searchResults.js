@@ -79,7 +79,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
           )}
         </Container>
         <br />
-        <Card.Group centered={true} itemsPerRow={5}>
+        <Card.Group centered={true}>
           {(results || []).map(result => (
             <SearchResultCard
               key={result.imdbID}

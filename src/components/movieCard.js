@@ -1,4 +1,4 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, NavLink } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Clipboard from "react-clipboard.js";
 
@@ -12,7 +12,8 @@ import {
   Message,
   Modal,
   Header,
-  Input
+  Input,
+  Button
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -190,6 +191,13 @@ const MovieCard = ({ user }) => {
               <Modal.Content image>
                 <Image wrapped size="medium" src={movie.Poster} />
                 <Modal.Description>
+                  <Modal.Description>
+                    <NavLink to="/">
+                      <Button inverted color="orange">
+                        Go Back to the Homepage
+                      </Button>
+                    </NavLink>
+                  </Modal.Description>
                   <Header>Copy the link below</Header>
                   <Input
                     type="url"
@@ -201,6 +209,7 @@ const MovieCard = ({ user }) => {
                   <Clipboard option-text={getText} onSuccess={onSuccess}>
                     <Icon name="copy" size="big" color="orange" />
                   </Clipboard>
+
                   {/* <FacebookIcon url={currentPath} size={30} /> */}
                 </Modal.Description>
               </Modal.Content>

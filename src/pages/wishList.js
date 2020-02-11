@@ -22,6 +22,8 @@ const WishList = () => {
     });
   }
 
+  console.log(wishListItems);
+
   return wishListItems ? (
     <Container>
       <div className="page-container">
@@ -33,8 +35,8 @@ const WishList = () => {
             &nbsp;in <span className="wishlist-name">{wishList.name}</span>
           </h2>
 
-          {wishListItems.length > 1 ? (
-            <h3>search a film to add to the list</h3>
+          {wishListItems.length < 1 ? (
+            <h3>Why not search something to watch and add your wishlist</h3>
           ) : (
             ""
           )}
