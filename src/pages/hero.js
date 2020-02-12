@@ -9,12 +9,7 @@ const Hero = user => {
         as="h4"
         content="What do you want to watch?"
         inverted
-        style={{
-          fontSize: "6em",
-          fontWeight: "normal",
-          marginBottom: 0,
-          marginTop: "0.8em"
-        }}
+        className="hero-header"
       />
       <SearchBar />
     </Container>
@@ -22,7 +17,3 @@ const Hero = user => {
 };
 
 export default Hero;
-
-{
-  /**/
-}

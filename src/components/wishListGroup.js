@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Card, Button, Grid, Icon } from "semantic-ui-react";
+import { Card, Grid, Container, Header } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
-import { NavLink } from "react-router-dom";
 import API from "../adapters/API";
+import { NewWishlist } from "./newWishlistBtn";
 
 /**
  * A WishListGroup is a collection of wish lists belonging to the user.
@@ -41,17 +41,9 @@ const WishListGroup = ({ user }) => {
             {wishLists.length > 1 ? "wishLists" : "wishlist"}
           </h1>
         </Grid.Column>
-        <Grid.Column>
-          <Button className="btn" color="olive" size="small">
-            <NavLink style={{ color: "black" }} to="wishlist/new">
-              {" "}
-              <Icon name="add" /> New Wishlist{" "}
-            </NavLink>
-          </Button>
-        </Grid.Column>
       </Grid>
 
-      <br></br>
+      <br />
       <Card.Group centered={true} itemsPerRow={4}>
         {wishLists.map(wishList => (
           <WishListCard
@@ -62,6 +54,17 @@ const WishListGroup = ({ user }) => {
           />
         ))}
       </Card.Group>
+
+      {wishLists.length < 1 ? (
+        <>
+          <Container textAlign="center">
+            <h1 className="wishlist-hero">Why not create one now? </h1>
+            <NewWishlist />
+          </Container>{" "}
+        </>
+      ) : (
+        ""
+      )}
     </>
   );
 };

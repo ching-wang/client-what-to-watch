@@ -133,3 +133,26 @@ i.icon.user.delete:before {
 .ui.text.container {
   height: 600px;
 }
+
+/* style={{
+  fontSize: "6em",
+  fontWeight: "normal",
+  marginBottom: 0,
+  marginTop: "0.8em"
+}} */
+
+.hero-header {
+  font-size: 6em;
+  font-weight: normal;
+  margin-bottom: 0;
+  margin-top: 0.8em;
+}
+
+.wishlist-hero {
+  font-size: 50px;
+  font-weight: lighter;
+  font-style: italic;
+  height: 150px;
+  margin-bottom: 10px;
+  padding-top: 70px;
+}
