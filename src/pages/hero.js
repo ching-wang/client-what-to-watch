@@ -22,7 +22,3 @@ const Hero = user => {
 };
 
 export default Hero;
-
-{
-  /**/
-}
