@@ -2,6 +2,7 @@ import { useParams, useLocation, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
 import Clipboard from "react-clipboard.js";
+import { NewWishlist } from "./newWishlistBtn";
 
 import {
   Container,
@@ -18,6 +19,8 @@ import API from "../adapters/API";
 
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
+
+  console.log(user);
 
   const onSuccess = () => {
     return window.alert("Copied!");
@@ -38,7 +41,7 @@ const MovieCard = ({ user }) => {
     API.getMovie(imdbId).then(res => setMovie(res));
   }, [imdbId]);
 
-  const [wishslists, setWishlists] = useState([]);
+  const [wishlists, setWishlists] = useState([]);
   useEffect(() => {
     API.getUserWishLists().then(res => setWishlists(res));
   }, []);
@@ -75,6 +78,77 @@ const MovieCard = ({ user }) => {
   };
 
   const defaultImage = "/default-cover.jpg";
+
+  function renderDropDown(user, wishlists) {
+    if (user && wishlists.length < 1) {
+      console.log("user no wishlists");
+      return (
+        <>
+          <NewWishlist />
+        </>
+      );
+    }
+
+    if (user && wishlists.length > 0) {
+      console.log("user and wishlists small than zero");
+      return (
+        <>
+          <Dropdown
+            text="Add to Wishlist"
+            icon="add"
+            floating
+            labeled
+            button
+            className="icon"
+          >
+            <Dropdown.Menu>
+              <Dropdown.Header content="Choose a wishList to add to" />
+              {wishlists.map(wishlist => (
+                <Dropdown.Item
+                  key={wishlist.id}
+                  name={wishlist.name}
+                  text={wishlist.name}
+                  image={{
+                    src: wishlist.image ? wishlist.image : defaultImage,
+                    style: {
+                      "max-width": "28px",
+                      height: "auto"
+                    }
+                  }}
+                  icon={findWishListItem(wishlist.id) ? "check" : ""}
+                  onClick={() => toggleInWishlist(wishlist.id, movie.imdbID)}
+                />
+              ))}
+            </Dropdown.Menu>
+          </Dropdown>
+        </>
+      );
+    }
+
+    if (!user) {
+      console.log("not user");
+      return (
+        <>
+          <Dropdown
+            text="Add to Wishlist"
+            icon="add"
+            floating
+            labeled
+            button
+            className="icon"
+          >
+            <Dropdown.Menu>
+              <Message
+                error
+                header="Error"
+                content="You must log-in to add it to your wishlist"
+              />
+            </Dropdown.Menu>
+          </Dropdown>
+        </>
+      );
+    }
+  }
 
   return (
     <Container className="page-container">
@@ -124,64 +198,17 @@ const MovieCard = ({ user }) => {
             <br></br>
             <Card.Description>Plot: {movie.Plot}</Card.Description>
             <br></br>
-            <Dropdown
-              text="Add to Wishlist"
-              icon="add"
-              floating
-              labeled
-              button
-              className="icon"
-            >
-              <Dropdown.Menu>
-                {
-                  <>
-                    {user ? (
-                      <>
-                        <Dropdown.Header content="Choose a wishList to add to" />
-                        {wishslists.map(wishlist => (
-                          <Dropdown.Item
-                            key={wishlist.id}
-                            name={wishlist.name}
-                            text={wishlist.name}
-                            image={{
-                              src: wishlist.image
-                                ? wishlist.image
-                                : defaultImage,
-                              style: {
-                                "max-width": "28px",
-                                height: "auto"
-                              }
-                            }}
-                            icon={findWishListItem(wishlist.id) ? "check" : ""}
-                            onClick={() =>
-                              toggleInWishlist(wishlist.id, movie.imdbID)
-                            }
-                          />
-                        ))}{" "}
-                      </>
-                    ) : (
-                      <>
-                        <Message
-                          error
-                          header="Error"
-                          content="You must log-in to add it to your wishlist"
-                        />
-                      </>
-                    )}
-                  </>
-                }
-              </Dropdown.Menu>
-            </Dropdown>
 
+            {renderDropDown(user, wishlists)}
             <Modal
               size="tiny"
               trigger={
-                <Button size="small" style={{margin:"8px"}}>
+                <Button color="teal" size="small" style={{ margin: "8px" }}>
                   {" "}
                   <Icon
-                    name="share alternate square"
-                    size="large"
-                    color="orange"
+                    name="share alternate"
+                    size="small"
+                    color="black"
                   />{" "}
                   SHARE
                 </Button>
