@@ -64,7 +64,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   return (
     <Container>
       <div className="page-container">
-        <Container textalign="center">
+        <Container className="pagination-bar">
           <h1 className="search-result">SEARCH RESULTS</h1>
           {totalResults > 10 ? (
             <Pagination
@@ -88,7 +88,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
         </Card.Group>
         <br />
         <br />
-        <Container textalign="center">
+        <Container className="pagination-bar">
           {totalResults > 1 ? (
             <Pagination
               defaultActivePage={page}

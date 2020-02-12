@@ -146,6 +146,10 @@ i.icon.user.delete:before {
   margin-top: 0.8em;
 }
 
+.pagination-bar {
+  text-align: center;
+}
+
 .wishlist-hero {
   font-size: 50px;
   font-weight: lighter;
