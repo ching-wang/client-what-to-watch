@@ -23,23 +23,14 @@ const WishListGroup = ({ user }) => {
     });
   }
 
-  // if (!wishLists) {
-  //   console.warn(JSON.stringify({ user }));
-  //   return (
-  //     <>
-  //       <h1>No wishlists :-(</h1>
-  //     </>
-  //   );
-  // }
-
   return (
     <>
       {wishLists.length < 1 ? (
         <>
           {" "}
           <h1>
-            You have {wishLists.length} &nbsp;
-            {wishLists.length > 1 ? "wishLists" : "wishlist"}
+            You have &nbsp;{wishLists.length} &nbsp;
+            {wishLists.length === 1 ? "wishlist" : "wishlists"}
             <Container textAlign="center">
               <h1 className="wishlist-hero">Why not create one now? </h1>
               <NewWishlist />
@@ -52,7 +43,7 @@ const WishListGroup = ({ user }) => {
             <Grid.Column>
               <h1>
                 You have {wishLists.length} &nbsp;
-                {wishLists.length > 1 ? "wishLists" : "wishlist"}
+                {wishLists.length === 1 ? "wishlist" : "wishlists"}
                 <NewWishlist />
               </h1>
             </Grid.Column>
