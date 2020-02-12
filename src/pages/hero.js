@@ -9,7 +9,12 @@ const Hero = user => {
         as="h4"
         content="What do you want to watch?"
         inverted
-        className="hero-header"
+        style={{
+          fontSize: "6em",
+          fontWeight: "normal",
+          marginBottom: 0,
+          marginTop: "0.8em"
+        }}
       />
       <SearchBar />
     </Container>

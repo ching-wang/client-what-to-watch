@@ -27,7 +27,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
         inverted
       >
         <Form.Field required>
-          <label for="name">NAME</label>
+          <label htmlFor="name">NAME</label>
           <input
             type="text"
             name="name"
@@ -37,7 +37,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label for="image">COVER</label>
+          <label htmlFor="image">COVER</label>
           <input
             type="url"
             name="image"
@@ -47,7 +47,7 @@ const WishListForm = ({ user, handleOnSubmit }) => {
           />
         </Form.Field>
         <Form.Field>
-          <label for="bio">DESCRIPTION</label>
+          <label htmlFor="bio">DESCRIPTION</label>
           <input
             type="text"
             name="description"

@@ -23,18 +23,54 @@ const WishListGroup = ({ user }) => {
     });
   }
 
-  if (!wishLists) {
-    console.warn(JSON.stringify({ user }));
-    return (
-      <>
-        <h1>No wishlists :-(</h1>
-      </>
-    );
-  }
+  // if (!wishLists) {
+  //   console.warn(JSON.stringify({ user }));
+  //   return (
+  //     <>
+  //       <h1>No wishlists :-(</h1>
+  //     </>
+  //   );
+  // }
 
   return (
     <>
-      <Grid columns={3}>
+      {wishLists.length < 1 ? (
+        <>
+          {" "}
+          <h1>
+            You have {wishLists.length} &nbsp;
+            {wishLists.length > 1 ? "wishLists" : "wishlist"}
+            <Container textAlign="center">
+              <h1 className="wishlist-hero">Why not create one now? </h1>
+              <NewWishlist />
+            </Container>{" "}
+          </h1>
+        </>
+      ) : (
+        <>
+          <Grid columns={3}>
+            <Grid.Column>
+              <h1>
+                You have {wishLists.length} &nbsp;
+                {wishLists.length > 1 ? "wishLists" : "wishlist"}
+                <NewWishlist />
+              </h1>
+            </Grid.Column>
+          </Grid>{" "}
+          <Card.Group centered={true} itemsPerRow={4}>
+            {wishLists.map(wishList => (
+              <WishListCard
+                key={wishList.id}
+                wishList={wishList}
+                use={user}
+                handleDeleteWishlist={deleteWishlist}
+              />
+            ))}
+          </Card.Group>
+        </>
+      )}
+
+      {/* <Grid columns={3}>
         <Grid.Column>
           <h1>
             You have {wishLists.length} &nbsp;
@@ -64,7 +100,7 @@ const WishListGroup = ({ user }) => {
         </>
       ) : (
         ""
-      )}
+      )} */}
     </>
   );
 };
