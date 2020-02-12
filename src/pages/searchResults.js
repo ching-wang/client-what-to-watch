@@ -4,8 +4,6 @@ import { Container, Card, Pagination } from "semantic-ui-react";
 import { SearchResultCard } from "../components/SearchResultCard";
 import { useLocation, useHistory } from "react-router-dom";
 import * as queryString from "query-string";
-import { NotFoundMessage } from "./notFoundMessage";
-import { useAlert } from "react-alert";
 import SearchBar from "../components/searchBar";
 
 export const SearchResults = ({ handleShowMovieCard }) => {
@@ -42,11 +40,11 @@ export const SearchResults = ({ handleShowMovieCard }) => {
 
   if (!results) {
     return (
-      <Container textAlign="center">
+      <Container textalign="center">
         <div className="page-container">
           <h1>No movies found for that query. Sorry!</h1>
         </div>
-        <Container textAlign="center" text>
+        <Container textalign="center" text>
           <SearchBar />
         </Container>
       </Container>
@@ -66,7 +64,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
   return (
     <Container>
       <div className="page-container">
-        <Container textAlign="center">
+        <Container textalign="center">
           <h1 className="search-result">SEARCH RESULTS</h1>
           {totalResults > 10 ? (
             <Pagination
@@ -90,7 +88,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
         </Card.Group>
         <br />
         <br />
-        <Container textAlign="center">
+        <Container textalign="center">
           {totalResults > 1 ? (
             <Pagination
               defaultActivePage={page}

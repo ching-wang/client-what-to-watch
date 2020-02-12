@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { WishListItem } from "../components/WishListItem";
 import { Container, Card } from "semantic-ui-react";
 import API from "../adapters/API";
@@ -37,9 +37,14 @@ const WishList = () => {
 
           {wishListItems.length < 1 ? (
             <>
-              <Container className="page-container">
-                <h3>Why not search something to watch and add your wishlist</h3>
-              </Container>
+              <Container textalign="center">
+                <h1 className="wishlist-hero">
+                  Why not search something to watch and add your wishlist{" "}
+                </h1>
+              </Container>{" "}
+              {/* <Container className="page-container">
+                <h3></h3>
+              </Container> */}
             </>
           ) : (
             ""

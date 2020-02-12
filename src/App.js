@@ -15,14 +15,11 @@ import CreateWishlist from "./pages/createWishlist";
 import MovieContainer from "./pages/movieContainer";
 import WishList from "./pages/wishList";
 import { SearchResults } from "./pages/searchResults";
-import { useDarkMode } from "./hooks/useDarkMode";
 import { Welcome } from "./pages/welcome";
 import { Footer } from "./pages/footer";
 
 function App() {
-  const [user, setUser] = useState(null);
-  // const [error, setError] = useState(null);
-  // const [validateUser, setValidateUser] = useState(false);
+  const [user, setUser] = useState(null); 
   const history = useHistory();
 
   const logout = () => {
@@ -72,7 +69,9 @@ function App() {
       //   });
       // });
     }
-  }, [API.hasToken]);
+  }, []);
+
+  // API.hasToken
 
   const addToWishlist = (wishListId, imdbID) => {
     console.log({ wishListId, imdbID });

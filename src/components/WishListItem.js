@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Card, Image, Icon, Popup, Confirm, Button } from "semantic-ui-react";
+import { Card, Image, Icon, Popup, Confirm } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState(
+  const [result, setResult] = useState( 
     "The item has been removed from your wishlist"
   );
 

@@ -3,7 +3,6 @@ import { Link, NavLink } from "react-router-dom";
 import { Form, Button } from "semantic-ui-react";
 import API from "../adapters/API";
 import { useAlert } from "react-alert";
-import { ErrorMessage } from "./errorMessage";
 
 const LoginForm = ({ onLoginSuccess }) => {
   const [formData, setFormData] = useState({

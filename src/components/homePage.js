@@ -70,7 +70,7 @@ class DesktopContainer extends Component {
         >
           <Segment
             inverted
-            textAlign="center"
+            textalign="center"
             style={{ minHeight: 700, padding: "1em 0em" }}
             vertical
           >
@@ -157,7 +157,7 @@ class MobileContainer extends Component {
         <Sidebar.Pusher dimmed={sidebarOpened}>
           <Segment
             inverted
-            textAlign="center"
+            textalign="center"
             style={{ minHeight: 350, padding: "1em 0em" }}
             vertical
           >

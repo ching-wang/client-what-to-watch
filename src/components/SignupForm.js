@@ -12,9 +12,7 @@ const SignUpForm = ({ handleLogin }) => {
     email: "",
     password: ""
   });
-
-  const [error, setError] = useState("");
-
+  
   const handleOnChange = event => {
     setSignupformData({
       ...signupformData,
