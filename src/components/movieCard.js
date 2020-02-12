@@ -1,4 +1,4 @@
-import { useParams, useLocation, NavLink } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import Clipboard from "react-clipboard.js";
 
@@ -11,9 +11,7 @@ import {
   Image,
   Message,
   Modal,
-  Header,
-  Input,
-  Button
+  Input
 } from "semantic-ui-react";
 import API from "../adapters/API";
 
@@ -37,7 +35,7 @@ const MovieCard = ({ user }) => {
   const [movie, setMovie] = useState({});
   useEffect(() => {
     API.getMovie(imdbId).then(res => setMovie(res));
-  }, []);
+  }, [imdbId]);
 
   const [wishslists, setWishlists] = useState([]);
   useEffect(() => {

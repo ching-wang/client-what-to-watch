@@ -51,7 +51,7 @@ const ProfileDetail = ({ user, onDeleteAccount }) => {
                 : "I haven't got a chance to write anything yet"}
             </Card.Description>
             <br></br>
-            <Card.Meta textAlign="right">
+            <Card.Meta textalign="right">
               <Popup
                 content="Edit your profile"
                 size="small"

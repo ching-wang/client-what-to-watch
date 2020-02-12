@@ -3,7 +3,7 @@ import { Container, Header } from "semantic-ui-react";
 
 export const WelcomeGreeting = ({ user }) => {
   return (
-    <Container textAlign="center" text>
+    <Container textalign="center" text>
       {/* <h1>Hello {user.username}</h1> */}
       <Header
         as="h4"

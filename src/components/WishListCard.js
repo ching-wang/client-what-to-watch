@@ -56,7 +56,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             position="left center"
             trigger={
               <Icon
-                textAlign="right"
+                textalign="right"
                 name="edit outline"
                 size="large"
                 color="orange"
@@ -70,7 +70,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
             position="top center"
             trigger={
               <Icon
-                textAlign="right"
+                textalign="right"
                 name="delete"
                 size="large"
                 color="orange"

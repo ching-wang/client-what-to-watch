@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Card, Grid, Container, Header } from "semantic-ui-react";
+import { Card, Grid, Container } from "semantic-ui-react";
 import { WishListCard } from "./WishListCard";
 import API from "../adapters/API";
 import { NewWishlist } from "./newWishlistBtn";
@@ -93,7 +93,7 @@ const WishListGroup = ({ user }) => {
 
       {wishLists.length < 1 ? (
         <>
-          <Container textAlign="center">
+          <Container textalign="center">
             <h1 className="wishlist-hero">Why not create one now? </h1>
             <NewWishlist />
           </Container>{" "}

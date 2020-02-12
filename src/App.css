@@ -61,6 +61,7 @@
 .wishlist-name {
   color: whitesmoke;
   font-size: 1.5em;
+  font-weight: normal;
   font-weight: 200px;
   font-style: oblique;
 }
@@ -128,6 +129,10 @@ i.icon.edit.outline:before {
 i.icon.user.delete:before {
   /* margin-left: 140px; */
   display: flex;
+}
+
+.ui.inverted.header {
+  text-align: center;
 }
 
 .ui.text.container {

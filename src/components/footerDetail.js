@@ -5,7 +5,7 @@ export const FooterDetail = () => {
   return (
     <>
       {" "}
-      <Container className="footer-container" textAlign="center">
+      <Container className="footer-container">
         {/* <Grid divided inverted stackable>
           <Grid.Row> */}
         {/* <Grid.Column width={8}> */}
