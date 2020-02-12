@@ -147,7 +147,7 @@ function App() {
             <SearchResults />
           </Route>
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </Responsive>
     </>
   );

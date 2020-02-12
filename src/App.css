@@ -131,6 +131,10 @@ i.icon.user.delete:before {
   display: flex;
 }
 
+.ui.inverted.header {
+  text-align: center;
+}
+
 .ui.text.container {
   height: 600px;
 }

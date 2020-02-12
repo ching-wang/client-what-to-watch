@@ -39,12 +39,9 @@ const WishList = () => {
             <>
               <Container textalign="center">
                 <h1 className="wishlist-hero">
-                  Why not search something to watch and add your wishlist{" "}
+                  Why not add something to your wishlist ?{" "}
                 </h1>
               </Container>{" "}
-              {/* <Container className="page-container">
-                <h3></h3>
-              </Container> */}
             </>
           ) : (
             ""

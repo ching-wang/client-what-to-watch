@@ -40,7 +40,7 @@ const WishListGroup = ({ user }) => {
           <h1>
             You have {wishLists.length} &nbsp;
             {wishLists.length > 1 ? "wishLists" : "wishlist"}
-            <Container textalign="center">
+            <Container textAlign="center">
               <h1 className="wishlist-hero">Why not create one now? </h1>
               <NewWishlist />
             </Container>{" "}
