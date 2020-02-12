@@ -1,5 +1,6 @@
-import { useParams, useLocation } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+import { Button } from "semantic-ui-react";
 import Clipboard from "react-clipboard.js";
 
 import {
@@ -175,7 +176,15 @@ const MovieCard = ({ user }) => {
             <Modal
               size="tiny"
               trigger={
-                <Icon name="share alternate square" size="big" color="orange" />
+                <Button size="small" style={{margin:"8px"}}>
+                  {" "}
+                  <Icon
+                    name="share alternate square"
+                    size="large"
+                    color="orange"
+                  />{" "}
+                  SHARE
+                </Button>
               }
             >
               <Modal.Header>Share this film</Modal.Header>
