@@ -77,8 +77,7 @@
 }
 
 .search-bar {
-  /* padding: 1em; */
-  padding-bottom: 1em;
+  padding: 22px 0px 15px 0px;
 }
 
 .text-color {
@@ -162,4 +161,8 @@ i.icon.user.delete:before {
   font-weight: 500;
   color: antiquewhite;
   font-style: italic;
+}
+
+.ui.inverted.header {
+  line-height: 1.05em;
 }
