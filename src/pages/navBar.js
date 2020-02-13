@@ -2,10 +2,24 @@ import React from "react";
 import { Menu, Icon, Popup } from "semantic-ui-react";
 import LogoutButton from "../components/logoutButton";
 import { NavSearchBar } from "../components/navSearchBar";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const NavBar = ({ user, onLogout }) => {
   const history = useHistory();
+  const { pathname } = useLocation();
+
+  console.log(pathname);
+
+  function renderNavSearchBar() {
+    if (pathname !== "/") {
+      return (
+        <Menu.Item position="right">
+          <NavSearchBar />
+        </Menu.Item>
+      );
+    }
+  }
+
   return (
     <Menu inverted className="top-menu">
       <Menu.Item header>
@@ -23,12 +37,9 @@ const NavBar = ({ user, onLogout }) => {
           }
         />
       </Menu.Item>
-
+      <Menu.Item position="right">{renderNavSearchBar()}</Menu.Item>
       {user ? (
         <>
-          <Menu.Item position="right">
-            <NavSearchBar />
-          </Menu.Item>
           <Menu.Menu position="right">
             <Popup
               content="View Profile"
