@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const NewWishlist = () => {
   return (
     <Link to="/wishlist/new">
-      <Button className="btn" color="olive" size="small">
+      <Button className="btn" color="violet" size="small">
         <Icon name="add" /> NEW WISHLIST{" "}
       </Button>
     </Link>

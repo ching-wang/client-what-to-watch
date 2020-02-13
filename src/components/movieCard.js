@@ -197,7 +197,7 @@ const MovieCard = ({ user }) => {
             <Modal
               size="tiny"
               trigger={
-                <Button color="teal" size="small" style={{ margin: "8px" }}>
+                <Button color="violet" size="small" style={{ margin: "8px" }}>
                   {" "}
                   <Icon
                     name="share alternate"
