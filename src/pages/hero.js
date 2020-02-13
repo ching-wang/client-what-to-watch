@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Container, Card, CardHeader } from "semantic-ui-react";
+import { Header, Container, Card } from "semantic-ui-react";
 import SearchBar from "../components/searchBar";
 
 const Hero = user => {

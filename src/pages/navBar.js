@@ -8,8 +8,6 @@ const NavBar = ({ user, onLogout }) => {
   const history = useHistory();
   const { pathname } = useLocation();
 
-  console.log(pathname);
-
   function renderNavSearchBar() {
     if (pathname !== "/") {
       return (
