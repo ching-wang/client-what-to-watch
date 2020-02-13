@@ -25,7 +25,7 @@ const SearchBar = () => {
         name="s"
         fluid
         color="olive"
-        size="big"
+        size="large"
         action={{ icon: "search", color: "black" }}
         placeholder="Search for films or TV shows"
       />
