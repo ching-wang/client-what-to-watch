@@ -19,7 +19,7 @@ import { Welcome } from "./pages/welcome";
 import { Footer } from "./pages/footer";
 
 function App() {
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   const history = useHistory();
 
   const logout = () => {
@@ -34,7 +34,7 @@ function App() {
 
   const handleLogin = user => {
     setUser(user);
-    history.push("/welcome");
+    history.push("/");
   };
 
   const handleProfileSubmit = (event, userId, profileFormData) => {

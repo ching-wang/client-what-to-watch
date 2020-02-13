@@ -5,7 +5,8 @@ import { Welcome } from "./welcome";
 const MainContainer = ({ user }) => {
   return (
     <span style={{ color: "white" }}>
-      {!user ? <Hero user={user} /> : <Welcome />}
+      <Hero user={user} />
+      {/* {!user ? <Hero user={user} /> : <Welcome />} */}
     </span>
   );
 };
