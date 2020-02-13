@@ -29,7 +29,8 @@ const WishListGroup = ({ user }) => {
         <>
           {" "}
           <h1>
-            You have &nbsp;{wishLists.length} &nbsp;
+            You have &nbsp;<span className="number">{wishLists.length}</span>
+            &nbsp;
             {wishLists.length === 1 ? "wishlist" : "wishlists"}
             <Container textAlign="center">
               <h1 className="wishlist-hero">Why not create one now? </h1>
@@ -39,15 +40,15 @@ const WishListGroup = ({ user }) => {
         </>
       ) : (
         <>
-        <br/>
+          <br />
           <Grid>
-              <h1>
-                You have {wishLists.length} &nbsp;
-                {wishLists.length === 1 ? "wishlist" : "wishlists"}
-              </h1>
-              <NewWishlist />
+            <h1>
+              You have <span className="number">{wishLists.length}</span>&nbsp;
+              {wishLists.length === 1 ? "wishlist" : "wishlists"}
+            </h1>
+            <NewWishlist />
           </Grid>{" "}
-          <br/>
+          <br />
           <Card.Group centered={true} itemsPerRow={4}>
             {wishLists.map(wishList => (
               <WishListCard
