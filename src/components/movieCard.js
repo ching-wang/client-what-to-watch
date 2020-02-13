@@ -1,4 +1,4 @@
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Button } from "semantic-ui-react";
 import Clipboard from "react-clipboard.js";
@@ -27,14 +27,8 @@ const MovieCard = ({ user }) => {
   };
 
   const getText = () => {
-    return currentPath;
+    return window.location;
   };
-
-  const basedURL =
-    "http://localhost:https://what-to-watch-tonight.herokuapp.com/api/v1";
-
-  const location = useLocation();
-  const currentPath = basedURL + location.pathname;
 
   const [movie, setMovie] = useState({});
   useEffect(() => {
