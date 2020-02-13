@@ -168,5 +168,5 @@ i.icon.user.delete:before {
   font-size: 25px;
   font-weight: 500;
   color: antiquewhite;
-  /* font-style: italic; */
+  font-style: italic;
 }
