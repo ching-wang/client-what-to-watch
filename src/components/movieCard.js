@@ -20,8 +20,6 @@ import API from "../adapters/API";
 const MovieCard = ({ user }) => {
   const { imdbId } = useParams();
 
-  console.log(user);
-
   const onSuccess = () => {
     return window.alert("Copied!");
   };
@@ -34,6 +32,8 @@ const MovieCard = ({ user }) => {
   useEffect(() => {
     API.getMovie(imdbId).then(res => setMovie(res));
   }, [imdbId]);
+
+  console.log(movie);
 
   const [wishlists, setWishlists] = useState([]);
   useEffect(() => {
@@ -120,7 +120,6 @@ const MovieCard = ({ user }) => {
     }
 
     if (!user) {
-      console.log("not user");
       return (
         <>
           <Dropdown
@@ -164,7 +163,7 @@ const MovieCard = ({ user }) => {
             <Card.Content>
               <strong>Genre:</strong> {movie.Genre}
             </Card.Content>
-            <h1>{movie.Title}</h1>
+            <h1 className="film-title">{movie.Title}</h1>
             <Card.Content>
               <strong>Director: </strong>
               {movie.Director}
@@ -188,6 +187,14 @@ const MovieCard = ({ user }) => {
             <Card.Content>
               <strong>Runtime: </strong>
               <span>{movie.Runtime}</span>
+            </Card.Content>
+            <Card.Content>
+              <strong>Type: </strong>
+              <span>{movie.Type}</span>
+            </Card.Content>
+            <Card.Content>
+              <strong>Year: </strong>
+              <span className="released-year">{movie.Year}</span>
             </Card.Content>
             <br></br>
             <Card.Description>Plot: {movie.Plot}</Card.Description>

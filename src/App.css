@@ -55,17 +55,30 @@
 
 .rating {
   color: indianred;
-  font-size: 1.5em;
+  font-size: 1.3em;
+  font-style: italic;
+}
+
+.released-year {
+  color: indianred;
+  font-size: 0.9em;
+  font-style: italic;
 }
 
 .wishlist-name {
-  color: whitesmoke;
+  color: indianred;;
   font-size: 1.5em;
   font-weight: normal;
   font-weight: 200px;
   font-style: oblique;
 }
 
+.number {
+  color: indianred;;
+  font-size: 1.5em;
+  font-weight: 200px;
+  font-style: oblique;
+}
 .footer {
   margin-top: calc(5% + 60px);
   bottom: 0;
@@ -101,6 +114,12 @@
 
 .movie-title {
   font-size: 16px;
+}
+
+.film-title {
+  font-weight: 1000;
+  font-size: 40px;
+  
 }
 
 .ui.cards a.card,
