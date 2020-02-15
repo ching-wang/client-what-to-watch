@@ -10,11 +10,7 @@ const NavBar = ({ user, onLogout }) => {
 
   function renderNavSearchBar() {
     if (pathname !== "/") {
-      return (
-        <Menu.Item position="right">
-          <NavSearchBar />
-        </Menu.Item>
-      );
+      return <NavSearchBar />;
     }
   }
 
@@ -35,7 +31,9 @@ const NavBar = ({ user, onLogout }) => {
           }
         />
       </Menu.Item>
-      <Menu.Item position="right">{renderNavSearchBar()}</Menu.Item>
+      <Menu.Menu position="center" style={{ paddingTop: "15px" }}>
+        {renderNavSearchBar()}
+      </Menu.Menu>
       {user ? (
         <>
           <Menu.Menu position="right">
