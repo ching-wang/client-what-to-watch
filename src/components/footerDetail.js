@@ -5,27 +5,19 @@ export const FooterDetail = () => {
   return (
     <>
       {" "}
-      <Container className="footer-container">
-        {/* <Grid divided inverted stackable>
-          <Grid.Row> */}
-        {/* <Grid.Column width={8}> */}
-        {/* <Header inverted as="h4" content="Find Me" /> */}
-        <Icon name="twitter" size="big" />
+      <Container className="footer-container" textAlign="center">
+        <a className="footer-link" href="https://github.com/ching-wang">
+          <Icon name="github" size="big" />
+        </a>
         &nbsp;
-        <Icon name="facebook" size="big" />
+        <a className="footer-link" href="https://www.linkedin.com/in/ching-wang/">
+          <Icon name="linkedin" size="big" />
+        </a>
         &nbsp;
-        <Icon name="youtube" size="big" />
-        &nbsp;
-        <Icon name="instagram" size="big" />
-        {/* </Grid.Column> */}
-        {/* <Grid.Column width={8}>
-              <Header as="h4" inverted>
-                About
-              </Header>
-              <p>Add a film to your wishlist</p>
-            </Grid.Column> */}
-        {/* </Grid.Row>
-        </Grid> */}
+        <a className="footer-link" href="https://ching-wang.github.io/">
+          <Icon name="blogger" size="big" />
+        </a>
+        <p style={{ marginTop: "3px" }}>Created with love by Qing Wang</p>
       </Container>
     </>
   );

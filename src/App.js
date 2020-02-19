@@ -147,7 +147,11 @@ function App() {
             <SearchResults />
           </Route>
         </Switch>
-        {/* <Footer /> */}
+        <div class="ui inverted vertical footer segment form-page">
+          <div class="ui container">
+            <Footer />
+          </div>
+        </div>
       </Responsive>
     </>
   );
