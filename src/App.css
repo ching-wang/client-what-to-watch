@@ -184,6 +184,7 @@ i.icon.user.delete:before {
   line-height: 1.05em;
 }
 
-a:link {
+.footer-link {
   text-decoration: none;
+  color: white;
 }

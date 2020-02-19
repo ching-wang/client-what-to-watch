@@ -6,18 +6,18 @@ export const FooterDetail = () => {
     <>
       {" "}
       <Container className="footer-container" textAlign="center">
-        <a href="https://github.com/ching-wang">
+        <a className="footer-link" href="https://github.com/ching-wang">
           <Icon name="github" size="big" />
         </a>
         &nbsp;
-        <a href="https://ching-wang.github.io/">
+        <a className="footer-link" href="https://www.linkedin.com/in/ching-wang/">
           <Icon name="linkedin" size="big" />
         </a>
         &nbsp;
-        <a href="https://www.linkedin.com/in/ching-wang/">
+        <a className="footer-link" href="https://ching-wang.github.io/">
           <Icon name="blogger" size="big" />
         </a>
-        <p>Created with love by Qing Wang</p>
+        <p style={{ marginTop: "3px" }}>Created with love by Qing Wang</p>
       </Container>
     </>
   );
