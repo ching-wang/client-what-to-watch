@@ -183,3 +183,7 @@ i.icon.user.delete:before {
 .ui.inverted.header {
   line-height: 1.05em;
 }
+
+a:link {
+  text-decoration: none;
+}

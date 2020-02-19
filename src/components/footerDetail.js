@@ -6,15 +6,18 @@ export const FooterDetail = () => {
     <>
       {" "}
       <Container className="footer-container" textAlign="center">
-        <Icon name="github" size="big" />
+        <a href="https://github.com/ching-wang">
+          <Icon name="github" size="big" />
+        </a>
         &nbsp;
-        <Icon name="facebook" size="big" />
+        <a href="https://ching-wang.github.io/">
+          <Icon name="linkedin" size="big" />
+        </a>
         &nbsp;
-        <Icon name="youtube" size="big" />
-        &nbsp;
-        <Icon name="instagram" size="big" />
-        <br />
-        <span> Created by Qing Wang</span>
+        <a href="https://www.linkedin.com/in/ching-wang/">
+          <Icon name="blogger" size="big" />
+        </a>
+        <p>Created with love by Qing Wang</p>
       </Container>
     </>
   );
