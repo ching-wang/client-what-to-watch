@@ -62,16 +62,8 @@ function App() {
       API.validate().then(res => {
         setUser(res.user);
       });
-      // .then(() => setValidateUser(true));
-      // .catch(errorPromise => {
-      //   errorPromise.then(data => {
-      //     setError(data);
-      //   });
-      // });
     }
   }, []);
-
-  // API.hasToken
 
   const addToWishlist = (wishListId, imdbID) => {
     console.log({ wishListId, imdbID });
@@ -143,11 +135,11 @@ function App() {
           <Route exact path="/movies/:imdbId">
             <MovieContainer user={user} addToWishlist={addToWishlist} />
           </Route>
-          <Route path="/search">
+          <Route exact path="/search">
             <SearchResults />
           </Route>
         </Switch>
-        <div class="ui inverted vertical footer segment form-page">
+        <div class="ui inverted vertical footer segment">
           <div class="ui container">
             <Footer />
           </div>

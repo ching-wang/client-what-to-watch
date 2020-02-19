@@ -184,6 +184,10 @@ i.icon.user.delete:before {
   line-height: 1.05em;
 }
 
+.ui.vertical.segment.footer {
+  margin-top: 2em;
+}
+
 .footer-link {
   text-decoration: none;
   color: white;
