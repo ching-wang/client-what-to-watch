@@ -139,7 +139,7 @@ function App() {
             <SearchResults />
           </Route>
         </Switch>
-        <div class="ui inverted vertical footer segment">
+        <div class="ui inverted vertical footer">
           <div class="ui container">
             <Footer />
           </div>

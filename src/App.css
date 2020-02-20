@@ -96,6 +96,10 @@
   color: whitesmoke !important;
 }
 
+/* .ui.inverted.menu {
+  background-color: #141414;
+} */
+
 .confirm-message {
   color: orangered !important;
   font-size: large;
@@ -184,11 +188,18 @@ i.icon.user.delete:before {
   line-height: 1.05em;
 }
 
-.ui.vertical.segment.footer {
+.ui.center.aligned.container.footer-container {
   margin-top: 2em;
+  margin-bottom: 2em;
+
+}
+.ui.vertical.segment.footer {
+  margin-top: 4em;
+  /* background-color: #1b1b1b; */
+  background-color: #222222;
 }
 
 .footer-link {
   text-decoration: none;
-  color: white;
+  color: #cdcdcd;
 }
