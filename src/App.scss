@@ -189,17 +189,12 @@ i.icon.user.delete:before {
 }
 
 .ui.center.aligned.container.footer-container {
-  margin-top: 2em;
-  margin-bottom: 2em;
-
-}
-.ui.vertical.segment.footer {
-  margin-top: 4em;
-  /* background-color: #1b1b1b; */
-  background-color: #222222;
+  margin: 1em 0em 1em 0em;
 }
 
 .footer-link {
   text-decoration: none;
   color: #cdcdcd;
 }
+
+/* .ui.small.fluid.action.input.search-bar */

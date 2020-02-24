@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
+import "./App.scss";
 import API from "./adapters/API";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { Responsive } from "semantic-ui-react";
