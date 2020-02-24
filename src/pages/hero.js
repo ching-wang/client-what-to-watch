@@ -6,17 +6,7 @@ const Hero = user => {
   return (
     <>
       <Container textAlign="center" text>
-        <Header
-          as="h4"
-          content="What do you want to watch?"
-          inverted
-          style={{
-            fontSize: "6em",
-            fontWeight: "normal",
-            marginBottom: 0,
-            marginTop: "0.3em"
-          }}
-        />
+        <h1 className="hero-header">What do you want to watch ?</h1>
         <SearchBar />
 
         <Card.Description className="popular">POPULAR</Card.Description>

@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
-import "./index.css";
+import "./index.scss";
 import AlertTemplate from "react-alert-template-oldschool-dark";
 import { transitions, positions, Provider as AlertProvider } from "react-alert";
 import App from "./App";
