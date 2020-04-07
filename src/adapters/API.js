@@ -1,7 +1,7 @@
 import { sanitiseQuery } from "../common/util";
 const PRODUCTION = "https://what-to-watch-tonight.herokuapp.com/api/v1";
 const DEVELOPMENT = "http://localhost:3000/api/v1";
-const API_ENDPOINT = DEVELOPMENT;
+const API_ENDPOINT = PRODUCTION;
 const LOGIN_URL = `${API_ENDPOINT}/login`;
 const USER_URL = `${API_ENDPOINT}/users/`;
 const VALIDATE_URL = `${API_ENDPOINT}/validate`;
