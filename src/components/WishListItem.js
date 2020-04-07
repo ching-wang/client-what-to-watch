@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState( 
+  const [result, setResult] = useState(
     "The item has been removed from your wishlist"
   );
 
@@ -39,7 +39,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
             }
             wrapped
             ui={false}
-            onError={i => (i.src = "/default-movie-poster.jpg")}
+            onError={(i) => (i.src = "/default-movie-poster.jpg")}
             onClick={() =>
               history.push(`/movies/${wishListItem.movie.imdb_id}`)
             }

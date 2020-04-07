@@ -6,7 +6,7 @@ const Profile = ({
   handleLogOut,
   handleProfileSubmit,
   handleProfileOnChange,
-  handleDeleteAccount
+  handleDeleteAccount,
 }) => {
   if (!user) {
     return <></>;
