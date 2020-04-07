@@ -16,7 +16,7 @@ import {
   Responsive,
   Segment,
   Sidebar,
-  Visibility
+  Visibility,
 } from "semantic-ui-react";
 
 const getWidth = () => {
@@ -35,7 +35,7 @@ const HomepageHeading = ({ mobile }) => (
         fontSize: mobile ? "2em" : "6em",
         fontWeight: "normal",
         marginBottom: 0,
-        marginTop: mobile ? "1em" : "0.8em"
+        marginTop: mobile ? "1em" : "0.8em",
       }}
     />
     <Input
@@ -48,7 +48,7 @@ const HomepageHeading = ({ mobile }) => (
 );
 
 HomepageHeading.propTypes = {
-  mobile: PropTypes.bool
+  mobile: PropTypes.bool,
 };
 
 class DesktopContainer extends Component {
@@ -85,7 +85,7 @@ class DesktopContainer extends Component {
 }
 
 DesktopContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 class MobileContainer extends Component {
@@ -153,7 +153,7 @@ class MobileContainer extends Component {
 }
 
 MobileContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const ResponsiveContainer = ({ children }) => (
@@ -164,7 +164,7 @@ const ResponsiveContainer = ({ children }) => (
 );
 
 ResponsiveContainer.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 const Homepage = () => <ResponsiveContainer></ResponsiveContainer>;
