@@ -10,15 +10,18 @@ const WishList = () => {
   const [wishListItems, setWishListItems] = useState([]);
 
   useEffect(() => {
-    API.getWishList(wishListId).then(res => {
+    API.getWishList(wishListId).then((res) => {
       setWishList(res);
       setWishListItems(res.wish_list_items);
     });
   }, [wishListId]);
 
   function deleteWishlistItem(wishlistitemId) {
+    console.log(`deleteWishlistItem wishlistitemId:${wishlistitemId}`);
     API.deleteFromWishList(wishlistitemId).then(() => {
-      setWishListItems(wishListItems.filter(wli => wli.id !== wishlistitemId));
+      setWishListItems(
+        wishListItems.filter((wli) => wli.id !== wishlistitemId)
+      );
     });
   }
 
@@ -29,7 +32,8 @@ const WishList = () => {
       <div className="page-container">
         <>
           <h2>
-            You have &nbsp;<span className="number">{wishListItems.length} </span> 
+            You have &nbsp;
+            <span className="number">{wishListItems.length} </span>
             &nbsp;
             {wishListItems.length === 1 ? "movie" : "movies"}
             &nbsp;in <span className="wishlist-name">{wishList.name}</span>
@@ -52,7 +56,7 @@ const WishList = () => {
           itemsPerRow={Math.max(Math.min(wishListItems.length, 5), 3)}
         >
           {wishListItems ? (
-            wishListItems.map(wli => (
+            wishListItems.map((wli) => (
               <WishListItem
                 key={wli.id}
                 wishListItem={wli}

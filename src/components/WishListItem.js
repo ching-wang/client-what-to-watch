@@ -5,11 +5,12 @@ import { useHistory } from "react-router-dom";
 export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   const history = useHistory();
   const [open, setOpen] = useState(false);
-  const [result, setResult] = useState( 
+  const [result, setResult] = useState(
     "The item has been removed from your wishlist"
   );
 
   const handleConfirm = () => {
+    console.log(`handleConfirm wishListItem.id:${wishListItem.id}`);
     setOpen(false);
     setResult("confirmed");
     handleDeleteWishlistItem(wishListItem.id);
@@ -39,7 +40,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
             }
             wrapped
             ui={false}
-            onError={i => (i.src = "/default-movie-poster.jpg")}
+            onError={(i) => (i.src = "/default-movie-poster.jpg")}
             onClick={() =>
               history.push(`/movies/${wishListItem.movie.imdb_id}`)
             }
@@ -48,7 +49,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
       />
       <Card.Content>
         <Card.Header>
-          <span className="movie-title">{wishListItem.movie.title} </span>
+          <span className="movie-title">{wishListItem.movie.title}</span>
           <span className="movie-year"> &nbsp; {wishListItem.movie.year}</span>
         </Card.Header>
         <br />
@@ -89,8 +90,8 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
           <Confirm
             className="confirm-message"
             open={open}
-            header="DELETE WISHLIST"
-            content="Are you sure that you want to delete this item from your wishlist?"
+            header={`Remove '${wishListItem.movie.title}' from wishlist?`}
+            content={`Are you sure that you want to remove '${wishListItem.movie.title}' from this wishlist?`}
             cancelButton="No"
             confirmButton="Yes"
             onCancel={handleCancel}

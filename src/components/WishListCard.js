@@ -35,7 +35,7 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
           <Image
             style={{ cursor: "pointer" }}
             className="card-img-size"
-            onError={i => (i.target.src = defaultImage)}
+            onError={(i) => (i.target.src = defaultImage)}
             src={wishList.image ? wishList.image : defaultImage}
             onClick={() => history.push(`/wishlists/${wishList.id}`)}
           />
@@ -83,8 +83,8 @@ export const WishListCard = ({ wishList, handleDeleteWishlist }) => {
           <Confirm
             className="confirm-message"
             open={open}
-            header="DELETE WISHLIST"
-            content="Are you sure that you want to delete this wishlist?"
+            header={`Delete '${wishList.name}' wishlist`}
+            content={`Are you sure that you want to delete the '${wishList.name}' wishlist?`}
             cancelButton="No"
             confirmButton="Yes"
             onCancel={handleCancel}

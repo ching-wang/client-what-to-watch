@@ -10,7 +10,7 @@ const WISHLIST_ITEMS_URL = `${API_ENDPOINT}/wish_list_items`;
 const SEARCH_URL = `${API_ENDPOINT}/search`;
 const MOVIE_URL = `${API_ENDPOINT}/movies`;
 
-const jsonify = async res => {
+const jsonify = async (res) => {
   if (res.ok) {
     return res.json();
   } else {
@@ -19,24 +19,24 @@ const jsonify = async res => {
   }
 };
 
-const login = loginDetails =>
+const login = (loginDetails) =>
   fetch(LOGIN_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept: "application/json",
     },
-    body: JSON.stringify({ user: loginDetails })
+    body: JSON.stringify({ user: loginDetails }),
   }).then(jsonify);
 
-const signup = signUpData => {
+const signup = (signUpData) => {
   return fetch(USER_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json"
+      Accept: "application/json",
     },
-    body: JSON.stringify({ user: signUpData })
+    body: JSON.stringify({ user: signUpData }),
   }).then(jsonify);
 };
 
@@ -46,9 +46,9 @@ const updateProfile = (userId, newProfileFormData) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
+      Authorization: localStorage.token,
     },
-    body: JSON.stringify(newProfileFormData)
+    body: JSON.stringify(newProfileFormData),
   }).then(jsonify);
 };
 
@@ -56,19 +56,19 @@ const validate = () =>
   fetch(VALIDATE_URL, {
     method: "POST",
     headers: {
-      Authorization: localStorage.token
-    }
+      Authorization: localStorage.token,
+    },
   }).then(jsonify);
 
-const createWishlist = wishListForm =>
+const createWishlist = (wishListForm) =>
   fetch(WISHLISTS_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
+      Authorization: localStorage.token,
     },
-    body: JSON.stringify(wishListForm)
+    body: JSON.stringify(wishListForm),
   }).then(jsonify);
 
 function deleteWishlist(wishListId) {
@@ -76,8 +76,8 @@ function deleteWishlist(wishListId) {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
-      Authorization: localStorage.token
-    }
+      Authorization: localStorage.token,
+    },
   }).then(jsonify);
 }
 
@@ -87,20 +87,20 @@ const getUserWishLists = () => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
-    }
-  }).then(res => res.json());
+      Authorization: localStorage.token,
+    },
+  }).then((res) => res.json());
 };
 
-const getWishList = wishListId => {
+const getWishList = (wishListId) => {
   return fetch(`${WISHLISTS_URL}/${wishListId}`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
-    }
-  }).then(res => res.json());
+      Authorization: localStorage.token,
+    },
+  }).then((res) => res.json());
 };
 
 const updateWishlist = (wishlistId, wishListFormData) => {
@@ -109,9 +109,9 @@ const updateWishlist = (wishlistId, wishListFormData) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
+      Authorization: localStorage.token,
     },
-    body: JSON.stringify(wishListFormData)
+    body: JSON.stringify(wishListFormData),
   }).then(console.log);
 };
 
@@ -121,9 +121,9 @@ const getUserWishListItems = () => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
-    }
-  }).then(res => res.json());
+      Authorization: localStorage.token,
+    },
+  }).then((res) => res.json());
 };
 
 const addToWishList = (wishListId, imdbID) => {
@@ -132,44 +132,47 @@ const addToWishList = (wishListId, imdbID) => {
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
+      Authorization: localStorage.token,
     },
     body: JSON.stringify({
       wish_list_id: wishListId,
-      imdb_id: imdbID
-    })
+      imdb_id: imdbID,
+    }),
   }).then(jsonify);
 };
 
-const deleteUser = userId => {
+const deleteUser = (userId) => {
   return fetch(USER_URL + userId, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
-    }
+      Authorization: localStorage.token,
+    },
   });
 };
 
-const deleteFromWishList = wishListItemId => {
+const deleteFromWishList = (wishListItemId) => {
+  console.log(`API.deleteFromWishList wishListItemId:${wishListItemId}`);
   return fetch(`${WISHLIST_ITEMS_URL}/${wishListItemId}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: localStorage.token
-    }
-  }).then(res => console.log(res.status));
+      Authorization: localStorage.token,
+    },
+  }).then((res) => console.log(res.status));
 };
 
 const searchMovies = (query, page = 1) => {
   query = sanitiseQuery(query);
-  return fetch(`${SEARCH_URL}?s=${query}&page=${page}`).then(res => res.json());
+  return fetch(`${SEARCH_URL}?s=${query}&page=${page}`).then((res) =>
+    res.json()
+  );
 };
 
-const getMovie = imdbID => {
-  return fetch(`${MOVIE_URL}/${imdbID}`).then(res => res.json());
+const getMovie = (imdbID) => {
+  return fetch(`${MOVIE_URL}/${imdbID}`).then((res) => res.json());
 };
 
 const clearToken = () => {
@@ -193,5 +196,5 @@ export default {
   addToWishList,
   deleteFromWishList,
   hasToken: !!localStorage.token,
-  clearToken
+  clearToken,
 };

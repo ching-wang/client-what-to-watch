@@ -23,11 +23,11 @@ export const SearchResults = ({ handleShowMovieCard }) => {
       return;
     }
     API.searchMovies(query, page)
-      .then(res => {
+      .then((res) => {
         setResults(res.Search);
         setTotalResults(parseInt(res.totalResults));
       })
-      .catch(e => {
+      .catch((e) => {
         setError(e);
         setResults(undefined);
       });
@@ -78,7 +78,7 @@ export const SearchResults = ({ handleShowMovieCard }) => {
         </Container>
         <br />
         <Card.Group centered={true}>
-          {(results || []).map(result => (
+          {(results || []).map((result) => (
             <SearchResultCard
               key={result.imdbID}
               searchResult={result}
