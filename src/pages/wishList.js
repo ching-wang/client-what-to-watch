@@ -17,6 +17,7 @@ const WishList = () => {
   }, [wishListId]);
 
   function deleteWishlistItem(wishlistitemId) {
+    console.log(`deleteWishlistItem wishlistitemId:${wishlistitemId}`);
     API.deleteFromWishList(wishlistitemId).then(() => {
       setWishListItems(
         wishListItems.filter((wli) => wli.id !== wishlistitemId)

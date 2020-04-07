@@ -153,6 +153,7 @@ const deleteUser = (userId) => {
 };
 
 const deleteFromWishList = (wishListItemId) => {
+  console.log(`API.deleteFromWishList wishListItemId:${wishListItemId}`);
   return fetch(`${WISHLIST_ITEMS_URL}/${wishListItemId}`, {
     method: "DELETE",
     headers: {

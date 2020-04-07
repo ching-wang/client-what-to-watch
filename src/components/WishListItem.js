@@ -10,6 +10,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
   );
 
   const handleConfirm = () => {
+    console.log(`handleConfirm wishListItem.id:${wishListItem.id}`);
     setOpen(false);
     setResult("confirmed");
     handleDeleteWishlistItem(wishListItem.id);
@@ -48,7 +49,7 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
       />
       <Card.Content>
         <Card.Header>
-          <span className="movie-title">{wishListItem.movie.title} </span>
+          <span className="movie-title">{wishListItem.movie.title}</span>
           <span className="movie-year"> &nbsp; {wishListItem.movie.year}</span>
         </Card.Header>
         <br />
@@ -89,8 +90,8 @@ export const WishListItem = ({ wishListItem, handleDeleteWishlistItem }) => {
           <Confirm
             className="confirm-message"
             open={open}
-            header="DELETE WISHLIST"
-            content="Are you sure that you want to delete this item from your wishlist?"
+            header={`Remove '${wishListItem.movie.title}' from wishlist?`}
+            content={`Are you sure that you want to remove '${wishListItem.movie.title}' from this wishlist?`}
             cancelButton="No"
             confirmButton="Yes"
             onCancel={handleCancel}
