@@ -1,9 +1,9 @@
-export const sanitiseQuery = query =>
+export const sanitiseQuery = (query) =>
   String(query)
     .trim()
     .toLowerCase()
-    .replace(/[^a-zA-Z0-9\s]/, "") // what about other character sets?
+    .replace(/[^a-zA-Z0-9\s]/g, "")
     .split(/\s+/)
     .slice(0, 10)
-    .map(word => encodeURIComponent(word))
+    .map((word) => encodeURIComponent(word))
     .join("+");
